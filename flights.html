@@ -16,17 +16,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
@@ -35,653 +26,118 @@
             display: flex;
             flex-direction: column;
         }
-        
-        .page-wrapper {
-            flex: 1 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .main-content {
-            flex: 1;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+        .page-wrapper { flex: 1 0 auto; display: flex; flex-direction: column; }
+        .main-content { flex: 1; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
         /* Navigation */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .logo-icon {
-            font-size: 32px;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-title {
-            font-size: 24px;
-            font-weight: 900;
-            color: #1e40af;
-        }
-        
-        .logo-subtitle {
-            font-size: 12px;
-            color: #6b7280;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-        }
-        
-        .nav-link {
-            padding: 12px 24px;
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #3b82f6;
-            background: #eff6ff;
-        }
-        
-        .nav-link.active {
-            color: #3b82f6;
-            background: #eff6ff;
-        }
-        
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 32px;
-            height: 4px;
-            background: #3b82f6;
-            border-radius: 2px;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
-        
-        .mobile-menu.active {
-            display: block;
-        }
-        
-        .mobile-nav-link {
-            display: block;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            border-bottom: 1px solid #f3f4f6;
-        }
-        
-        .mobile-nav-link:hover, .mobile-nav-link.active {
-            color: #3b82f6;
-            background: #eff6ff;
-        }
-        
+        .navbar { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e5e7eb; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; padding: 0 20px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+        .logo-icon { font-size: 32px; }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-size: 24px; font-weight: 900; color: #1e40af; }
+        .logo-subtitle { font-size: 12px; color: #6b7280; }
+        .nav-menu { display: flex; gap: 8px; list-style: none; }
+        .nav-link { padding: 12px 24px; text-decoration: none; color: #374151; font-weight: 600; border-radius: 8px; transition: all 0.3s ease; position: relative; }
+        .nav-link:hover, .nav-link.active { color: #3b82f6; background: #eff6ff; }
+        .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 32px; height: 4px; background: #3b82f6; border-radius: 2px; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); z-index: 999; }
+        .mobile-menu.active { display: block; }
+        .mobile-nav-link { display: block; padding: 16px 20px; text-decoration: none; color: #374151; font-weight: 600; border-bottom: 1px solid #f3f4f6; }
+        .mobile-nav-link:hover, .mobile-nav-link.active { color: #3b82f6; background: #eff6ff; }
+
         /* Hero Section */
-        .hero {
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        
-        .hero-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-            display: block;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 24px;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1.125rem, 2vw, 1.5rem);
-            color: #e0f2fe;
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
+        .hero { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.3; }
+        .hero-content { position: relative; z-index: 10; }
+        .hero-icon { font-size: 60px; margin-bottom: 16px; display: block; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        .hero-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; margin-bottom: 16px; }
+        .hero-subtitle { font-size: clamp(1rem, 2vw, 1.25rem); color: #e0f2fe; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
         /* Features Grid */
-        .features-section {
-            padding: 60px 20px;
-            background: white;
+        .features-section { padding: 40px 20px; background: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        .feature-card { text-align: center; padding: 20px; border-radius: 16px; background: #f8fafc; transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .feature-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 12px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .feature-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: #1f2937; }
+        .feature-description { color: #6b7280; font-size: 14px; }
+
+        /* Widget Section - ОПТИМИЗИРОВАНО */
+        .widget-section { padding: 40px 20px; background: #f8fafc; }
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #1f2937; margin-bottom: 10px; }
+        .section-subtitle { font-size: 1.25rem; color: #6b7280; }
+        
+        .widget-container { 
+            background: white; border-radius: 20px; 
+            padding: 30px 20px 20px; /* Уменьшен нижний отступ */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            text-align: center; max-width: 800px; margin: 0 auto; 
+        }
+        .widget-wrapper { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .widget-icon { font-size: 50px; margin-bottom: 10px; opacity: 0.7; }
+        .widget-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: #1f2937; }
+        .widget-description { margin-bottom: 16px; font-size: 1rem; color: #6b7280; }
+        
+        #tpwl-search { 
+            width: 100%; max-width: 700px; 
+            margin: 10px 0 0; /* Убран большой нижний отступ */
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
+        /* Дополнительный блок под поиском */
+        .widget-extra-content {
+            margin-top: 20px; /* Небольшой отступ от поиска */
         }
-        
-        .feature-card {
-            text-align: center;
-            padding: 24px;
-            border-radius: 16px;
-            background: #f8fafc;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 0 auto 16px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-        }
-        
-        .feature-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1f2937;
-        }
-        
-        .feature-description {
-            color: #6b7280;
-            font-size: 14px;
-        }
-        
-        /* Widget Section */
-        .widget-section {
-            padding: 60px 20px;
-            background: #f8fafc;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
-            color: #1f2937;
-            margin-bottom: 16px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: #6b7280;
-        }
-        
-        /* Стилизация для контейнера виджета */
-        .widget-container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Стили для виджета */
-        .widget-wrapper {
-            width: 100%; 
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .widget-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            opacity: 0.7;
-        }
-        
-        .widget-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1f2937;
-        }
-        
-        .widget-description {
-            margin-bottom: 24px;
-            font-size: 1rem;
-            color: #6b7280;
-        }
-        
-        /* Стили для Travelpayouts виджета */
-        #tpwl-search {
-            width: 100%;
-            max-width: 700px;
-            margin: 20px 0;
-        }
-        
-        .tpwl-widget-weedles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-        
-        .tpwl-widget-weedle {
-            min-height: 150px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
+
         /* Popular Destinations Section */
-        .destinations-section {
-            padding: 60px 20px;
-            background: white;
+        .destinations-section { padding: 40px 20px; background: white; }
+        .destinations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+        .destination-card { 
+            border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            transition: all 0.3s ease; position: relative; text-decoration: none; color: inherit; display: block;
         }
-        
-        .destinations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .destination-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .destination-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .destination-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .destination-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 16px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-        }
-        
-        .destination-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        
-        .destination-price {
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .destination-info {
-            padding: 16px;
-            background: white;
-        }
-        
-        .destination-date {
-            color: #6b7280;
-            font-size: 0.875rem;
-            margin-bottom: 8px;
-        }
-        
-        .destination-flight {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .destination-flight-info {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .airline {
-            font-weight: 700;
-            color: #1f2937;
-        }
-        
-        .flight-duration {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-        
-        .flight-price {
-            font-weight: 700;
-            color: #3b82f6;
-        }
-        
+        .destination-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+        .destination-image { height: 180px; background-size: cover; background-position: center; position: relative; }
+        .destination-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); color: white; }
+        .destination-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+        .destination-price { font-size: 0.875rem; display: flex; align-items: center; gap: 4px; }
+        .destination-info { padding: 16px; background: white; }
+        .destination-date { color: #6b7280; font-size: 0.875rem; margin-bottom: 8px; }
+        .destination-flight { display: flex; justify-content: space-between; align-items: center; }
+        .destination-flight-info { display: flex; flex-direction: column; }
+        .airline { font-weight: 700; color: #1f2937; }
+        .flight-duration { font-size: 0.875rem; color: #6b7280; }
+        .flight-price { font-weight: 700; color: #3b82f6; }
+
         /* Benefits Section */
-        .benefits-section {
-            padding: 60px 20px;
-            background: #f8fafc;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-        
-        .benefit-card {
-            text-center;
-            padding: 32px 20px;
-            border-radius: 16px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        
-        .benefit-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-        }
-        
-        .benefit-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1f2937;
-        }
-        
-        .benefit-description {
-            color: #6b7280;
-            line-height: 1.6;
-        }
-        
+        .benefits-section { padding: 40px 20px; background: #f8fafc; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .benefit-card { text-align: center; padding: 32px 20px; border-radius: 16px; background: white; transition: all 0.3s ease; }
+        .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .benefit-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .benefit-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #1f2937; }
+        .benefit-description { color: #6b7280; line-height: 1.6; }
+
         /* Footer */
-        .footer {
-            background: #1f2937;
-            color: white;
-            padding: 60px 20px 20px;
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: white;
-        }
-        
-        .footer-section p {
-            color: #d1d5db;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 8px;
-        }
-        
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 20px;
-            text-align: center;
-            color: #9ca3af;
-            font-size: 14px;
-        }
-        
-        /* Cookie notice */
-        .cookie-notice {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 16px;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .cookie-notice-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        @media (min-width: 768px) {
-            .cookie-notice-content {
-                flex-direction: row;
-                text-align: left;
-                justify-content: space-between;
-            }
-        }
-        
-        .cookie-text {
-            margin-bottom: 16px;
-        }
-        
-        @media (min-width: 768px) {
-            .cookie-text {
-                margin-bottom: 0;
-                margin-right: 24px;
-            }
-        }
-        
-        .cookie-buttons {
-            display: flex;
-            gap: 16px;
-        }
-        
-        .cookie-btn {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        
-        .accept-btn {
-            background: #3b82f6;
-            color: white;
-            border: none;
-        }
-        
-        .accept-btn:hover {
-            background: #1d4ed8;
-        }
-        
-        .policy-btn {
-            background: transparent;
-            color: #3b82f6;
-            border: 1px solid #3b82f6;
-        }
-        
-        .policy-btn:hover {
-            background: #eff6ff;
-        }
-        
-        /* Responsive Design */
+        .footer { background: #1f2937; color: white; padding: 60px 20px 20px; margin-top: auto; flex-shrink: 0; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 16px; color: white; }
+        .footer-section p { color: #d1d5db; line-height: 1.6; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: #d1d5db; text-decoration: none; transition: color 0.3s ease; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 20px; text-align: center; color: #9ca3af; font-size: 14px; }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 60px 16px;
-            }
-            
-            .features-section,
-            .widget-section,
-            .destinations-section,
-            .benefits-section {
-                padding: 40px 16px;
-            }
-            
-            .widget-container {
-                padding: 30px 16px;
-            }
-            
-            .footer {
-                padding: 40px 16px 20px;
-            }
-            
-            .destinations-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tpwl-widget-weedles {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 16px;
-            }
-            
-            .features-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+            .destinations-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -690,7 +146,7 @@
     <div class="page-wrapper">
         <header class="navbar">
             <div class="nav-container container">
-                <a href="#" class="logo">
+                <a href="index.html" class="logo">
                     <div class="logo-icon">✈️</div>
                     <div class="logo-text">
                         <div class="logo-title">Airflow</div>
@@ -720,9 +176,7 @@
                 <div class="hero-content container">
                     <div class="hero-icon">✈️</div>
                     <h1 class="hero-title">Поиск дешёвых авиабилетов</h1>
-                    <p class="hero-subtitle">
-                        Ваше путешествие начинается здесь. Сравниваем цены с сотен сайтов и позволяем вам выбрать самый дешевый вариант перелета.
-                    </p>
+                    <p class="hero-subtitle">Ваше путешествие начинается здесь. Сравниваем цены с сотен сайтов.</p>
                 </div>
             </section>
 
@@ -763,17 +217,13 @@
                     <div class="widget-container">
                         <div class="widget-icon">✈️</div>
                         <h3 class="widget-title">Поиск авиабилетов</h3>
-                        <p class="widget-description">
-                            Сравниваем цены с сотен сайтов и позволяем вам выбрать самый дешевый вариант перелета
-                        </p>
+                        <p class="widget-description">Сравниваем цены с сотен сайтов и позволяем выбрать лучший вариант</p>
                         
                         <div class="widget-wrapper">
-                            <!-- Travelpayouts Widget -->
                             <div id="tpwl-search"></div>
                             
-                            <!-- Popular Destinations Widget -->
-                            <div style="margin-top: 40px;">
-                                <h3 style="margin-bottom: 20px; color: #1f2937;">Популярные направления перелётов</h3>
+                            <div class="widget-extra-content">
+                                <h3 style="margin-bottom: 20px; color: #1f2937;">Популярные направления</h3>
                                 <div id="tpwl-widget-weedles" class="tpwl-widget-weedles">
                                     <div class="tpwl-widget-weedle" data-destination="IST" is="weedle"></div>
                                     <div class="tpwl-widget-weedle" data-destination="DXB" is="weedle"></div>
@@ -792,11 +242,11 @@
                 <div class="container">
                     <div class="section-header">
                         <h2 class="section-title">Популярные направления перелётов</h2>
-                        <p class="section-subtitle">Вдохновитесь идеями для вашего следующего путешествия</p>
+                        <p class="section-subtitle">Вдохновитесь идеями для следующего путешествия</p>
                     </div>
                     
                     <div class="destinations-grid">
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Санкт-Петербург</div>
@@ -813,9 +263,9 @@
                                     <div class="flight-price">3,900 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Сочи</div>
@@ -832,9 +282,9 @@
                                     <div class="flight-price">5,800 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Стамбул</div>
@@ -851,9 +301,9 @@
                                     <div class="flight-price">13,500 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Дубай</div>
@@ -870,9 +320,9 @@
                                     <div class="flight-price">19,200 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Париж</div>
@@ -889,9 +339,9 @@
                                     <div class="flight-price">21,700 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
-                        <div class="destination-card">
+                        <a href="#" target="_blank" class="destination-card">
                             <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1544085311-11a028465b03?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
                                 <div class="destination-overlay">
                                     <div class="destination-name">Москва — Нью-Йорк</div>
@@ -908,7 +358,7 @@
                                     <div class="flight-price">45,900 ₽</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -929,92 +379,58 @@
                         <div class="benefit-card">
                             <div class="benefit-icon">💸</div>
                             <h3 class="benefit-title">Без комиссий</h3>
-                            <p class="benefit-description">Вы не платите никаких дополнительных сборов или наценок</p>
+                            <p class="benefit-description">Вы платите напрямую авиакомпаниям. Никаких скрытых сборов.</p>
                         </div>
-                        
+
                         <div class="benefit-card">
-                            <div class="benefit-icon">🛡️</div>
+                            <div class="benefit-icon">🔒</div>
                             <h3 class="benefit-title">Безопасность</h3>
-                            <p class="benefit-description">Все платежи защищены современными протоколами безопасности</p>
-                        </div>
-                        
-                        <div class="benefit-card">
-                            <div class="benefit-icon">📊</div>
-                            <h3 class="benefit-title">Прогноз цен</h3>
-                            <p class="benefit-description">Умный алгоритм предсказывает изменения стоимости билетов</p>
-                        </div>
-                        
-                        <div class="benefit-card">
-                            <div class="benefit-icon">📱</div>
-                            <h3 class="benefit-title">Мобильная версия</h3>
-                            <p class="benefit-description">Удобный поиск и покупка билетов с любого устройства</p>
-                        </div>
-                        
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🌍</div>
-                            <h3 class="benefit-title">Мировое покрытие</h3>
-                            <p class="benefit-description">Билеты во все страны мира с самыми выгодными ценами</p>
+                            <p class="benefit-description">Работаем только с проверенными и надежными партнерами.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <div class="logo-icon">✈️</div>
-                        <div class="logo-text">
-                            <div class="logo-title">Airflow</div>
-                            <div class="logo-subtitle">Путешествия мечты</div>
-                        </div>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>О Airflow</h3>
+                        <p>Airflow помогает находить дешевые авиабилеты по всему миру. Быстро, удобно и выгодно.</p>
                     </div>
-                    <p>
-                        Мы помогаем найти лучшие предложения по авиабилетам, аренде авто и бронированию отелей. 
-                        Сравниваем цены с сотен сайтов для вашего удобства.
-                    </p>
+                    <div class="footer-section">
+                        <h3>Навигация</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="flights.html">Авиабилеты</a></li>
+                            <li><a href="cars.html">Аренда авто</a></li>
+                            <li><a href="hotels.html">Отели</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Помощь</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Правила</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Наши сервисы</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Авиабилеты</a></li>
-                        <li><a href="#">Аренда авто</a></li>
-                        <li><a href="#">Отели</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Правовая информация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Условия обслуживания</a></li>
-                        <li><a href="#">Политика конфиденциальности</a></li>
-                        <li><a href="#">Политика cookie</a></li>
-                        <li><a href="#">Отказ от ответственности</a></li>
-                    </ul>
+                <div class="footer-bottom">
+                    &copy; 2025 Airflow. Все права защищены.
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2008−2025 Airflow. Все права защищены. 📍 Москва, Россия</p>
-            </div>
-        </div>
-    </footer>
-    
-    <div class="cookie-notice" id="cookie-notice">
-        <div class="cookie-notice-content">
-            <div class="cookie-text">
-                Мы используем cookie, чтобы запоминать вашу историю поиска и выбранные фильтры. 
-                Продолжая пользоваться сайтом, вы соглашаетесь на их использование.
-            </div>
-            <div class="cookie-buttons">
-                <button class="cookie-btn accept-btn" onclick="hideCookieNotice()">Принять</button>
-                <a href="#" class="cookie-btn policy-btn">Политика cookie</a>
-            </div>
-        </div>
+        </footer>
     </div>
 
-    <!-- Travelpayouts Widget Scripts -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
     <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
         (function () {
             var script = document.createElement("script");
@@ -1022,72 +438,12 @@
             script.type = "module";
             script.src = "https://tpwgt.com/wl_web/main.js?wl_id=1368";
             document.head.appendChild(script);
+
             window.TPWL_CONFIGURATION = {
                 ...window.TPWL_CONFIGURATION,
                 resultsURL: "https://search.airflowtravel.net"
             };
         })();
     </script>
-
-    <!-- Popular Destinations Widget Script -->
-    <script>
-        (function () {
-            // Wait for TPWL_EXTRA to be available
-            function initWeedles() {
-                if (typeof TPWL_EXTRA === 'undefined') {
-                    setTimeout(initWeedles, 500);
-                    return;
-                }
-                
-                const container = document.getElementById('tpwl-widget-weedles');
-                if (!container) return;
-                
-                const weedleElements = container.querySelectorAll('div[is="weedle"]');
-                
-                weedleElements.forEach(element => {
-                    const destination = element.getAttribute('data-destination');
-                    const scriptElement = document.createElement('script');
-                    scriptElement.async = 1;
-                    scriptElement.src = `https://widget.travelpayouts.com/content?currency=${String(TPWL_EXTRA.currency).toLowerCase()}&trs=${TPWL_EXTRA.trs}&shmarker=${TPWL_EXTRA.marker}&destination=${destination}&target_host=${TPWL_EXTRA.domain}&locale=${TPWL_EXTRA.locale}&limit=6&powered_by=false&primary=%23${TPWL_EXTRA.link_color}&promo_id=4044&campaign_id=100`;
-                    element.appendChild(scriptElement);
-                });
-            }
-            
-            // Start initialization
-            initWeedles();
-        })();
-    </script>
-
-    <!-- Utility Scripts -->
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('active');
-        }
-
-        // Hide cookie notice
-        function hideCookieNotice() {
-            document.getElementById('cookie-notice').style.display = 'none';
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-    </script>
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
 </body>
 </html>
