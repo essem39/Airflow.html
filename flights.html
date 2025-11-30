@@ -840,29 +840,22 @@
                             <!-- Здесь будет ваш виджет поиска авиабилетов. Пока он не активирован, 
                             показываем форму-заглушку. Когда получите скрипт для виджета, замените
                             этот блок на тег script с вашим виджетом. -->
-                            <div class="flights-search-widget">
-                                <form class="search-form">
-                                    <div class="form-group">
-                                        <label class="form-label">Откуда</label>
-                                        <input type="text" class="form-control" placeholder="Город отправления">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Куда</label>
-                                        <input type="text" class="form-control" placeholder="Город назначения">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Дата вылета</label>
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Дата возвращения</label>
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <button type="button" class="search-btn">Найти билеты</button>
-                                </form>
-                            </div>
-                            <!-- Когда получите активированный скрипт, замените блок выше на что-то вроде:
-                           <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+                        <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+  (function () {
+        var script = document.createElement("script");
+        script.async = 1;
+        script.type = "module";
+        script.src = "https://tpwgt.com/wl_web/main.js?wl_id=1368";
+        document.head.appendChild(script);
+
+        window.TPWL_CONFIGURATION = {
+          ...window.TPWL_CONFIGURATION,
+          resultsURL: "https://search.airflowtravel.net"
+        };
+      })();
+</script>
+
+<div id="tpwl-search"></div>
   (function () {
         var script = document.createElement("script");
         script.async = 1;
