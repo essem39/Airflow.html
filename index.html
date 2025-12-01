@@ -247,7 +247,7 @@
             width: 100%;
         }
 
-       /* Стиль для контейнера виджета (ИСПРАВЛЕНО: убран overflow: hidden, добавлен z-index) */
+      /* Стиль для контейнера виджета (ИСПРАВЛЕНО: Убран z-index/position, чтобы не конфликтовать с родительским блоком) */
         .travelpayouts-widget-container {
             max-width: 1100px; 
             width: 100%;
@@ -256,8 +256,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border-radius: 8px;
             background: #ffffff; 
-            z-index: 1001; /* Высокий индекс для отображения выпадающих списков поверх всего */
-            position: relative; /* Необходим для корректной работы z-index */
+            /* overflow: hidden также отсутствует здесь */
         }
         
         .hero-title {
