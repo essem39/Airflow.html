@@ -3,427 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AirFlow Travel - Поиск Отелей | Бронирование Жилья Выгодно</title>
-    <meta name="description" content="Ищите и бронируйте отели по лучшим ценам с AirFlow Travel. Сравнение цен на жилье по всему миру.">
-    <meta name="author" content="Airflow">
-    <meta name="keywords" content="отели, бронирование отелей, жилье, дешевые отели, AirFlow Travel">
-    
-    <meta property="og:title" content="Airflow - Поиск и бронирование отелей">
-    <meta property="og:description" content="Сравниваем цены на отели с сотен сайтов и находим лучшие предложения.">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:type" content="website">
-
+    <title>Airflow - Бронирование отелей и гостиниц по всему миру</title>
+    <meta name="description" content="Поиск и бронирование отелей. Сравнение цен, реальные отзывы, лучшие предложения.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
     
     <style>
-        /* CSS, предоставленный вами в теле файла (стили не менялись) */
+        /* --- СТИЛИ (CSS) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; margin: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            min-height: 100vh;
+            background-color: #f8fafc;
             display: flex;
             flex-direction: column;
-            background-color: #f8fafc;
+            min-height: 100vh;
         }
-        .page-wrapper { flex: 1 0 auto; display: flex; flex-direction: column; }
-        .main-content { flex: 1; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .page-wrapper { flex: 1; display: flex; flex-direction: column; }
 
-        /* Navigation */
-        .navbar { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e5e7eb; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; padding: 0 20px; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-        .logo-icon { font-size: 32px; }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-title { font-size: 24px; font-weight: 900; color: #1e40af; }
-        .logo-subtitle { font-size: 12px; color: #6b7280; }
-        .nav-menu { display: flex; gap: 8px; list-style: none; }
-        .nav-link { padding: 12px 24px; text-decoration: none; color: #374151; font-weight: 600; border-radius: 8px; transition: all 0.3s ease; position: relative; }
-        .nav-link:hover, .nav-link.active { color: #3b82f6; background: #eff6ff; }
-        .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 32px; height: 4px; background: #3b82f6; border-radius: 2px; }
+        /* --- МЕНЮ --- */
+        .navbar { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 24px; font-weight: 900; color: #1e40af; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-link { font-weight: 600; color: #4b5563; padding: 8px 12px; border-radius: 6px; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { background: #eff6ff; color: #2563eb; }
         .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
-        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); z-index: 999; }
-        .mobile-menu.active { display: block; }
-        .mobile-nav-link { display: block; padding: 16px 20px; text-decoration: none; color: #374151; font-weight: 600; border-bottom: 1px solid #f3f4f6; }
-        .mobile-nav-link:hover, .mobile-nav-link.active { color: #3b82f6; background: #eff6ff; }
 
-        /* Hero Section */
-        .hero { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); color: white; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.3; }
-        .hero-content { position: relative; z-index: 10; }
-        .hero-icon { font-size: 60px; margin-bottom: 16px; display: block; animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
-        .hero-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; margin-bottom: 16px; }
-        .hero-subtitle { font-size: clamp(1rem, 2vw, 1.25rem); color: #e0f2fe; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        /* Features Grid */
-        .features-section { padding: 40px 20px; background: white; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-        .feature-card { text-align: center; padding: 20px; border-radius: 16px; background: #f8fafc; transition: all 0.3s ease; }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .feature-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 12px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
-        .feature-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: #1f2937; }
-        .feature-description { color: #6b7280; font-size: 14px; }
-
-        /* Widget Section */
-        .widget-section { padding: 40px 20px; background: #f8fafc; }
-        .section-header { text-align: center; margin-bottom: 30px; }
-        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #1f2937; margin-bottom: 10px; }
-        .section-subtitle { font-size: 1.25rem; color: #6b7280; }
-        
-        .widget-container { 
-            background: white; border-radius: 20px; 
-            padding: 30px 20px 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            text-align: center; max-width: 800px; margin: 0 auto; 
-        }
-        .widget-wrapper { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        
-        /* Стили для Iframe Отелей */
-        .hotels-search-container {
+        /* --- ГЛАВНЫЙ БЛОК С ПОИСКОМ ОТЕЛЕЙ (С ФОНОМ) --- */
+        .search-hero-section {
             width: 100%;
-            max-width: 700px;
-            margin: 10px auto 0;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
         }
 
-        .hotels-search-container iframe {
-            width: 100%; 
-            min-height: 550px; 
-            border: none;
-            display: block;
+        .search-glass-container {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin: 0 20px;
         }
 
-        /* Popular Destinations Section */
-        .destinations-section { padding: 40px 20px; background: white; }
-        .destinations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-        .destination-card { 
-            border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
-            transition: all 0.3s ease; position: relative; text-decoration: none; color: inherit; display: block;
+        .hero-headline {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
-        .destination-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
-        .destination-image { height: 180px; background-size: cover; background-position: center; position: relative; }
-        .destination-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); color: white; }
-        .destination-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
-        .destination-price { font-size: 0.875rem; display: flex; align-items: center; gap: 4px; }
-        .destination-info { padding: 16px; background: white; }
-        .destination-date { color: #6b7280; font-size: 0.875rem; margin-bottom: 8px; }
-        .destination-flight { display: flex; justify-content: space-between; align-items: center; }
-        .destination-flight-info { display: flex; flex-direction: column; }
-        .airline { font-weight: 700; color: #1f2937; }
-        .flight-duration { font-size: 0.875rem; color: #6b7280; }
-        .flight-price { font-weight: 700; color: #3b82f6; }
+        .hero-headline h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .hero-headline p { font-size: 1.2rem; opacity: 0.9; }
 
-        /* Benefits Section */
-        .benefits-section { padding: 40px 20px; background: #f8fafc; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .benefit-card { text-align: center; padding: 32px 20px; border-radius: 16px; background: white; transition: all 0.3s ease; }
-        .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .benefit-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
-        .benefit-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #1f2937; }
-        .benefit-description { color: #6b7280; line-height: 1.6; }
+        /* --- ПРЕИМУЩЕСТВА (ГОРИЗОНТАЛЬНО) --- */
+        .benefits-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between;
+            gap: 30px; 
+            padding: 60px 0; 
+        }
+        .benefit-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-align: center; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            transition: 0.3s;
+            flex: 1 1 300px; 
+        }
+        .benefit-card:hover { transform: translateY(-5px); }
+        .benefit-icon { font-size: 40px; margin-bottom: 15px; }
 
-        /* Footer */
-        .footer { background: #1f2937; color: white; padding: 60px 20px 20px; margin-top: auto; flex-shrink: 0; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-section h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 16px; color: white; }
-        .footer-section p { color: #d1d5db; line-height: 1.6; margin-bottom: 16px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 8px; }
-        .footer-links a { color: #d1d5db; text-decoration: none; transition: color 0.3s ease; }
-        .footer-links a:hover { color: white; }
-        .footer-bottom { border-top: 1px solid #374151; padding-top: 20px; text-align: center; color: #9ca3af; font-size: 14px; }
+        /* --- ПОПУЛЯРНЫЕ ОТЕЛИ (СЛАЙДЕР) --- */
+        .destinations-section { background: white; padding: 20px 0 60px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .hotel-slider-wrapper { 
+             /* Виджет-слайдер, занимает полную ширину контейнера */
+             max-width: 100%; 
+             margin: 0 auto;
+             padding: 10px 0;
+        }
 
-        /* Responsive */
+        /* --- БЛОК АВИАБИЛЕТОВ (ВСПОМОГАТЕЛЬНЫЙ) --- */
+        .flight-widget-section {
+            background: #e5e7eb;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .flight-widget-section h2 { margin-bottom: 20px; }
+        
+        .flight-widget-wrapper {
+            max-width: 100%; 
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- ОТЗЫВЫ (ГОРИЗОНТАЛЬНО) --- */
+        .reviews-section { background: #f8fafc; padding: 60px 0; }
+        .reviews-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            gap: 30px; 
+        }
+        .review-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
+            flex: 1 1 300px; 
+        }
+        .stars { color: #fbbf24; margin-bottom: 10px; }
+        .review-author { font-weight: bold; margin-top: 15px; display: flex; align-items: center; gap: 10px; }
+        .avatar { width: 40px; height: 40px; background: #eff6ff; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; }
+
+        /* --- FAQ --- */
+        .faq-section { padding: 60px 0; background: white; }
+        .faq-item { background: #f8fafc; margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-question { padding: 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-answer { padding: 0 20px 20px; color: #64748b; display: none; } 
+        .faq-item:hover .faq-answer { display: block; }
+
+        /* --- ФУТЕР --- */
+        .footer { background: #1e293b; color: white; padding: 50px 20px; margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer h3 { margin-bottom: 20px; }
+        .footer a { color: #94a3b8; transition: 0.3s; }
+        .footer a:hover { color: white; }
+
         @media (max-width: 768px) {
             .nav-menu { display: none; }
             .mobile-menu-btn { display: block; }
-            .destinations-grid { grid-template-columns: 1fr; }
+            .search-hero-section { padding: 40px 0; min-height: auto; }
+            .search-glass-container { padding: 20px; margin: 0 10px; }
+            .hero-headline h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
-
 <body>
-    <div class="page-wrapper">
-        <header class="navbar">
-            <div class="nav-container container">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">🏨</div>
-                    <div class="logo-text">
-                        <div class="logo-title">Airflow</div>
-                        <div class="logo-subtitle">Путешествия мечты</div>
-                    </div>
-                </a>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link">Главная</a></li>
-                        <li><a href="flights.html" class="nav-link">Авиабилеты</a></li>
-                        <li><a href="cars.html" class="nav-link">Аренда авто</a></li>
-                        <li><a href="hotels.html" class="nav-link active">Отели</a></li>
-                    </ul>
-                </nav>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+<div class="page-wrapper">
+    <header class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">🏨 Airflow</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="flights.html" class="nav-link">Авиабилеты</a></li>
+                    <li><a href="cars.html" class="nav-link">Аренда авто</a></li>
+                    <li><a href="hotels.html" class="nav-link active">Отели</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-hero-section">
+        <div class="search-glass-container">
+            <div class="hero-headline">
+                <h1>Найдите Идеальное Место для Отдыха</h1>
+                <p>Сравните цены на миллионы отелей, апартаментов и хостелов по всему миру.</p>
             </div>
-            <div class="mobile-menu" id="mobile-menu">
-                <a href="index.html" class="mobile-nav-link">Главная</a>
-                <a href="flights.html" class="mobile-nav-link">Авиабилеты</a>
-                <a href="cars.html" class="mobile-nav-link">Аренда авто</a>
-                <a href="hotels.html" class="mobile-nav-link active">Отели</a>
+            
+            <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&locale=ru&logo=false&powered_by=true&campaign_id=459&promo_id=7148" charset="utf-8"></script>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⭐️</div>
+                <h3>Проверенные отзывы</h3>
+                <p>Только реальные мнения гостей с высоким рейтингом.</p>
             </div>
-        </header>
-
-        <main class="main-content">
-            <section class="hero">
-                <div class="hero-content container">
-                    <div class="hero-icon">🏨</div>
-                    <h1 class="hero-title">Поиск и бронирование отелей</h1>
-                    <p class="hero-subtitle">Найдите идеальное жилье в любой точке мира по лучшей цене.</p>
-                </div>
-            </section>
-
-            <section class="features-section">
-                <div class="container">
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">🔍</div>
-                            <h3 class="feature-title">Тысячи вариантов</h3>
-                            <p class="feature-description">От роскошных курортов до уютных апартаментов</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">⭐</div>
-                            <h3 class="feature-title">Отзывы гостей</h3>
-                            <p class="feature-description">Читайте реальные отзывы, чтобы сделать правильный выбор</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">💰</div>
-                            <h3 class="feature-title">Гарантия лучшей цены</h3>
-                            <p class="feature-description">Сравниваем предложения ведущих систем бронирования</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🔒</div>
-                            <h3 class="feature-title">Безопасное бронирование</h3>
-                            <p class="feature-description">Прямая связь с надежными партнерами</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="widget-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Начните поиск отеля</h2>
-                        <p class="section-subtitle">Просто укажите город и даты проживания</p>
-                    </div>
-                    
-                    <div class="widget-container">
-                        <div class="widget-wrapper">
-                            <div class="hotels-search-container">
-                                <iframe src="https://search.airflowtravel.net/hotels" 
-                                        width="100%" 
-                                        height="680" 
-                                        frameborder="0" 
-                                        scrolling="no" 
-                                        allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="destinations-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Популярные отельные направления</h2>
-                        <p class="section-subtitle">Откройте для себя места, где хотят остановиться все</p>
-                    </div>
-                    
-                    <div class="destinations-grid">
-                        <a href="https://search.airflowtravel.net/hotels?location=Москва" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1547065997-c75c88c7f07a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели в Москве</div>
-                                    <div class="destination-price">от 4,500 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Роскошные и бюджетные</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">500+ отелей</div>
-                                        <div class="flight-duration">В центре и у метро</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.7</div>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <a href="https://search.airflowtravel.net/hotels?location=Санкт-Петербург" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1547346892-299f0e47d1a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели в Санкт-Петербурге</div>
-                                    <div class="destination-price">от 3,200 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Уютные гостиницы</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">400+ отелей</div>
-                                        <div class="flight-duration">Рядом с Эрмитажем</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.5</div>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <a href="https://search.airflowtravel.net/hotels?location=Дубай" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели в Дубае</div>
-                                    <div class="destination-price">от 8,900 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Пляжные курорты</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">Мировой уровень</div>
-                                        <div class="flight-duration">У Бурдж-Халифа</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.9</div>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <a href="https://search.airflowtravel.net/hotels?location=Стамбул" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1524388414436-1e6a6a2a0e28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели в Стамбуле</div>
-                                    <div class="destination-price">от 4,100 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Исторические районы</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">Возле Султанахмет</div>
-                                        <div class="flight-duration">На любой вкус</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.6</div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="https://search.airflowtravel.net/hotels?location=Пхукет" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели на Пхукете</div>
-                                    <div class="destination-price">от 2,800 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Пляжный отдых</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">Бунгало и виллы</div>
-                                        <div class="flight-duration">Лучшие пляжи</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.4</div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="https://search.airflowtravel.net/hotels?location=Ереван" target="_blank" class="destination-card">
-                            <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1582239401917-86c55d050510?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                <div class="destination-overlay">
-                                    <div class="destination-name">Отели в Ереване</div>
-                                    <div class="destination-price">от 3,000 ₽/ночь</div>
-                                </div>
-                            </div>
-                            <div class="destination-info">
-                                <div class="destination-date">Исторический центр</div>
-                                <div class="destination-flight">
-                                    <div class="destination-flight-info">
-                                        <div class="airline">Рядом с Каскадом</div>
-                                        <div class="flight-duration">Комфортный отдых</div>
-                                    </div>
-                                    <div class="flight-price">⭐ 4.8</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="benefits-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Почему стоит бронировать с Airflow</h2>
-                    </div>
-                    
-                    <div class="benefits-grid">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🌎</div>
-                            <h3 class="benefit-title">Глобальный охват</h3>
-                            <p class="benefit-description">Доступ к миллионам предложений по всему миру</p>
-                        </div>
-                        
-                        <div class="benefit-card">
-                            <div class="benefit-icon">📅</div>
-                            <h3 class="benefit-title">Гибкие условия</h3>
-                            <p class="benefit-description">Возможность бесплатной отмены для многих бронирований</p>
-                        </div>
-
-                        <div class="benefit-card">
-                            <div class="benefit-icon">💵</div>
-                            <h3 class="benefit-title">Выгода</h3>
-                            <p class="benefit-description">Мы находим скрытые скидки и лучшие предложения</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h3>О Airflow</h3>
-                        <p>Airflow помогает находить дешевые авиабилеты и выгодные отели по всему миру. Быстро, удобно и выгодно.</p>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Навигация</h3>
-                        <ul class="footer-links">
-                            <li><a href="index.html">Главная</a></li>
-                            <li><a href="flights.html">Авиабилеты</a></li>
-                            <li><a href="cars.html">Аренда авто</a></li>
-                            <li><a href="hotels.html">Отели</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Помощь</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Контакты</a></li>
-                            <li><a href="#">Правила</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    &copy; 2025 Airflow. Все права защищены.
-                </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Лучшая цена</h3>
+                <p>Сравниваем тысячи предложений, чтобы дать вам самую низкую цену.</p>
             </div>
-        </footer>
+            <div class="benefit-card">
+                <div class="benefit-icon">📍</div>
+                <h3>Удобное расположение</h3>
+                <p>Подбирайте жильё рядом с центром или достопримечательностями.</p>
+            </div>
+        </div>
     </div>
 
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
+    <section class="destinations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Лучшие предложения по отелям и апартаментам</h2>
+            </div>
+            <div class="hotel-slider-wrapper">
+                <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&star=1&rating=0&distance=30&hotelkind=Hotel%2CGuesthouse%2CCottages_and_Houses%2CVillas_and_Bungalows%2CCamping%2CHostel&number=6&powered_by=true&erid=2Vtzqv4GHE1&campaign_id=459&promo_id=7240" charset="utf-8"></script>
+            </div>
+        </div>
+    </section>
+
+    <section class="flight-widget-section">
+        <div class="container">
+            <h2>Не забудьте забронировать авиабилеты!</h2>
+            <div class="flight-widget-wrapper">
+                <script async src="https://tpwgt.com/content?currency=rub&trs=478043&shmarker=144185&show_hotels=false&powered_by=true&locale=ru&searchUrl=search.airflowtravel.net%2Fflights&primary_override=%2332a8dd&color_button=%2332a8dd&color_icons=%2332a8dd&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=0&no_labels=true&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Отзывы о наших отельных предложениях</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Нашел шикарный отель в Дубае за половину цены! Очень благодарен за возможность сравнить все сайты."</p>
+                    <div class="review-author"><div class="avatar">А</div> Алексей К.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Сервис подбора отличный, особенно нравится фильтрация по рейтингу и близости к пляжу."</p>
+                    <div class="review-author"><div class="avatar">М</div> Мария П.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★☆</div>
+                    <p>"Быстро, удобно, всё прозрачно. Забронировал отель в Тбилиси, проблем не возникло."</p>
+                    <div class="review-author"><div class="avatar">Г</div> Георгий С.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Частые вопросы по бронированию</h2>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Как проверить наличие номера? <span>+</span></div>
+                <div class="faq-answer">Наличие номеров автоматически обновляется в режиме реального времени. Вы видите только актуальные предложения.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Что, если мой номер отменят? <span>+</span></div>
+                <div class="faq-answer">В случае отмены бронирования партнером, мы немедленно свяжемся с вами и предложим альтернативу или полный возврат средств.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Могу ли я изменить даты? <span>+</span></div>
+                <div class="faq-answer">Условия изменения дат зависят от тарифа отеля. Информацию об этом можно найти в деталях бронирования.</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <h3>Airflow</h3>
+            <p>Ваш надежный помощник в поиске лучшего жилья по всему миру.</p>
+        </div>
+        <div>
+            <h3>Разделы</h3>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="flights.html">Авиабилеты</a></li>
+                <li><a href="cars.html">Аренда авто</a></li>
+                <li><a href="hotels.html">Отели</a></li>
+            </ul>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px;">
+        &copy; 2025 Airflow Travel. Все права защищены.
+    </div>
+</footer>
+
 </body>
 </html>
