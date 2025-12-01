@@ -6,7 +6,7 @@
     <title>Airflow - Поиск дешёвых авиабилетов, аренда авто и отели</title>
     <meta name="description" content="Airflow - ваш надёжный помощник в поиске дешёвых авиабилетов, аренде автомобилей и бронировании отелей. Сравниваем цены с сотен сайтов для лучших предложений.">
     <meta name="author" content="Airflow">
-    <meta name="keywords" content="авиабилеты, дешевые билеты, аренда авто, отели, путешествия, бронирование">
+    <meta name="keywords" content="авиабилеты, дешевые билеты, аренда авто, отели, путешествия, бронирование, поезда">
     
     <meta property="og:title" content="Airflow - Поиск дешёвых авиабилетов и путешествий">
     <meta property="og:description" content="Сравниваем цены с сотен сайтов и позволяем выбрать самый дешёвый вариант перелёта, аренды авто и проживания.">
@@ -16,6 +16,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
     
     <style>
+        /* Глобальные стили */
         * {
             margin: 0;
             padding: 0;
@@ -172,7 +173,7 @@
             background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #312e81 100%);
             position: relative;
             overflow: hidden;
-            min-height: 600px;
+            min-height: 500px;
             display: flex;
             align-items: center;
         }
@@ -238,27 +239,31 @@
             z-index: 10;
             color: white;
             text-align: center;
-            padding: 80px 20px;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
+            padding: 80px 20px; 
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 24px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Стиль для контейнера виджета */
+        .travelpayouts-widget-container {
+            max-width: 1100px; 
+            width: 100%;
+            margin-top: 32px; 
+            margin-bottom: 32px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff; 
         }
         
         .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 16px; 
         }
         
         .hero-gradient-text {
@@ -271,424 +276,380 @@
         .hero-subtitle {
             font-size: clamp(1.125rem, 2vw, 1.5rem);
             color: #bfdbfe;
-            margin-bottom: 32px;
+            margin-bottom: 16px; 
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            min-width: 200px;
-            justify-content: center;
-        }
-        
-        .btn-primary {
-            background: white;
-            color: #1e40af;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            background: #f8fafc;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-secondary:hover {
-            background: white;
-            color: #1e40af;
-            transform: translateY(-2px);
-        }
-        
         .hero-features {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             gap: 24px;
-            font-size: 14px;
-            color: #bfdbfe;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            list-style: none;
+            margin-top: 16px;
         }
-        
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        /* Stats Section */
+
+        /* Stats, Services, Features */
         .stats {
-            background: #f8fafc;
-            padding: 60px 20px;
+            padding: 40px 0;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
             text-align: center;
         }
         
-        .stat-item {
-            padding: 20px;
-        }
-        
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            color: #2563eb;
-            margin-bottom: 8px;
+            color: #1e40af;
             display: block;
+            margin-bottom: 4px;
         }
         
         .stat-label {
+            font-size: 0.9rem;
             color: #6b7280;
-            font-weight: 500;
         }
         
-        /* Services Section */
         .services {
-            padding: 80px 20px;
-            background: white;
+            padding: 80px 0;
+            background: #ffffff;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
         
         .section-title {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #111827;
-            margin-bottom: 16px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 12px;
         }
         
         .section-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             color: #6b7280;
-            max-width: 600px;
-            margin: 0 auto;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
         
         .service-card {
-            background: white;
-            border-radius: 16px;
+            background: #f9fafb;
+            border-radius: 12px;
             padding: 32px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #f3f4f6;
+            border: 1px solid #e5e7eb;
+            display: block;
         }
         
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .service-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 24px;
-            transition: transform 0.3s ease;
+            font-size: 40px;
+            margin-bottom: 16px;
         }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-        
-        .service-icon.flights {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-        }
-        
-        .service-icon.cars {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-        
-        .service-icon.hotels {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-        }
-        
+
         .service-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: #111827;
+            margin-bottom: 8px;
+            color: #1f2937;
         }
         
         .service-description {
-            font-size: 1.125rem;
             color: #6b7280;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-        
+
         .service-features {
             list-style: none;
             margin-bottom: 24px;
         }
         
         .service-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: #6b7280;
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
         }
-        
+
         .service-feature::before {
             content: '✓';
-            color: #10b981;
-            font-weight: bold;
-            font-size: 16px;
+            position: absolute;
+            left: 0;
+            color: #2563eb;
         }
-        
+
         .service-btn {
-            width: 100%;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
+            display: inline-block;
             font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            color: #2563eb;
+            transition: color 0.3s ease;
         }
-        
-        .service-btn.flights {
-            background: #2563eb;
-            color: white;
-        }
-        
-        .service-btn.cars {
-            background: #059669;
-            color: white;
-        }
-        
-        .service-btn.hotels {
-            background: #7c3aed;
-            color: white;
-        }
-        
-        .service-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        /* Features Section */
+
+        .service-btn.flights { color: #f59e0b; }
+        .service-btn.cars { color: #10b981; }
+        .service-btn.hotels { color: #ef4444; }
+
+        .service-card:hover .service-btn.flights { color: #d97706; }
+        .service-card:hover .service-btn.cars { color: #059669; }
+        .service-card:hover .service-btn.hotels { color: #b91c1c; }
+
+
         .features {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            padding: 80px 0;
+            background: #eff6ff;
+            border-top: 1px solid #dbeafe;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
         
         .feature-card {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #3b82f6;
         }
         
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 24px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
+            font-size: 32px;
+            margin-bottom: 12px;
         }
         
         .feature-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 16px;
-            color: #111827;
+            color: #1f2937;
+            margin-bottom: 8px;
         }
         
         .feature-description {
             color: #6b7280;
-            line-height: 1.6;
         }
         
-        /* CTA Section */
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: block;
+            padding: 18px 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1f2937;
+            background: #f9fafb;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            position: relative;
+            user-select: none;
+            list-style: none;
+        }
+        
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #3b82f6;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] .faq-question::after {
+            content: '–';
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        .faq-question:hover {
+            background: #eff6ff;
+        }
+
+        .faq-answer {
+            padding: 15px 25px;
+            font-size: 1rem;
+            color: #4b5563;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* CTA Section (Обновлено для 4 кнопок) */
         .cta {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #2563eb 0%, #3730a3 100%);
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            padding: 80px 0;
             text-align: center;
             color: white;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1); 
         }
-        
+
         .cta-title {
             font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-        
+
         .cta-subtitle {
             font-size: 1.25rem;
             color: #bfdbfe;
             margin-bottom: 32px;
         }
-        
-        .cta-buttons {
+
+        .cta-buttons-all {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
-            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; 
+        }
+
+        .btn-cta {
+            padding: 16px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.3s ease;
+            border: 2px solid transparent; 
+            min-width: 220px;
+            font-size: 1.1rem;
         }
         
+        .btn-cta:hover {
+            transform: translateY(-4px);
+            opacity: 0.9;
+        }
+        
+        /* Цветовые схемы для CTA кнопок */
+        .btn-orange {
+            background: #f59e0b;
+            color: white;
+            border-color: #f59e0b;
+        }
+
+        .btn-green {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+        
+        .btn-red {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #1e40af; 
+            border-color: white;
+        }
+        
+        .btn-white:hover {
+            background: #e5e7eb;
+        }
+
+
         /* Footer */
         .footer {
-            background: #111827;
-            color: white;
-            padding: 60px 20px 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: white;
-        }
-        
-        .footer-section p {
+            background: #1f2937;
             color: #d1d5db;
-            line-height: 1.6;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.25rem;
             margin-bottom: 16px;
         }
-        
+
+        .footer-section p {
+            font-size: 0.9rem;
+            max-width: 300px;
+            margin-bottom: 16px;
+        }
+
         .footer-links {
             list-style: none;
         }
-        
-        .footer-links li {
-            margin-bottom: 8px;
-        }
-        
-        .footer-links a {
-            color: #d1d5db;
+
+        .footer-links li a {
+            color: #9ca3af;
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s ease;
         }
-        
-        .footer-links a:hover {
+
+        .footer-links li a:hover {
             color: white;
         }
-        
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+
+        .footer-contact .contact-item {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
         }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #d1d5db;
-            font-size: 14px;
-        }
-        
+
         .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+            margin-top: 30px;
             text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
         }
-        
-        .footer-bottom p {
-            color: #9ca3af;
-            font-size: 14px;
-        }
-        
+
         /* Responsive Design */
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-            
-            .hero-features {
-                justify-content: center;
-            }
-            
-            .cta-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-            
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-        
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -702,12 +663,8 @@
                 padding: 60px 20px;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
             }
             
             .services-grid {
@@ -716,6 +673,27 @@
             
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons-all {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-cta {
+                width: 80%;
+                min-width: 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
         }
         
@@ -732,26 +710,22 @@
                 padding: 40px 16px;
             }
             
-            .services {
-                padding: 60px 16px;
+            .hero-features {
+                flex-direction: column;
+                gap: 8px;
             }
             
-            .features {
-                padding: 60px 16px;
+            .stats {
+                padding: 30px 0;
             }
-            
-            .cta {
-                padding: 60px 16px;
-            }
-            
-            .footer {
-                padding: 40px 16px 20px;
+
+            .services, .features, .cta {
+                padding: 60px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
@@ -780,7 +754,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg-pattern">
             <div class="hero-bg-circle"></div>
@@ -790,28 +763,18 @@
         
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    ⭐ Более 10 миллионов довольных клиентов
-                </div>
                 
                 <h1 class="hero-title">
-                    Путешествуйте<br>
-                    <span class="hero-gradient-text">умнее и дешевле</span>
+                    <span class="hero-gradient-text">Начни свое путешествие</span>
                 </h1>
                 
                 <p class="hero-subtitle">
-                    Сравниваем цены с 1000+ сайтов, чтобы найти лучшие предложения по авиабилетам, отелям и аренде авто
+                    Сравниваем цены с 1000+ сайтов, чтобы найти лучшие предложения по авиабилетам
                 </p>
-                
-                <div class="hero-buttons">
-                    <a href="flights.html" class="btn btn-primary">
-                        ✈️ Найти авиабилеты →
-                    </a>
-                    <a href="cars.html" class="btn btn-secondary">
-                        🚗 Арендовать авто
-                    </a>
-                </div>
 
+                <div class="travelpayouts-widget-container">
+                    <script async src="https://tpwgt.com/content?currency=rub&trs=478043&shmarker=144185&show_hotels=false&powered_by=true&locale=ru&searchUrl=search.airflowtravel.net%2Fflights&primary_override=%2332a8dd&color_button=%2332a8dd&color_icons=%2332a8dd&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=0&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
+                </div>
                 <div class="hero-features">
                     <div class="hero-feature">
                         ✓ Без скрытых комиссий
@@ -827,7 +790,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -851,7 +813,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services">
         <div class="container">
             <div class="section-header">
@@ -901,19 +862,18 @@
                         Бронирование отелей и размещения по всему миру
                     </p>
                     <ul class="service-features">
-                        <li class="service-feature">⏰ Скоро - интеграция с Expedia</li>
+                        <li class="service-feature">Сравнение цен от ведущих систем</li>
                         <li class="service-feature">Миллионы вариантов размещения</li>
                         <li class="service-feature">Реальные отзывы гостей</li>
                     </ul>
                     <div class="service-btn hotels">
-                        Скоро доступно →
+                        Поиск гостиниц →
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container">
             <div class="section-header">
@@ -975,25 +935,52 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: #3b82f6;">Часто задаваемые вопросы (FAQ)</h2>
+                <p class="section-subtitle">Получите ответы на самые популярные вопросы о планировании поездок.</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question">Как Airflow находит самые дешёвые билеты?</summary>
+                    <p class="faq-answer">Мы используем собственный метапоисковый алгоритм, который в реальном времени сравнивает цены на авиабилеты от сотен агентств и авиакомпаний по всему миру, чтобы предложить вам самый выгодный вариант.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Включены ли в цену скрытые комиссии?</summary>
+                    <p class="faq-answer">Нет. Цена, которую вы видите на Airflow, является окончательной. Мы гарантируем отсутствие скрытых сборов и комиссий, чтобы вы могли бронировать уверенно.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Могу ли я забронировать отель и машину одновременно?</summary>
+                    <p class="faq-answer">Да, на нашей платформе вы можете легко перейти в раздел "Аренда авто" или "Отели" и забронировать все необходимые услуги для поездки в одном месте.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="container">
-            <h2 class="cta-title">Готовы начать свое путешествие?</h2>
+            <h2 class="cta-title">Начните свое путешествие прямо сейчас!</h2>
             <p class="cta-subtitle">
-                Присоединяйтесь к миллионам путешественников, которые экономят с Airflow
+                Найдите все, что нужно для идеальной поездки: от билетов до отелей и автомобилей.
             </p>
-            <div class="cta-buttons">
-                <a href="flights.html" class="btn btn-primary">
-                    ✈️ Найти авиабилеты
+            <div class="cta-buttons-all">
+                <a href="flights.html" class="btn btn-cta btn-orange">
+                    ✈️ Авиабилеты
                 </a>
-                <a href="cars.html" class="btn btn-secondary">
-                    🚗 Арендовать авто
+                <a href="cars.html" class="btn btn-cta btn-green">
+                    🚗 Аренда авто
+                </a>
+                <a href="hotels.html" class="btn btn-cta btn-red">
+                    🏨 Поиск гостиниц
+                </a>
+                <a href="trains.html" class="btn btn-cta btn-white">
+                    🚂 Поезда (Скоро)
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1051,77 +1038,6 @@
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
         }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.background = 'white';
-                navbar.style.backdropFilter = 'none';
-            }
-        });
-
-        // Animate stats on scroll
-        function animateStats() {
-            const stats = document.querySelectorAll('.stat-number');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const finalValue = target.textContent;
-                        const numericValue = parseInt(finalValue.replace(/\D/g, ''));
-                        const suffix = finalValue.replace(/[\d]/g, '');
-                        
-                        let current = 0;
-                        const increment = numericValue / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= numericValue) {
-                                current = numericValue;
-                                clearInterval(timer);
-                            }
-                            target.textContent = Math.floor(current) + suffix;
-                        }, 30);
-                        
-                        observer.unobserve(target);
-                    }
-                });
-            });
-            
-            stats.forEach(stat => observer.observe(stat));
-        }
-
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            animateStats();
-        });
     </script>
 </body>
 </html>
