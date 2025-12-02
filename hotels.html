@@ -305,45 +305,54 @@
         .footer a:hover { color: white; }
         
       /* --- Responsive Design --- */
-@media (max-width: 768px) {
-    /* ... Ваш существующий код медиазапроса ... */
-}
-@media (max-width: 480px) {
-    /* ... Ваш существующий код медиазапроса ... */
-}
+    @media (max-width: 768px) {
+        .nav-menu { display: none; }
+        .mobile-menu-btn { display: block; }
+        .search-hero-section { min-height: 400px; padding: 60px 0; }
+        .search-glass-container { padding: 30px 20px; }
+        .hero-headline h1 { font-size: 2rem; }
+        .hero-headline p { font-size: 1rem; }
+        .benefits-grid { gap: 20px; }
+        .benefit-card { flex: 1 1 45%; }
+    }
+    @media (max-width: 480px) {
+        .benefit-card { flex: 1 1 100%; }
+    }
 
-/* === ИСПРАВЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНОГО МЕНЮ (НАЧАЛО) === */
-.mobile-menu {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: white;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    z-index: 999;
-    padding: 10px 0;
-    /* КЛЮЧЕВЫЕ ИСПРАВЛЕНИЯ: */
-    max-height: calc(100vh - 70px); /* Ограничивает высоту, чтобы меню не вылезало за край экрана */
-    overflow-y: auto;             /* ДОБАВЛЕНИЕ прокрутки, чтобы видеть все кнопки */
-}
-.mobile-menu.active { 
-    display: block; 
-}
-.mobile-nav-link {
-    display: block;
-    padding: 12px 20px;
-    font-weight: 600;
-    color: #374151;
-    border-bottom: 1px solid #f3f4f6;
-}
-.mobile-nav-link:hover, .mobile-nav-link.active {
-    color: #2563eb;
-    background: #eff6ff;
-}
-/* === ИСПРАВЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНОГО МЕНЮ (КОНЕЦ) === */
+    /* === ИСПРАВЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНОГО МЕНЮ (НАЧАЛО) === */
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        
+        /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: Ставим Z-Index 10000, чтобы быть ВЫШЕ виджета поиска */
+        z-index: 10000; 
+        
+        padding: 10px 0;
+        max-height: calc(100vh - 70px); 
+        overflow-y: auto;              
+    }
+    .mobile-menu.active { 
+        display: block; 
+    }
+    .mobile-nav-link {
+        display: block;
+        padding: 12px 20px;
+        font-weight: 600;
+        color: #374151;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    .mobile-nav-link:hover, .mobile-nav-link.active {
+        color: #2563eb;
+        background: #eff6ff;
+    }
+    /* === ИСПРАВЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНОГО МЕНЮ (КОНЕЦ) === */
 
-/* ... Дальше идет Ваш футер и остальной CSS */
+    /* ... Дальше идет Ваш футер и остальной CSS */
     
     </style>
 </head>
@@ -364,7 +373,7 @@
                 <li><a href="transfers.html" class="nav-link">Такси</a></li>
                 <li><a href="trains-buses.html" class="nav-link">Транспорт</a></li>
                 </ul>
-                <button class="mobile-menu-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">☰</button>
+                <button class="mobile-menu-btn">☰</button>
             </nav>
         </div>
         <div class="mobile-menu">
