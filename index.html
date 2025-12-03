@@ -443,28 +443,33 @@
             font-size: 0.9rem;
         }
 
-        /* Swiper навигация: ФИНАЛЬНЫЙ ФИКС - Белые стрелки в фиолетовых кругах */
+        /* Swiper навигация: ФИНАЛЬНЫЙ ФИКС 2 - Стрелки без фона, но контрастного цвета */
         .swiper-button-prev, .swiper-button-next {
-            background: rgba(76, 29, 149, 0.7); /* Полупрозрачный фиолетовый фон */
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: background 0.3s, opacity 0.3s;
+            /* Убираем фон, размеры, тень и закругление */
+            background: transparent !important; 
+            width: 30px;
+            height: 30px;
+            border-radius: 0;
+            box-shadow: none;
+            transition: opacity 0.3s;
             top: 50%; 
-            margin-top: -20px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: -15px; 
+            opacity: 0.7; /* Делаем полупрозрачными для ненавязчивости */
         }
 
         .swiper-button-prev:hover, .swiper-button-next:hover {
-            background: #4c1d95; /* Насыщенный фиолетовый при наведении */
+            background: transparent !important; 
+            opacity: 1; /* Полная видимость при наведении */
         }
         
         .swiper-button-prev:after, .swiper-button-next:after {
-            color: white !important; /* ГАРАНТИРОВАННО БЕЛЫЙ цвет стрелки */
-            font-size: 18px !important;
+            /* Цвет стрелки: Темно-синий/серый для контраста */
+            color: #1e293b !important; 
+            font-size: 24px !important; /* Увеличим размер самой стрелки, чтобы ее было видно */
         }
 
 
+        /* Swiper Pagination (точки) */
         .swiper-pagination-bullet-active {
             background: #4c1d95 !important;
         }
