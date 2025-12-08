@@ -108,8 +108,8 @@ background: rgba(0, 0, 0, 0.5);
     transition: opacity 0.3s ease;
     }
 .mobile-menu-overlay.active {
-    opacity: 1;
-}
+opacity: 1;
+    }
 .mobile-menu {
     display: none;
     position: fixed;
@@ -160,22 +160,22 @@ border-radius: 6px;
 /* АДАПТИВНОСТЬ МЕНЮ */
 @media (max-width: 1175px) {
     .nav-container {
-        padding: 0 16px;
-}
+padding: 0 16px;
+    }
     .nav-menu {
-        display: none;
-}
+display: none;
+    }
     .mobile-menu-button {
-        display: block;
-}
+display: block;
+    }
     .mobile-menu-overlay, .mobile-menu {
-        display: block;
-}
+display: block;
+    }
     }
 @media (max-width: 480px) {
     .nav-container {
-        padding: 0 12px;
-}
+padding: 0 12px;
+    }
     }
 /* ---------------------------------------------------- */
 /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) */
@@ -188,19 +188,29 @@ font-size: 2.5rem;
     color: #1e293b;
     }
 .hero-section {
-    /* *** ТЕСТ НА ПУТАНИЦУ: Здесь был ярко-зеленый. Теперь - ЖЕЛТЫЙ. *** */
+    /* *** ТЕСТ НА ПУТАНИЦУ: Здесь был ярко-зеленый.
+Теперь - ЖЕЛТЫЙ. *** */
     /* background: url('https://i.imgur.com/8Q8W34w.jpeg') no-repeat center center/cover; */
-    background: #FFC107; /* НОВЫЙ ЖЕЛТЫЙ ФОН по запросу */
+    background: #FFC107;
+/* НОВЫЙ ЖЕЛТЫЙ ФОН по запросу */
     color: white;
     padding: 80px 20px;
     text-align: center;
-    min-height: 450px; /* Добавлено для лучшего вида */
+    min-height: 450px;
+/* Добавлено для лучшего вида */
 }
 .hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 20px;
 font-weight: 700;
-    }
+} 
+
+/* ГАРАНТИЯ: Принудительно устанавливаем белый цвет для h1 с ID section-1, 
+чтобы перебить конфликтующие стили из внешних CSS. */
+#section-1 {
+    color: white !important; 
+}
+
 .hero-content p {
     font-size: clamp(1rem, 2vw, 1.25rem);
     margin-bottom: 50px;
@@ -208,7 +218,7 @@ font-weight: 700;
     max-width: 900px;
     margin-left: auto;
 margin-right: auto;
-    }
+}
 .cta-button {
     display: inline-block;
     background-color: #f59e0b;
@@ -361,8 +371,8 @@ background-position: center;
     background-image: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
     }
 .destination-info {
-    padding: 20px;
-}
+padding: 20px;
+    }
 .destination-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -516,23 +526,26 @@ text-decoration: none;
 }
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column;
-}
+flex-direction: column;
+    }
     .footer-section {
         width: 100%;
         margin-right: 0;
-}
+    }
     .footer-section h3 {
-        padding-top: 10px;
-}
+padding-top: 10px;
+    }
     }
 /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ПРОЗРАЧНОСТИ ВИДЖЕТА */
 #hotel-widget-wrapper {
     border-radius: 8px; 
-    overflow: visible; /* ИСПРАВЛЕНИЕ 1: Календарь теперь виден */
+    overflow: visible;
+/* ИСПРАВЛЕНИЕ 1: Календарь теперь виден */
     padding: 20px;
-    position: relative; /* ИСПРАВЛЕНИЕ 1: Для работы z-index */
-    z-index: 50; /* ИСПРАВЛЕНИЕ 1: Чтобы календарь был спереди */
+    position: relative;
+/* ИСПРАВЛЕНИЕ 1: Для работы z-index */
+    z-index: 50;
+/* ИСПРАВЛЕНИЕ 1: Чтобы календарь был спереди */
 }
 #hotel-widget-wrapper iframe { 
     background: transparent !important;
@@ -579,8 +592,9 @@ text-decoration: none;
 <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&locale=ru&powered_by=false&border_radius=5&plain=false&color_background=%23E6BE0B30&color_border=%23F1F2F8ff&color_button=%23BB0E35ff&promo_id=8003&campaign_id=26" charset="utf-8"></script>
 </div>
 <p>
-                    Выгодные предложения Airflow&Level Travel - Забронируйте отели по привлекательным ценам.
-                    </p>
+       
+Выгодные предложения Airflow&Level Travel - Забронируйте отели по привлекательным ценам.
+</p>
 </div>
 </div>
 </section>
@@ -628,7 +642,8 @@ color: #4c1d95;">Наши продукты и сервисы</h2>
 </div>
 <div class="feature-card" style="border-top-color: #1abc9c;"> <div class="feature-icon" style="color: #1abc9c;"><i class="fas fa-lock"></i></div>
 <h4>Безопасное бронирование</h4>
-<p>Ваши данные и платежи защищены мировыми стандартами 
+<p>Ваши 
+данные и платежи защищены мировыми стандартами 
 безопасности.</p>
 </div>
 <div class="feature-card" style="border-top-color: #e9573f;"> <div class="feature-icon" style="color: #e9573f;"><i class="fas fa-headset"></i></div>
@@ -666,7 +681,8 @@ color: #4c1d95;">Наши продукты и сервисы</h2>
 <i class="fas fa-plane"></i>
 </div>
 <div class="destination-info">
-<h3 class="destination-title" id="section-3-2">Авиабилеты в Дубай</h3>
+<h3 class="destination-title" id="section-3-2">Авиабилеты 
+в Дубай</h3>
 <p class="destination-subtitle">Лучшие предложения от всех авиакомпаний.</p>
 </div>
 </a>
@@ -719,11 +735,13 @@ class="destination-subtitle">Спецпредложения на рейсы во
 <div class="swiper-slide">
 <div class="testimonial-card">
 <div class="stars">
-<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas 
+fa-star-half-alt"></i>
 </div>
 <p class="testimonial-text">
                                         «Быстро нашел самые дешевые 
-билеты до Тбилиси. Интерфейс очень понятный, никаких лишних шагов. Отличный сервис для поиска рейсов.»
+билеты до Тбилиси.
+Интерфейс очень понятный, никаких лишних шагов. Отличный сервис для поиска рейсов.»
 </p>
 <div class="testimonial-author">
 <div class="author-avatar">АВ</div>
@@ -848,7 +866,7 @@ class="destination-subtitle">Спецпредложения на рейсы во
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOverlay = document.getElementById('mobile-menu-overlay');
            
- const menuClose = document.getElementById('mobile-menu-close');
+const menuClose = document.getElementById('mobile-menu-close');
             
             let isMenuOpen = false;
 
@@ -861,10 +879,11 @@ class="destination-subtitle">Спецпредложения на рейсы во
                     menuOverlay.classList.add('active');
                     menuOverlay.style.display = 'block';
                     document.body.style.overflow = 'hidden'; /* Блокируем скролл */
-                } else {
+                } else 
+{
  
                     mobileMenu.classList.remove('active');
- menuOverlay.classList.remove('active');
+menuOverlay.classList.remove('active');
                     document.body.style.overflow = ''; /* Возвращаем скролл */
                     setTimeout(() => {
                         if (!isMenuOpen) {
@@ -872,22 +891,22 @@ class="destination-subtitle">Спецпредложения на рейсы во
                
           }
                     }, 300);
- }
+}
             }
 
             function closeMenu() {
                 isMenuOpen = false;
- mobileMenu.classList.remove('active');
+mobileMenu.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.style.overflow = ''; /* Возвращаем скролл */
                 setTimeout(() => {
                     menuOverlay.style.display = 'none';
                 }, 300);
- }
+}
 
             // Обработчики событий
             if (menuButton) menuButton.addEventListener('click', toggleMenu);
- if (menuClose) menuClose.addEventListener('click', closeMenu);
+if (menuClose) menuClose.addEventListener('click', closeMenu);
             if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
             // Закрытие при клике вне меню
@@ -899,13 +918,13 @@ class="destination-subtitle">Спецпредложения на рейсы во
           closeMenu();
                 }
             });
- // Закрытие при изменении размера экрана
+// Закрытие при изменении размера экрана
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 1175 && isMenuOpen) {
                     closeMenu();
                 }
             });
- /* 2. ИНИЦИАЛИЗАЦИЯ SWIPER-СЛАЙДЕРА ДЛЯ ОТЗЫВОВ */
+/* 2. ИНИЦИАЛИЗАЦИЯ SWIPER-СЛАЙДЕРА ДЛЯ ОТЗЫВОВ */
             new Swiper('.testimonials-slider', {
                 loop: true,
                 slidesPerView: 1,
@@ -917,36 +936,39 @@ class="destination-subtitle">Спецпредложения на рейсы во
                 },
                 pagination: {
                     el: '.swiper-pagination',
-                
+               
      clickable: true,
                 },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-    
+  
+   
              breakpoints: {
                     768: {
                         slidesPerView: 2,
                         spaceBetween: 30
-                
-     },
+             
+    },
                     1024: {
                         slidesPerView: 3,
                         spaceBetween: 30
                     }
+ 
      
             },
                 autoHeight: false, 
                 on: {
                     init: function () {
-                        document.body.style.overflowX = 'hidden';
+                        document.body.style.overflowX = 
+'hidden';
  },
                 }
             });
- /* 3. ИСПРАВЛЕНИЕ ОШИБКИ: ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЖЕТА ДЛЯ ПРЕДОТВРАЩЕНИЯ ПРОКРУТКИ */
+/* 3. ИСПРАВЛЕНИЕ ОШИБКИ: ОТЛОЖЕННАЯ ЗАГРУЗКА ВИДЖЕТА ДЛЯ ПРЕДОТВРАЩЕНИЯ ПРОКРУТКИ */
             const widgetContainer = document.getElementById('destinations-widget-container');
- if (widgetContainer) {
+if (widgetContainer) {
                 const observer = new IntersectionObserver((entries, observerInstance) => {
                     entries.forEach(entry => {
                         // Если контейнер виджета появился в области видимости
@@ -955,25 +977,26 @@ class="destination-subtitle">Спецпредложения на рейсы во
                             // Создаем тег script
                             const script = document.createElement('script');
                             script.async = true;
-    
+   
                          script.charset = 'utf-8';
                             // Устанавливаем URL виджета
                             script.src = 'https://tpwgt.com/content?trs=478043&shmarker=144185&departure=Moscow&destination=29386%2C168%2C149%2C116%2C10093%2C169%2C1056%2C181%2C994%2C10095%2C10535%2C204%2C205%2C159%2C21486%2C20574%2C10097%2C210%2C225%2C10540%2C995%2C983%2C21610&start_date=WEEK&nights=4..6&adults=2&kids=0&redirect=_blank&powered_by=false&campaign_id=26&promo_id=8286';
-             
+           
+   
                 
                             // Добавляем скрипт в контейнер
                             widgetContainer.appendChild(script);
- // После загрузки скрипта прекращаем наблюдение, чтобы он не загружался повторно
+// После загрузки скрипта прекращаем наблюдение, чтобы он не загружался повторно
                             observerInstance.unobserve(widgetContainer);
- }
+}
                     });
- }, {
+}, {
                     // Начинаем загрузку, когда до элемента остается 200px
                     rootMargin: '200px' 
                 });
- // Начинаем наблюдение за контейнером виджета
+// Начинаем наблюдение за контейнером виджета
                 observer.observe(widgetContainer);
- }
+}
         });
     </script>
 </body></html>
