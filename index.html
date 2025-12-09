@@ -43,7 +43,7 @@ property="og:description"/>
         padding: 0 20px;
     }
 
-    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - Без изменений */
+    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) */
     .main-navigation {
         background: #1e293b;
         padding: 0;
@@ -96,7 +96,7 @@ property="og:description"/>
         text-decoration: none;
     }
 
-    /* Мобильное меню (стили не менялись, для полноты) */
+    /* Мобильное меню */
     .mobile-menu-button {
         display: none;
         background: none;
@@ -439,22 +439,49 @@ property="og:description"/>
         margin-top: 15px;
         font-size: 0.95rem;
         color: #475569;
-        text-align: center;
-        /* Дополнительный стиль для контейнера виджетов/QR */
+        /* Центрируем содержимое по горизонтали */
         display: flex;
         justify-content: center;
-        flex-direction: column;
+        flex-direction: column; 
         align-items: center;
     }
     
-    /* Стиль для виджетов внутри аккордеона, чтобы они масштабировались */
-    .feature-content-hidden > div, .feature-content-hidden iframe {
-        max-width: 100%;
-        height: auto;
-        display: block;
+    /* !!! КЛЮЧЕВОЙ КЛАСС: ЕДИНАЯ АДАПТИВНОСТЬ И ОГРАНИЧЕНИЕ !!! */
+    .widget-container-max {
+        width: 100% !important; /* Виджет резиновый (100% доступного места) */
+        max-width: 500px !important; /* ФИНАЛЬНОЕ ЕДИНОЕ ОГРАНИЧЕНИЕ ДЛЯ ВСЕХ ВИДЖЕТОВ */
+        margin: 0 auto !important;
+        overflow: hidden !important;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: relative;
+        /* КРИТИЧЕСКИ ВАЖНО: Принудительное обновление layout */
+        contain: layout style paint;
     }
-
-
+    
+    /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: ПРИНУДИТЕЛЬНОЕ РАСТЯГИВАНИЕ/СЖАТИЕ ВНУТРЕННИХ ЭЛЕМЕНТОВ */
+    .widget-container-max iframe,
+    .widget-container-max script,
+    .widget-container-max > div,
+    .widget-container-max > * {
+        display: block !important; 
+        width: 100% !important; /* ЗАСТАВЛЯЕМ ЗАНИМАТЬ 100% ОТ 500px, ИГНОРИРУЯ ФИКСИРОВАННЫЕ ШИРИНЫ */
+        max-width: 100% !important;
+        height: auto !important; 
+        box-sizing: border-box !important;
+        /* Принудительное обновление размеров */
+        transform: translateZ(0);
+    }
+    
+    /* Дополнительные правила для iframe */
+    .widget-container-max iframe {
+        height: 100% !important; 
+        min-height: 500px !important;
+        border: none !important;
+        /* Принудительное обновление */
+        will-change: transform;
+    }
+    
     /* Стиль для QR-кода внутри аккордеона */
     .qr-container {
         max-width: 200px; 
@@ -462,6 +489,7 @@ property="og:description"/>
         padding: 10px; 
         border: 1px solid #e2e8f0; 
         border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Легкая тень */
     }
     
     .qr-container img {
@@ -498,8 +526,7 @@ property="og:description"/>
         border-radius: 6px;
         line-height: 1.5;
     }
-    /* ... остальной CSS для отзывов и футера (без изменений) ... */
-    
+    /* СТИЛИ ОТЗЫВОВ И ФУТЕРА */
     .testimonials-section {
         background: #f8fafc;
         padding: 80px 0; 
@@ -746,18 +773,18 @@ property="og:description"/>
     <div id="tpwl-search"></div>
 
     <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-        (function () {
-            var script = document.createElement("script");
-            script.async = 1;
-            script.type = "module";
-            script.src = "https://tpwgt.com/wl_web/main.js?wl_id=1368"; 
-            document.head.appendChild(script);
+        (function () {
+            var script = document.createElement("script");
+            script.async = 1;
+            script.type = "module";
+            script.src = "https://tpwgt.com/wl_web/main.js?wl_id=1368"; 
+            document.head.appendChild(script);
 
-            window.TPWL_CONFIGURATION = {
-                ...window.TPWL_CONFIGURATION,
-                resultsURL: "https://search.airflowtravel.net" 
-            };
-        })();
+            window.TPWL_CONFIGURATION = {
+                ...window.TPWL_CONFIGURATION,
+                resultsURL: "https://search.airflowtravel.net" 
+            };
+        })();
     </script>
     
     <div id="travel-count"></div>
@@ -801,16 +828,19 @@ class="product-icon-link">
 <div class="features-grid">
 
 <div class="feature-card" style="border-top-color: #f59e0b;">
-    <details>
+    <details class="widget-fix">
         <summary>
-            <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-parking"></i></div>
-            <h4>Бронирование Паркинга</h4>
-            <p>Забронируйте место в аэропорту заранее по лучшей цене.</p>
+            <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-shield-alt"></i></div>
+            <h4>Страхование Путешествий</h4>
+            <p>Сравните полисы для поездок по Шенгену и миру.</p>
         </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 10px;">
-            <div style="max-width: 300px; margin: 0 auto;">
-                <iframe src="https://tp.media/content?promo_id=1160&shmarker=144185&trs=478043&widget=300x310&campaign_id=38" width="300" height="310" frameborder="0"> </iframe>
+        <div class="feature-content-hidden" style="min-height: 600px; padding-bottom: 50px;">
+            <div class="widget-container-max">
+                <script async src="//tpwgt.com/content?trs=478043&shmarker=144185&countryGroups=schengen&medicine=30000&powered_by=false&primary=%23636AFF&light=%23EDF4FE&background=%23E5ECF6&success=%2341CC78&warning=%23FB751C&error=%23FF6666&search=%23F54B92&deletion=%23FFECEC&erid=2VtzqukAgWu&campaign_id=24&promo_id=1498" charset="utf-8"></script>
             </div>
+            <p>
+                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqukAgWu
+            </p>
         </div>
     </details>
 </div>
@@ -866,17 +896,16 @@ class="product-icon-link">
 </a>
 
 <div class="feature-card" style="border-top-color: #1d4ed8;">
-    <details>
+    <details class="widget-fix">
         <summary>
-            <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-shield-alt"></i></div>
-            <h4>Страхование Путешествий</h4>
-            <p>Сравните полисы для поездок по Шенгену и миру.</p>
+            <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-parking"></i></div>
+            <h4>Бронирование Паркинга</h4>
+            <p>Забронируйте место в аэропорту заранее по лучшей цене.</p>
         </summary>
-        <div class="feature-content-hidden" style="min-height: 400px; padding-bottom: 20px;">
-            <script async src="//tpwgt.com/content?trs=478043&shmarker=144185&countryGroups=schengen&medicine=30000&powered_by=false&primary=%23636AFF&light=%23EDF4FE&background=%23E5ECF6&success=%2341CC78&warning=%23FB751C&error=%23FF6666&search=%23F54B92&deletion=%23FFECEC&erid=2VtzqukAgWu&campaign_id=24&promo_id=1498" charset="utf-8"></script>
-            <p>
-                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqukAgWu
-            </p>
+        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;"> 
+            <div class="widget-container-max"> 
+                <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&color=blue&powered_by=false&promo_id=8962&campaign_id=38" charset="utf-8"></script>
+            </div>
         </div>
     </details>
 </div>
@@ -904,14 +933,14 @@ class="product-icon-link">
 </div>
 
 <div class="feature-card" style="border-top-color: #1d4ed8;">
-    <details>
+    <details class="widget-fix">
         <summary>
             <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-map-marked-alt"></i></div>
             <h4>Карта Дешевых Полетов</h4>
             <p>Интерактивная карта для поиска самых выгодных авиабилетов.</p>
         </summary>
-        <div class="feature-content-hidden" style="min-height: 400px; padding-bottom: 20px;">
-            <div style="width: 100%; max-width: 600px; margin: 0 auto; overflow: hidden; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div class="feature-content-hidden" style="min-height: 600px; padding-bottom: 50px;">
+            <div class="widget-container-max">
                 <script async src="https://tpwgt.com/content?currency=usd&trs=478043&shmarker=144185&lat=&lng=&powered_by=true&search_host=www.aviasales.ru%2Fsearch&locale=ru&value_min=0&value_max=1000000&round_trip=true&only_direct=false&radius=1&draggable=true&disable_zoom=false&show_logo=false&scrollwheel=false&primary=%233FABDB&secondary=%233FABDB&light=%23ffffff&width=1500&height=500&zoom=2&promo_id=4054&campaign_id=100" charset="utf-8"></script>
             </div>
             <p>
@@ -922,14 +951,14 @@ class="product-icon-link">
 </div>
 
 <div class="feature-card" style="border-top-color: #f59e0b;">
-    <details>
+    <details class="widget-fix">
         <summary>
             <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-plane-arrival"></i></div>
             <h4>Табло Рейсов MOW → BKK</h4>
             <p>Актуальное расписание и цены на популярное направление.</p>
         </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 10px;">
-            <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;">
+            <div class="widget-container-max">
                 <script async src="https://tpwgt.com/content?currency=rub&trs=478043&shmarker=144185&color_button=%23FF0000&target_host=search.airflowtravel.net%2Fflights&locale=ru&powered_by=false&origin=MOW&destination=BKK&with_fallback=true&non_direct_flights=true&min_lines=5&border_radius=0&color_background=%23FFFFFF&color_text=%23000000&color_border=%23E0E0F7ff&erid=2VtzqxWe9DB&promo_id=2811&campaign_id=100" charset="utf-8"></script>
             </div>
         </div>
@@ -937,14 +966,14 @@ class="product-icon-link">
 </div>
 
 <div class="feature-card" style="border-top-color: #10b981;">
-    <details>
+    <details class="widget-fix">
         <summary>
             <div class="feature-icon" style="color: #10b981;"><i class="fas fa-chart-line"></i></div>
             <h4>Популярные Направления</h4>
             <p>Список лучших авиапредложений на сегодня.</p>
         </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 10px;">
-            <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;">
+            <div class="widget-container-max">
                 <script async src="https://tpwgt.com/content?currency=usd&trs=478043&shmarker=144185&target_host=search.airflowtravel.net%2Fflights&locale=ru&limit=6&powered_by=false&primary=%230085FF&erid=2VtzqvZyRGu&promo_id=4044&campaign_id=100" charset="utf-8"></script>
             </div>
         </div>
@@ -1276,6 +1305,7 @@ font-size: 0.9rem; color: #64748b;">Круглосуточно</p>
                 }
             }
         });
+        
         // Закрытие мобильного меню при клике на ссылку
         document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1284,7 +1314,102 @@ font-size: 0.9rem; color: #64748b;">Круглосуточно</p>
                 }
             });
         });
+        
+        // УСИЛЕННОЕ РЕШЕНИЕ ПРОБЛЕМЫ С ВИДЖЕТАМИ В АККОРДЕОНАХ
+        const widgetDetails = document.querySelectorAll('details.widget-fix');
+        
+        // Функция для принудительного обновления размеров виджета
+        function forceWidgetResize(widgetContainer) {
+            if (!widgetContainer) return;
+            
+            // 1. Временно скрываем контейнер
+            widgetContainer.style.visibility = 'hidden';
+            widgetContainer.style.opacity = '0';
+            
+            // 2. Принудительно обновляем layout
+            widgetContainer.offsetHeight; // Trigger reflow
+            
+            // 3. Ищем все iframe и другие элементы внутри
+            const iframes = widgetContainer.querySelectorAll('iframe');
+            const divs = widgetContainer.querySelectorAll('div');
+            const scripts = widgetContainer.querySelectorAll('script');
+            
+            // 4. Принудительно устанавливаем размеры
+            [...iframes, ...divs].forEach(element => {
+                if (element) {
+                    element.style.width = '100%';
+                    element.style.maxWidth = '500px';
+                    element.style.minWidth = '300px';
+                    // Принудительный reflow
+                    element.offsetWidth;
+                }
+            });
+            
+            // 5. Показываем контейнер обратно с анимацией
+            setTimeout(() => {
+                widgetContainer.style.visibility = 'visible';
+                widgetContainer.style.opacity = '1';
+                widgetContainer.style.transition = 'opacity 0.3s ease';
+            }, 100);
+            
+            // 6. Дополнительное обновление через ResizeObserver если доступен
+            if (window.ResizeObserver) {
+                const resizeObserver = new ResizeObserver(entries => {
+                    entries.forEach(entry => {
+                        const target = entry.target;
+                        if (target.tagName === 'IFRAME') {
+                            target.style.width = '100%';
+                            target.style.maxWidth = '500px';
+                        }
+                    });
+                });
+                
+                iframes.forEach(iframe => {
+                    resizeObserver.observe(iframe);
+                });
+                
+                // Отключаем observer через 5 секунд
+                setTimeout(() => {
+                    resizeObserver.disconnect();
+                }, 5000);
+            }
+        }
 
+        // Обработчик для каждого аккордеона с виджетами
+        widgetDetails.forEach(details => {
+            details.addEventListener('toggle', () => {
+                if (details.open) {
+                    const widgetContainer = details.querySelector('.widget-container-max');
+                    
+                    // Немедленное обновление
+                    setTimeout(() => forceWidgetResize(widgetContainer), 50);
+                    
+                    // Повторное обновление через 200ms (для медленных скриптов)
+                    setTimeout(() => forceWidgetResize(widgetContainer), 200);
+                    
+                    // Финальное обновление через 500ms
+                    setTimeout(() => forceWidgetResize(widgetContainer), 500);
+                }
+            });
+        });
+        
+        // Дополнительная проверка при изменении размера окна
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                document.querySelectorAll('details[open] .widget-container-max').forEach(container => {
+                    forceWidgetResize(container);
+                });
+            }, 250);
+        });
+        
+        // Проверка уже открытых аккордеонов при загрузке страницы
+        setTimeout(() => {
+            document.querySelectorAll('details[open] .widget-container-max').forEach(container => {
+                forceWidgetResize(container);
+            });
+        }, 1000);
     });
 </script>
 </body>
