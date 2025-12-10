@@ -218,6 +218,13 @@
         background-color: #0c8a5a !important;
     }
 
+    /* --- НАЧАЛО ИСПРАВЛЕНИЯ ПРОБЛЕМЫ "УХОДА ВПРАВО" НА МОБИЛЬНЫХ --- */
+    /* Логика: Принудительно ограничиваем ширину встраиваемого контента 100% */
+    #train-bus-widget-container div {
+        max-width: 100% !important; 
+    }
+    /* --- КОНЕЦ ИСПРАВЛЕНИЯ --- */
+
     #train-bus-widget-container .tpwgt-tab.active {
         color: #1d4ed8 !important;
         border-bottom-color: #1d4ed8 !important;
