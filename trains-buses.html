@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="ie=edge" http-equiv="X-X-UA-Compatible"/>
+<meta content="ie=edge" http-equiv="X-X-Compatible"/>
 <meta content="Airflow Travel: Автобусные билеты по России и СНГ. Сравнивайте расписание и цены от официальных партнеров Unitiki." name="description"/>
 
 <link href="bus_icon-icons.com_76529.ico" rel="icon" type="image/x-icon"/>
@@ -139,8 +139,9 @@
         display: block; padding: 12px 15px; border-radius: 6px;
         transition: all 0.3s ease;
     }
-    .mobile-menu-links a:hover, .mobile-menu-links a.active {
-        background: #334155; color: white; text-decoration: none;
+    .nav-menu a:hover, .nav-menu a.active {
+        color: white;
+        text-decoration: none;
     }
 
     @media (max-width: 1175px) {
@@ -188,6 +189,7 @@
         margin: 0 auto 50px auto;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         text-align: center;
+        overflow: hidden !important; /* ФИНАЛЬНОЕ ЛОГИЧЕСКОЕ ПРАВИЛО: Принудительно обрезаем все, что не помещается */
     }
 
     /* H2 - ЗАГОЛОВОК КАРТОЧКИ (ФОКУС ПОЛЬЗОВАТЕЛЯ) */
@@ -200,7 +202,7 @@
     
     /* Стили для Виджета */
     #train-bus-widget-container {
-        padding: 0; /* Удалены старые стили, т.к. они в bus-card-container */
+        padding: 0; 
         background: none;
         border-radius: 0;
         box-shadow: none;
@@ -217,13 +219,17 @@
     #train-bus-widget-container .tpwgt-button:hover {
         background-color: #0c8a5a !important;
     }
-
-    /* --- НАЧАЛО ИСПРАВЛЕНИЯ ПРОБЛЕМЫ "УХОДА ВПРАВО" НА МОБИЛЬНЫХ --- */
-    /* Логика: Принудительно ограничиваем ширину встраиваемого контента 100% */
-    #train-bus-widget-container div {
+    
+    /* УСИЛЕННЫЙ БЛОК ДЛЯ МОБИЛЬНОЙ АДАПТАЦИИ (ЧТОБЫ ВИДЖЕТ НЕ ВЫЛЕЗАЛ) */
+    /* Принудительно ограничиваем ширину встраиваемого контента 100% */
+    #train-bus-widget-container * {
         max-width: 100% !important; 
     }
-    /* --- КОНЕЦ ИСПРАВЛЕНИЯ --- */
+    #train-bus-widget-container {
+        overflow-x: hidden !important; 
+    }
+    /* КОНЕЦ УСИЛЕННОГО БЛОКА */
+
 
     #train-bus-widget-container .tpwgt-tab.active {
         color: #1d4ed8 !important;
@@ -611,6 +617,7 @@
         text-align: center;
         color: #94a3b8;
     }
+    /* >>> СЕКЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (МЕДИА-ЗАПРОС) <<< */
     @media (max-width: 768px) {
         .footer-content {
             flex-direction: column;
@@ -624,6 +631,13 @@
         }
         .footer-section .footer-contacts {
             margin-bottom: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* ИЗМЕНЕНИЕ ДЛЯ МОБИЛЬНЫХ: Уменьшаем боковой отступ белой карточки, чтобы дать место виджету */
+        #bus-card-container {
+            padding: 20px 10px; /* Было 30px, теперь 10px */
         }
     }
 </style>
