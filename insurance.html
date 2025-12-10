@@ -48,7 +48,7 @@
         padding: 0 20px;
     }
 
-    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - Без изменений */
+    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) */
     .main-navigation {
         background: #1e293b;
         padding: 0;
@@ -101,7 +101,7 @@
         text-decoration: none;
     }
 
-    /* Мобильное меню (стили не менялись, для полноты) */
+    /* Мобильное меню (стили для полноты) */
     .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
     .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
     .mobile-menu-overlay.active { opacity: 1; }
@@ -149,33 +149,57 @@
         margin-left: auto;
         margin-right: auto;
     }
-
-    /* ИЗМЕНЕНИЕ: УБРАЛИ #bus-card-container, чтобы виджет стоял на синем фоне */
     
-    /* Стили для Виджета */
-    #train-bus-widget-container {
-        padding: 0 0 20px 0; /* Оставим отступы, но уберем лишний фон */
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0 auto;
+    /* ********************************************* */
+    /* *** НОВЫЙ ПРОЗРАЧНЫЙ КОНТЕЙНЕР ДЛЯ ВИДЖЕТА *** */
+    /* ********************************************* */
+    #insurance-main-card {
         max-width: 900px; 
+        margin: 0 auto 30px auto; /* Центрируем и добавляем нижний отступ */
+        padding: 20px; 
+        background: rgba(255, 255, 255, 0.15); /* Полупрозрачный белый */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        width: 100%;
     }
+
+    /* Адаптивный фикс для виджета внутри контейнера */
+    @media (max-width: 600px) {
+        #insurance-main-card {
+            padding: 15px; /* Меньше паддинга на мобильных */
+        }
+        /* Фикс для адаптивности стороннего скрипта */
+        #insurance-main-card :is(iframe, div, script) {
+            max-width: 100% !important;
+        }
+    }
+
 
     .card-title-search {
         font-size: 1.5rem;
         font-weight: 700;
-        color: white; /* Делаем заголовок белым, так как он на синем фоне */
-        margin-bottom: 20px;
+        color: white; 
+        margin-top: 0; /* Убираем лишний верхний марджин */
+        margin-bottom: 15px;
     }
     
+    /* Стили для Виджета */
+    #train-bus-widget-container {
+        padding: 0; 
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0 auto;
+        max-width: 100%; /* Занимает 100% ширины родителя */
+    }
+
     /* Стили для Контактов в Hero */
     .hero-contacts {
-        background: rgba(255, 255, 255, 0.1); /* Прозрачный фон для контактов */
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 15px 20px;
-        margin-top: 25px; 
+        background: none; /* Убираем фон, так как он есть у родителя #insurance-main-card */
+        border: none; /* Убираем рамку */
+        padding: 0; /* Убираем лишний паддинг */
+        margin-top: 15px; /* Уменьшаем отступ сверху */
         display: flex;
         justify-content: center;
         gap: 30px;
@@ -186,7 +210,7 @@
     }
     
     .hero-contacts a {
-        color: white; /* Контакты белые */
+        color: white; 
         text-decoration: none;
         font-weight: 500;
         font-size: 1rem;
@@ -201,21 +225,21 @@
     }
 
     .hero-contacts i {
-        color: #fff; /* Иконки белые */
+        color: #fff; 
         font-size: 1.2rem;
     }
     
     .card-description {
         font-size: 0.9rem;
-        margin-top: 20px;
+        margin-top: 15px;
         margin-bottom: 0;
         opacity: 0.8;
-        color: rgba(255, 255, 255, 0.8); /* Рекламный дисклеймер белый */
+        color: rgba(255, 255, 255, 0.8); 
         max-width: 90%;
-        margin: 20px auto 0 auto;
+        margin: 15px auto 15px auto; /* Корректируем отступы */
     }
     
-    /* Остальные секции */
+    /* Остальные секции (без изменений) */
     .product-icons-section {
         padding: 60px 20px;
         background: white;
@@ -223,7 +247,7 @@
     }
     
     .product-icons-section .section-title {
-        color: #636AFF; /* СИНИЙ ЗАГОЛОВОК */
+        color: #636AFF; 
     }
     
     .product-icons-grid {
@@ -250,17 +274,14 @@
         color: #f59e0b; 
         transition: color 0.3s ease;
     }
-    /* Иконка Страхование будет активной в навигации, но здесь убираем ее из списка, т.к. мы на ней */
-    .product-icon-link:nth-child(5) { /* Ж/д билеты */
-        display: block;
-    }
+    
     .product-icon-link:hover {
-        color: #636AFF; /* СИНИЙ */
+        color: #636AFF; 
         transform: translateY(-5px);
     }
     
     .product-icon-link:hover .product-icon {
-        color: #636AFF; /* СИНИЙ */
+        color: #636AFF; 
     }
 
     /* СТИЛИ КАРТОЧЕК */
@@ -289,7 +310,7 @@
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
         background: #ffffff;
-        border-top: 5px solid #636AFF; /* СИНИЙ */
+        border-top: 5px solid #636AFF; 
         transition: transform 0.3s, box-shadow 0.3s;
         height: 100%;
         text-align: left;
@@ -303,7 +324,7 @@
 
     .feature-icon, .tip-icon {
         font-size: 3rem;
-        color: #636AFF; /* СИНИЙ */
+        color: #636AFF; 
         margin-bottom: 15px;
         text-align: center;
     }
@@ -341,7 +362,7 @@
         right: 0;
         top: 5px;
         font-size: 14px;
-        color: #636AFF; /* СИНИЙ */
+        color: #636AFF; 
         transition: transform 0.3s;
     }
     .tip-card[open] summary:after {
@@ -364,7 +385,7 @@
         color: #475569;
         text-align: left;
         font-style: italic;
-        background-color: #eff6ff; /* Светло-голубой фон */
+        background-color: #eff6ff; 
         padding: 15px;
         border-radius: 6px;
         line-height: 1.5;
@@ -396,7 +417,7 @@
     }
     
     .author-avatar {
-        background: #636AFF; /* СИНИЙ */
+        background: #636AFF; 
         color: white;
         width: 50px;
         height: 50px;
@@ -440,7 +461,7 @@
     }
 
     .swiper-pagination-bullet-active {
-        background: #636AFF !important; /* СИНИЙ */
+        background: #636AFF !important; 
     }
     
     .swiper-button-prev, .swiper-button-next {
@@ -523,7 +544,7 @@
     }
     
     .footer-section .footer-contacts i {
-        color: #636AFF; /* СИНИЙ */
+        color: #636AFF; 
         margin-right: 8px;
     }
 
@@ -595,23 +616,25 @@
 Сравните предложения от более чем 14 страховых компаний. Быстрое оформление полиса для визы и безопасной поездки в любую страну.
 </p>
 
-    <h2 class="card-title-search">Форма поиска и сравнения страховок</h2>
+    <div id="insurance-main-card">
+        <h2 class="card-title-search">Форма поиска и сравнения страховок</h2>
 
-    <div id="train-bus-widget-container">
-    <script async src="//tpwgt.com/content?trs=478043&shmarker=144185&countryGroups=schengen&medicine=30000&powered_by=false&primary=%23636AFF&light=%23EDF4FE&background=%23E5ECF6&success=%2341CC78&warning=%23FB751C&error=%23FF6666&search=%23F54B92&deletion=%23FFECEC&erid=2VtzqukAgWu&campaign_id=24&promo_id=1498" charset="utf-8"></script>
-    </div>
+        <div id="train-bus-widget-container">
+        <script async src="//tpwgt.com/content?trs=478043&shmarker=144185&countryGroups=schengen&medicine=30000&powered_by=false&primary=%23636AFF&light=%23EDF4FE&background=%23E5ECF6&success=%2341CC78&warning=%23FB751C&error=%23FF6666&search=%23F54B92&deletion=%23FFECEC&erid=2VtzqukAgWu&campaign_id=24&promo_id=1498" charset="utf-8"></script>
+        </div>
 
-    <p class="card-description">
-        *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqukAgWu
-    </p>
+        <p class="card-description">
+            *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqukAgWu
+        </p>
 
-    <div class="hero-contacts">
-        <a href="tel:+88004443451">
-            <i class="fas fa-phone"></i> 8 (800) 444-34-51
-        </a>
-        <a href="mailto:help@unitiki.com">
-            <i class="fas fa-envelope"></i> help@unitiki.com
-        </a>
+        <div class="hero-contacts">
+            <a href="tel:+88004443451">
+                <i class="fas fa-phone"></i> 8 (800) 444-34-51
+            </a>
+            <a href="mailto:help@unitiki.com">
+                <i class="fas fa-envelope"></i> help@unitiki.com
+            </a>
+        </div>
     </div>
 
 </div>
@@ -889,7 +912,7 @@
 <h3>Информация</h3>
 <ul>
 <li><a href="https://airflowtravel.net/about.html">О нас</a></li>
-<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></li>
+<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></a></li>
 <li><a href="https://airflowtravel.net/privacy.html">Политика конфиденциальности</a></li>
 </ul>
 </div>
