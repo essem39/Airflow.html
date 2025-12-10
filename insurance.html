@@ -129,7 +129,8 @@
         /* СИНИЙ ГРАДИЕНТ, КАК ФОН ДЛЯ СЛИЯНИЯ */
         background: linear-gradient(135deg, #3c5496 0%, #636AFF 100%);
         color: white;
-        padding: 80px 20px 40px; 
+        /* УВЕЛИЧЕННЫЙ ПАДДИНГ */
+        padding: 80px 20px 60px; 
         text-align: center;
     }
 
@@ -152,7 +153,7 @@
     }
     
     /* ********************************************* */
-    /* *** НОВЫЙ ПРОЗРАЧНЫЙ КОНТЕЙНЕР ДЛЯ ВИДЖЕТА *** */
+    /* *** КОНТЕЙНЕР ДЛЯ ВИДЖЕТА *** */
     /* ********************************************* */
     #insurance-main-card {
         max-width: 900px; 
@@ -166,8 +167,12 @@
     }
 
     @media (max-width: 600px) {
+        .hero-section {
+            /* УВЕЛИЧИВАЕМ ПАДДИНГ НА МОБИЛЬНЫХ */
+            padding: 60px 15px 50px; 
+        }
         #insurance-main-card {
-            padding: 15px; /* Меньше паддинга на мобильных */
+            padding: 15px; 
         }
     }
 
@@ -184,8 +189,8 @@
     /* НОВЫЙ FLEX-КОНТЕЙНЕР для центрирования и локального скролла */
     #widget-flex-wrapper {
         display: flex; /* Активируем Flexbox */
-        justify-content: center; /* ЭТО КЛЮЧ! Центрируем широкий контент */
-        overflow-x: auto; /* Разрешаем локальный скролл */
+        justify-content: center; /* ЦЕНТРИРУЕМ ШИРОКИЙ КОНТЕНТ */
+        overflow-x: auto; /* Разрешаем локальный ГОРИЗОНТАЛЬНЫЙ скролл */
         overflow-y: hidden;
         padding: 0 5px; /* Небольшой внутренний отступ для красоты скролла */
     }
@@ -196,10 +201,12 @@
         background: none;
         border-radius: 0;
         box-shadow: none;
-        /* Убираем старое центрирование/скролл, его теперь делает родитель */
         margin: 0; 
         max-width: none; /* Разрешаем быть шире 100% */
         position: relative;
+        /* ГАРАНТИРУЕМ МИНИМАЛЬНУЮ ВЫСОТУ */
+        min-height: 450px; 
+        margin-bottom: 10px; /* Отступ от контактов */
     }
 
     /* Стили для Контактов в Hero */
