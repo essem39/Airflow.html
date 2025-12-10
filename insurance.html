@@ -509,6 +509,27 @@
         }
     }
     
+    /* СТИЛИ ДЛЯ ПЕРЕМЕЩЕННОГО SEO-ТЕКСТА (РАЗДЕЛ "Сравните предложения...") */
+    .seo-description-moved {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-top: 25px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .seo-description-moved p {
+        margin: 0; /* Убираем стандартный нижний margin у p */
+    }
+    @media (max-width: 768px) {
+        .seo-description-moved {
+            font-size: 1rem;
+            padding: 0 5px;
+            margin-top: 15px;
+        }
+    }
+    
     /* Остальные секции (без изменений) */
     .product-icons-section {
         padding: 60px 20px;
@@ -885,13 +906,7 @@
 <div class="container">
 <div class="hero-content">
 <h1>Страхование Путешествий — Купить онлайн</h1>
-<p>
-Сравните предложения от более чем 14 страховых компаний. Быстрое оформление полиса для визы и безопасной поездки в любую страну.
-</p>
-
-    <div id="insurance-main-card">
-        <h2 class="card-title-search">Форма поиска и сравнения страховок</h2>
-        
+<div id="insurance-main-card">
         <div id="widget-flex-wrapper"> 
             
             <div id="train-bus-widget-container">
@@ -913,6 +928,12 @@
         </div>
     </div>
 
+    <div class="seo-description-moved">
+        <p>
+            Сравните предложения от более чем 14 страховых компаний. Быстрое оформление полиса для визы и безопасной поездки в любую страну.
+        </p>
+    </div>
+    
 </div>
 </div>
 </section>
@@ -1248,7 +1269,8 @@
         document.body.style.overflow = ''; 
         setTimeout(() => {
             menuOverlay.style.display = 'none';
-        }, 300);
+        }
+        , 300);
     }
 
     if (menuButton) menuButton.addEventListener('click', toggleMenu);
