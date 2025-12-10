@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <meta content="ie=edge" http-equiv="X-X-Compatible"/>
 <meta content="Airflow Travel: Сравнение и покупка страховых полисов онлайн. Лучшие предложения для Шенгена, Азии и других регионов." name="description"/>
 
@@ -153,7 +153,7 @@
     }
     
     /* ********************************************* */
-    /* *** КОНТЕЙНЕР ДЛЯ ВИДЖЕТА *** */
+    /* *** КОНТЕЙНЕР ДЛЯ ВИДЖЕТА - МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ *** */
     /* ********************************************* */
     #insurance-main-card {
         max-width: 900px; 
@@ -166,16 +166,47 @@
         width: 100%;
     }
 
-    @media (max-width: 600px) {
+    /* КРИТИЧЕСКИЕ МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
+    @media (max-width: 768px) {
         .hero-section {
             /* УВЕЛИЧИВАЕМ ПАДДИНГ НА МОБИЛЬНЫХ */
-            padding: 60px 15px 50px; 
+            padding: 60px 10px 50px; 
         }
         #insurance-main-card {
-            padding: 15px; 
+            padding: 10px; 
+            margin: 0 auto 20px auto;
+            max-width: 100%;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            padding: 0 5px;
         }
     }
 
+    @media (max-width: 480px) {
+        .hero-section {
+            padding: 50px 5px 40px;
+        }
+        
+        #insurance-main-card {
+            padding: 8px;
+            border-radius: 8px;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            margin-bottom: 15px;
+        }
+        
+        .hero-content p {
+            font-size: 0.9rem;
+        }
+    }
 
     .card-title-search {
         font-size: 1.5rem;
@@ -186,6 +217,21 @@
         text-align: center;
     }
     
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ЗАГОЛОВКА */
+    @media (max-width: 768px) {
+        .card-title-search {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .card-title-search {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+    }
+    
     /* НОВЫЙ FLEX-КОНТЕЙНЕР для центрирования и локального скролла */
     #widget-flex-wrapper {
         display: flex; /* Активируем Flexbox */
@@ -193,9 +239,21 @@
         overflow-x: auto; /* Разрешаем локальный ГОРИЗОНТАЛЬНЫЙ скролл */
         overflow-y: hidden;
         padding: 0 5px; /* Небольшой внутренний отступ для красоты скролла */
+        /* КРИТИЧЕСКИ ВАЖНО ДЛЯ МОБИЛЬНЫХ */
+        width: 100%;
+        max-width: 100%;
     }
 
-    /* Стили для Виджета */
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ FLEX-WRAPPER */
+    @media (max-width: 768px) {
+        #widget-flex-wrapper {
+            padding: 0 2px;
+            /* Убираем центрирование на мобильных, позволяем виджету занимать всю ширину */
+            justify-content: flex-start;
+        }
+    }
+
+    /* Стили для Виджета - КРИТИЧЕСКИЕ МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
     #train-bus-widget-container {
         padding: 0; 
         background: none;
@@ -207,6 +265,48 @@
         /* ГАРАНТИРУЕМ МИНИМАЛЬНУЮ ВЫСОТУ */
         min-height: 450px; 
         margin-bottom: 10px; /* Отступ от контактов */
+        /* КРИТИЧЕСКИ ВАЖНО ДЛЯ МОБИЛЬНЫХ */
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ВИДЖЕТА */
+    @media (max-width: 768px) {
+        #train-bus-widget-container {
+            min-height: 400px;
+            /* Принудительно устанавливаем ширину для мобильных */
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ ВИДЖЕТА НА МОБИЛЬНЫХ */
+        #train-bus-widget-container * {
+            max-width: 100% !important;
+        }
+        
+        /* СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ IFRAME И СКРИПТОВ ВИДЖЕТА */
+        #train-bus-widget-container iframe,
+        #train-bus-widget-container > div,
+        #train-bus-widget-container script + div {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 280px !important;
+            transform: scale(1) !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #train-bus-widget-container {
+            min-height: 380px;
+        }
+        
+        /* ЕЩЕ БОЛЕЕ АГРЕССИВНЫЕ СТИЛИ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+        #train-bus-widget-container iframe,
+        #train-bus-widget-container > div {
+            min-width: 260px !important;
+            font-size: 12px !important;
+        }
     }
 
     /* Стили для Контактов в Hero */
@@ -224,6 +324,22 @@
         margin-right: auto;
     }
     
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ КОНТАКТОВ */
+    @media (max-width: 768px) {
+        .hero-contacts {
+            gap: 20px;
+            margin-top: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-contacts {
+            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
     .hero-contacts a {
         color: white; 
         text-decoration: none;
@@ -233,6 +349,20 @@
         align-items: center;
         gap: 8px;
         transition: opacity 0.3s;
+    }
+
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ССЫЛОК КОНТАКТОВ */
+    @media (max-width: 768px) {
+        .hero-contacts a {
+            font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-contacts a {
+            font-size: 0.85rem;
+            justify-content: center;
+        }
     }
 
     .hero-contacts a:hover {
@@ -253,6 +383,21 @@
         max-width: 90%;
         margin: 15px auto 15px auto; 
         text-align: center;
+    }
+    
+    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ОПИСАНИЯ */
+    @media (max-width: 768px) {
+        .card-description {
+            font-size: 0.8rem;
+            margin: 10px auto;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .card-description {
+            font-size: 0.75rem;
+            margin: 8px auto;
+        }
     }
     
     /* Остальные секции (без изменений) */
@@ -934,7 +1079,7 @@
 <h3>Информация</h3>
 <ul>
 <li><a href="https://airflowtravel.net/about.html">О нас</a></li>
-<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></a></li>
+<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></li>
 <li><a href="https://airflowtravel.net/privacy.html">Политика конфиденциальности</a></li>
 </ul>
 </div>
@@ -1052,6 +1197,31 @@
             });
         });
 
+        // ДОПОЛНИТЕЛЬНЫЙ JAVASCRIPT ДЛЯ ПРИНУДИТЕЛЬНОЙ АДАПТАЦИИ ВИДЖЕТА НА МОБИЛЬНЫХ
+        function forceWidgetMobileResize() {
+            const widgetContainer = document.getElementById('train-bus-widget-container');
+            if (widgetContainer && window.innerWidth <= 768) {
+                // Принудительно устанавливаем стили для всех дочерних элементов
+                const allElements = widgetContainer.querySelectorAll('*');
+                allElements.forEach(element => {
+                    if (element.tagName === 'IFRAME' || element.tagName === 'DIV') {
+                        element.style.width = '100%';
+                        element.style.maxWidth = '100%';
+                        element.style.minWidth = '280px';
+                        element.style.transform = 'scale(1)';
+                        element.style.transformOrigin = 'top left';
+                    }
+                });
+            }
+        }
+
+        // Запускаем принудительную адаптацию через интервалы
+        setTimeout(forceWidgetMobileResize, 1000);
+        setTimeout(forceWidgetMobileResize, 3000);
+        setTimeout(forceWidgetMobileResize, 5000);
+
+        // Также при изменении размера окна
+        window.addEventListener('resize', forceWidgetMobileResize);
     });
 </script>
 </body>
