@@ -174,10 +174,25 @@ property="og:description"/>
     }
     
     .hero-section {
-        background: linear-gradient(135deg, #1d4ed8 0%, #10b981 100%);
+        /* Обновленный градиент: от темно-синего до насыщенного морского зеленого (Аквариум) */
+        background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%); 
         color: white;
         padding: 80px 20px 40px; 
         text-align: center;
+    }
+
+    /* СТИЛИЗАЦИЯ НОВОГО ЦЕНТРАЛЬНОГО ЛОГОТИПА */
+    .hero-logo {
+        color: white;
+        margin-bottom: 25px; /* Отступ до заголовка H1 */
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Эффект "плавания" */
+        line-height: 1.1;
+    }
+
+    .hero-logo i {
+        color: #f59e0b; /* Золотистый акцент для иконки автобуса */
+        display: block;
+        margin-bottom: 5px;
     }
 
     /* НОВЫЙ СТИЛЬ H1: МАКСИМАЛЬНО МАЛЕНЬКИЙ */
@@ -283,50 +298,75 @@ property="og:description"/>
         margin: 0 auto 20px auto;
     }
     
-    /* Остальные секции не менялись */
+    /* СТИЛИ НОВОЙ СЕКЦИИ ПРОДУКТОВ (2) */
     .product-icons-section {
         padding: 60px 20px;
-        background: white;
+        background: #f8fafc;
         text-align: center;
     }
     
     
     .product-icons-grid {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        max-width: 900px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        max-width: 1200px;
         margin: 0 auto;
-        flex-wrap: wrap;
+    }
+    
+    @media (min-width: 1024px) {
+        .product-icons-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
     }
 
-    .product-icon-link {
+    .product-card {
         text-decoration: none;
         color: #1e293b;
-        transition: color 0.3s ease, transform 0.3s ease;
-        display: block;
-        padding: 15px;
-        border-radius: 8px;
+        background: white;
+        padding: 20px 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border-top: 4px solid #1d4ed8; 
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        border-color: #f59e0b; /* Акцент при наведении */
     }
     
     .product-icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 10px;
-        color: #f59e0b; 
+        color: #1d4ed8; 
         transition: color 0.3s ease;
     }
-
-    .product-icon-link:hover {
-        color: #1d4ed8;
-        transform: translateY(-5px);
+    
+    .product-card:hover .product-icon {
+        color: #f59e0b;
     }
     
-    .product-icon-link:hover .product-icon {
-        color: #1d4ed8;
+    .product-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #1e293b;
     }
     
-    /* СТИЛИ КАРТОЧЕК */
-    .car-features-section, .seo-tips-section {
+    .product-card p {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin: 0;
+    }
+    
+    /* СТИЛИ КАРТОЧЕК ПРЕИМУЩЕСТВ (3) */
+    .car-features-section, .travel-info-section { /* Имя секции изменено на travel-info-section */
         padding: 80px 20px;
         background: white; 
     }
@@ -347,7 +387,7 @@ property="og:description"/>
         }
     }
     
-    /* Стили для чистой/кнопки карточки */
+    /* Стили для чистой/кнопки карточки (ОБЩИЙ СТИЛЬ ДЛЯ ССЫЛОК) */
     .feature-card, .tip-card {
         padding: 30px 20px;
         border-radius: 10px;
@@ -358,6 +398,9 @@ property="og:description"/>
         height: 100%;
         text-align: left;
         cursor: pointer;
+        display: block; /* Важно для <a> */
+        text-decoration: none; /* Важно для <a> */
+        color: inherit; /* Важно для <a> */
     }
     
     .feature-card:hover, .tip-card:hover {
@@ -386,126 +429,32 @@ property="og:description"/>
         text-align: center;
     }
     
-    /* ======================================================= */
-    /* СТИЛИ ДЛЯ АККОРДЕОНА (FEATURE SECTION) */
-    /* ======================================================= */
+    /* Стили SEO-советов (Остаются как есть, но упрощены) */
     
-    /* Общие стили для элемента details в секции features и tips */
-    .feature-card details, .tip-card details {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Стилизация summary (заголовок/кнопка) */
-    .feature-card summary, .tip-card summary {
+    .tip-card summary {
         list-style: none;
-        display: flex;
-        flex-direction: column;
-        padding-right: 25px;
+        display: block;
+        padding-right: 0;
         position: relative;
         outline: none;
         cursor: pointer;
-        /* Убедимся, что иконка и текст внутри summary центрированы */
-        text-align: center;
-        flex-grow: 1; /* Чтобы summary занимало всю доступную высоту до контента */
     }
-
-    /* Скрытие стандартного маркера */
-    .feature-card summary::-webkit-details-marker, .tip-card summary::-webkit-details-marker {
+    .tip-card summary::-webkit-details-marker {
         display: none;
     }
-
-    /* Иконка-стрелка для закрытого состояния */
-    .feature-card summary:after, .tip-card summary:after {
-        content: "\25B6"; /* Right triangle */
+    .tip-card summary:after {
+        content: "\25B6"; 
         position: absolute;
         right: 0;
-        top: 20px; /* Смещаем стрелку, чтобы она была рядом с текстом */
-        color: #10b981; /* Используем акцентный цвет */
+        top: 0;
+        color: #10b981; 
         transition: transform 0.3s;
     }
     
-    /* Иконка-стрелка для открытого состояния */
-    .feature-card[open] summary:after, .tip-card[open] summary:after {
-        content: "\25BC"; /* Down triangle */
-        top: 20px; 
+    .tip-card[open] summary:after {
+        content: "\25BC"; 
+        top: 0; 
     }
-    
-    /* Стиль для скрытого контента */
-    .feature-content-hidden {
-        border-top: 1px solid #e2e8f0;
-        padding-top: 15px;
-        margin-top: 15px;
-        font-size: 0.95rem;
-        color: #475569;
-        /* Центрируем содержимое по горизонтали */
-        display: flex;
-        justify-content: center;
-        flex-direction: column; 
-        align-items: center;
-    }
-    
-    /* !!! КЛЮЧЕВОЙ КЛАСС: ЕДИНАЯ АДАПТИВНОСТЬ И ОГРАНИЧЕНИЕ !!! */
-    .widget-container-max {
-        width: 100% !important; /* Виджет резиновый (100% доступного места) */
-        max-width: 500px !important; /* ФИНАЛЬНОЕ ЕДИНОЕ ОГРАНИЧЕНИЕ ДЛЯ ВСЕХ ВИДЖЕТОВ */
-        margin: 0 auto !important;
-        overflow: hidden !important;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        position: relative;
-        /* КРИТИЧЕСКИ ВАЖНО: Принудительное обновление layout */
-        contain: layout style paint;
-    }
-    
-    /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: ПРИНУДИТЕЛЬНОЕ РАСТЯГИВАНИЕ/СЖАТИЕ ВНУТРЕННИХ ЭЛЕМЕНТОВ */
-    .widget-container-max iframe,
-    .widget-container-max script,
-    .widget-container-max > div,
-    .widget-container-max > * {
-        display: block !important; 
-        width: 100% !important; /* ЗАСТАВЛЯЕМ ЗАНИМАТЬ 100% ОТ 500px, ИГНОРИРУЯ ФИКСИРОВАННЫЕ ШИРИНЫ */
-        max-width: 100% !important;
-        height: auto !important; 
-        box-sizing: border-box !important;
-        /* Принудительное обновление размеров */
-        transform: translateZ(0);
-    }
-    
-    /* Дополнительные правила для iframe */
-    .widget-container-max iframe {
-        height: 100% !important; 
-        min-height: 500px !important;
-        border: none !important;
-        /* Принудительное обновление */
-        will-change: transform;
-    }
-    
-    /* Стиль для QR-кода внутри аккордеона */
-    .qr-container {
-        max-width: 200px; 
-        margin: 15px auto 0 auto; 
-        padding: 10px; 
-        border: 1px solid #e2e8f0; 
-        border-radius: 8px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Легкая тень */
-    }
-    
-    .qr-container img {
-        width: 100%; 
-        height: auto; 
-        display: block;
-    }
-    
-    .feature-content-hidden p {
-        font-size: 0.8rem;
-        line-height: 1.3;
-        margin-top: 10px;
-        color: #64748b;
-    }
-
-    /* Стили SEO-советов (Остаются как есть) */
     .tip-card .tip-card-text-short {
         color: #64748b;
         font-size: 0.95rem;
@@ -734,7 +683,7 @@ property="og:description"/>
 <nav class="main-navigation">
 <div class="nav-container">
 <a class="nav-logo" href="index.html">
-              🚌 Airflow
+              <i class="fas fa-bus"></i> Airflow
             </a>
 <ul class="nav-menu">
 <li><a href="index.html" class="active">Главная</a></li> 
@@ -768,7 +717,14 @@ property="og:description"/>
 <div class="container">
 <div class="hero-content">
     
-    <h1>Airflow Travel: Сравнивайте и бронируйте путешествия</h1>
+    <div class="hero-logo">
+        <i class="fas fa-bus" style="font-size: 3.5rem;"></i>
+        <p style="font-size: 1.5rem; font-weight: 500;">Airflow Travel</p>
+    </div>
+
+    <h1 style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);">
+        Airflow Travel: Сравнивайте и бронируйте путешествия
+    </h1>
 
     <div id="tpwl-search"></div>
 
@@ -795,29 +751,39 @@ property="og:description"/>
 
 <section class="product-icons-section">
 <div class="container">
-<h2 class="section-title" style="margin-bottom: 30px; color: #1d4ed8;">Наши продукты и сервисы</h2>
+<h2 class="section-title" style="margin-bottom: 40px; color: #1d4ed8;">Наши продукты и сервисы</h2>
 <div class="product-icons-grid">
-<a href="https://search.airflowtravel.net" class="product-icon-link">
-<div class="product-icon"><i class="fas fa-plane"></i></div>
-<div class="product-title">Авиабилеты</div>
-</a>
-<a href="hotels.html" class="product-icon-link">
-<div class="product-icon"><i class="fas fa-hotel"></i></div>
-<div class="product-title">Отели</div>
-</a>
-<a href="cars.html" 
-class="product-icon-link">
-<div class="product-icon"><i class="fas fa-car-alt"></i></div>
-<div class="product-title">Аренда авто</div>
-</a>
-<a href="transfers.html" class="product-icon-link">
-<div class="product-icon"><i class="fas fa-taxi"></i></div>
-<div class="product-title">Трансферы</div>
-</a>
-<a href="https://tutu.tpo.li/1A2oIVqc?erid=2Vtzqv4DbNZ" class="product-icon-link">
-<div class="product-icon"><i class="fas fa-train"></i></div>
-<div class="product-title">Ж/д билеты</div>
-</a>
+    
+    <a href="https://search.airflowtravel.net" class="product-card">
+        <div class="product-icon"><i class="fas fa-plane"></i></div>
+        <div class="product-title">Авиабилеты</div>
+        <p>Сравните цены от 728 авиакомпаний по всему миру.</p>
+    </a>
+
+    <a href="hotels.html" class="product-card">
+        <div class="product-icon"><i class="fas fa-hotel"></i></div>
+        <div class="product-title">Отели</div>
+        <p>Бронируйте жилье со скидкой до 40% без предоплаты.</p>
+    </a>
+    
+    <a href="cars.html" class="product-card">
+        <div class="product-icon"><i class="fas fa-car-alt"></i></div>
+        <div class="product-title">Аренда авто</div>
+        <p>Выгодный прокат в 175 странах от ведущих компаний.</p>
+    </a>
+    
+    <a href="/transfers.html" class="product-card">
+        <div class="product-icon"><i class="fas fa-taxi"></i></div>
+        <div class="product-title">Трансферы</div>
+        <p>Индивидуальный трансфер из/в аэропорт по фиксированной цене.</p>
+    </a>
+    
+    <a href="https://tutu.tpo.li/1A2oIVqc?erid=2Vtzqv4DbNZ" class="product-card">
+        <div class="product-icon"><i class="fas fa-train"></i></div>
+        <div class="product-title">Ж/д билеты</div>
+        <p>Актуальное расписание и покупка билетов по России и СНГ.</p>
+    </a>
+
 </div>
 </div>
 </section>
@@ -827,177 +793,78 @@ class="product-icon-link">
 <h2 class="section-title" style="color: #1e293b;">Преимущества покупки через Airflow</h2>
 <div class="features-grid">
 
-<div class="feature-card" style="border-top-color: #f59e0b;">
-    <details class="widget-fix">
-        <summary>
-            <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-shield-alt"></i></div>
-            <h4>Страхование Путешествий</h4>
-            <p>Сравните полисы для поездок по Шенгену и миру.</p>
-        </summary>
-        <div class="feature-content-hidden" style="min-height: 600px; padding-bottom: 50px;">
-            <div class="widget-container-max">
-                <script async src="//tpwgt.com/content?trs=478043&shmarker=144185&countryGroups=schengen&medicine=30000&powered_by=false&primary=%23636AFF&light=%23EDF4FE&background=%23E5ECF6&success=%2341CC78&warning=%23FB751C&error=%23FF6666&search=%23F54B92&deletion=%23FFECEC&erid=2VtzqukAgWu&campaign_id=24&promo_id=1498" charset="utf-8"></script>
-            </div>
-            <p>
-                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqukAgWu
-            </p>
-        </div>
-    </details>
-</div>
+<a href="/insurance.html" class="feature-card" style="border-top-color: #f59e0b;">
+    <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-shield-alt"></i></div>
+    <h4>Страхование Путешествий</h4>
+    <p>Сравните полисы для поездок по Шенгену и миру.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #10b981;">
-    <details>
-        <summary>
-            <div class="feature-icon" style="color: #10b981;"><i class="fas fa-search-dollar"></i></div>
-            <h4>Компенсация за Рейсы</h4>
-            <p>Проверьте право на возврат средств за задержку или отмену.</p>
-        </summary>
-        <div class="feature-content-hidden">
-            <div class="qr-container">
-                <a href="https://compensair.tpo.li/UliOutb6?erid=2VtzqxNeJXs" target="_blank" rel="noopener noreferrer">
-                    <img src="compensair-qr.png" alt="QR-код для Compensair"/>
-                </a>
-            </div>
-            <p>
-                Откройте сканером или кликните по QR-коду, чтобы перейти на сайт.
-                <br>
-                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqxNeJXs
-            </p>
-        </div>
-    </details>
-</div>
+<a href="/compensation.html" class="feature-card" style="border-top-color: #10b981;">
+    <div class="feature-icon" style="color: #10b981;"><i class="fas fa-search-dollar"></i></div>
+    <h4>Компенсация за Рейсы</h4>
+    <p>Проверьте право на возврат средств за задержку или отмену.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #f59e0b;">
-    <details>
-        <summary>
-            <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-couch"></i></div>
-            <h4>VIP-Зал (Fast Track)</h4>
-            <p>Доступ в бизнес-залы аэропортов по всему миру.</p>
-        </summary>
-        <div class="feature-content-hidden">
-            <div class="qr-container">
-                <a href="https://vip-zal.tpo.li/yyuVHaXv?erid=2VtzqwQHRu3" target="_blank" rel="noopener noreferrer">
-                    <img src="vip-hall-qr.png" alt="QR-код для VIP-Зала"/>
-                </a>
-            </div>
-            <p>
-                Откройте сканером или кликните по QR-коду.
-                <br>
-                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2VtzqwQHRu3
-            </p>
-        </div>
-    </details>
-</div>
+<a href="/fast-track.html" class="feature-card" style="border-top-color: #f59e0b;">
+    <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-couch"></i></div>
+    <h4>VIP-Зал (Fast Track)</h4>
+    <p>Доступ в бизнес-залы аэропортов по всему миру.</p>
+</a>
 
-<a href="https://drimsim.tpo.li/3sXdtS89" target="_blank" rel="noopener noreferrer" class="feature-card" style="border-top-color: #1d4ed8; text-align: center; text-decoration: none; color: inherit;">
+<a href="/drimsim.html" class="feature-card" style="border-top-color: #1d4ed8;">
     <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-sim-card"></i></div>
     <h4>Drimsim (Мобильный Интернет)</h4>
     <p>Универсальная SIM-карта для дешевого интернета и звонков в 190 странах мира.</p>
 </a>
 
-<div class="feature-card" style="border-top-color: #1d4ed8;">
-    <details class="widget-fix">
-        <summary>
-            <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-parking"></i></div>
-            <h4>Бронирование Паркинга</h4>
-            <p>Забронируйте место в аэропорту заранее по лучшей цене.</p>
-        </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;"> 
-            <div class="widget-container-max"> 
-                <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&color=blue&powered_by=false&promo_id=8962&campaign_id=38" charset="utf-8"></script>
-            </div>
-        </div>
-    </details>
-</div>
+<a href="/parking.html" class="feature-card" style="border-top-color: #1d4ed8;">
+    <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-parking"></i></div>
+    <h4>Бронирование Паркинга</h4>
+    <p>Забронируйте место в аэропорту заранее по лучшей цене.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #10b981;">
-    <details>
-        <summary>
-            <div class="feature-icon" style="color: #10b981;"><i class="fas fa-ticket-alt"></i></div>
-            <h4>Билеты в музеи и на шоу (Tiqets)</h4>
-            <p>Билеты без очередей в музеи, парки и достопримечательности.</p>
-        </summary>
-        <div class="feature-content-hidden">
-            <div class="qr-container">
-                <a href="https://tiqets.tpo.li/k3I6Cswe?erid=2Vtzqv5haeu" target="_blank" rel="noopener noreferrer">
-                    <img src="tiqets-qr.png" alt="QR-код для Tiqets"/>
-                </a>
-            </div>
-            <p>
-                Откройте сканером или кликните по QR-коду.
-                <br>
-                *Реклама. ООО «ТРЭВЕЛМАРТ». ИНН 7713570937. ERID: 2Vtzqv5haeu
-            </p>
-        </div>
-    </details>
-</div>
+<a href="/tickets.html" class="feature-card" style="border-top-color: #10b981;">
+    <div class="feature-icon" style="color: #10b981;"><i class="fas fa-ticket-alt"></i></div>
+    <h4>Билеты в музеи и на шоу (Tiqets)</h4>
+    <p>Билеты без очередей в музеи, парки и достопримечательности.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #1d4ed8;">
-    <details class="widget-fix">
-        <summary>
-            <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-map-marked-alt"></i></div>
-            <h4>Карта Дешевых Полетов</h4>
-            <p>Интерактивная карта для поиска самых выгодных авиабилетов.</p>
-        </summary>
-        <div class="feature-content-hidden" style="min-height: 600px; padding-bottom: 50px;">
-            <div class="widget-container-max">
-                <script async src="https://tpwgt.com/content?currency=usd&trs=478043&shmarker=144185&lat=&lng=&powered_by=true&search_host=www.aviasales.ru%2Fsearch&locale=ru&value_min=0&value_max=1000000&round_trip=true&only_direct=false&radius=1&draggable=true&disable_zoom=false&show_logo=false&scrollwheel=false&primary=%233FABDB&secondary=%233FABDB&light=%23ffffff&width=1500&height=500&zoom=2&promo_id=4054&campaign_id=100" charset="utf-8"></script>
-            </div>
-            <p>
-                Прокрутите карту, чтобы увидеть цены в других регионах.
-            </p>
-        </div>
-    </details>
-</div>
+<a href="/trains.html" class="feature-card" style="border-top-color: #1d4ed8;">
+    <div class="feature-icon" style="color: #1d4ed8;"><i class="fas fa-train"></i></div>
+    <h4>Ж/Д Билеты</h4>
+    <p>Быстрый поиск и покупка Ж/Д билетов на вашем сайте.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #f59e0b;">
-    <details class="widget-fix">
-        <summary>
-            <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-plane-arrival"></i></div>
-            <h4>Табло Рейсов MOW → BKK</h4>
-            <p>Актуальное расписание и цены на популярное направление.</p>
-        </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;">
-            <div class="widget-container-max">
-                <script async src="https://tpwgt.com/content?currency=rub&trs=478043&shmarker=144185&color_button=%23FF0000&target_host=search.airflowtravel.net%2Fflights&locale=ru&powered_by=false&origin=MOW&destination=BKK&with_fallback=true&non_direct_flights=true&min_lines=5&border_radius=0&color_background=%23FFFFFF&color_text=%23000000&color_border=%23E0E0F7ff&erid=2VtzqxWe9DB&promo_id=2811&campaign_id=100" charset="utf-8"></script>
-            </div>
-        </div>
-    </details>
-</div>
+<a href="/buses.html" class="feature-card" style="border-top-color: #f59e0b;">
+    <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-bus"></i></div>
+    <h4>Автобусные Билеты</h4>
+    <p>Самое полное расписание рейсов по России и СНГ.</p>
+</a>
 
-<div class="feature-card" style="border-top-color: #10b981;">
-    <details class="widget-fix">
-        <summary>
-            <div class="feature-icon" style="color: #10b981;"><i class="fas fa-chart-line"></i></div>
-            <h4>Популярные Направления</h4>
-            <p>Список лучших авиапредложений на сегодня.</p>
-        </summary>
-        <div class="feature-content-hidden" style="padding-bottom: 50px; min-height: 550px;">
-            <div class="widget-container-max">
-                <script async src="https://tpwgt.com/content?currency=usd&trs=478043&shmarker=144185&target_host=search.airflowtravel.net%2Fflights&locale=ru&limit=6&powered_by=false&primary=%230085FF&erid=2VtzqvZyRGu&promo_id=4044&campaign_id=100" charset="utf-8"></script>
-            </div>
-        </div>
-    </details>
-</div>
+<a href="/transfers.html" class="feature-card" style="border-top-color: #10b981;">
+    <div class="feature-icon" style="color: #10b981;"><i class="fas fa-taxi"></i></div>
+    <h4>Трансферы и Такси</h4>
+    <p>Заказ такси и индивидуальных трансферов в любую точку.</p>
+</a>
 
 </div>
 </div>
 </section>
 
-<section class="seo-tips-section">
+<section class="travel-info-section">
 <div class="container">
-<h2 class="section-title">Советы и Лайфхаки для Автобусных Путешествий</h2>
+<h2 class="section-title">Полезная Информация для Путешествий</h2>
 <div class="tips-grid">
+    
 <details class="tip-card" style="border-top-color: #1d4ed8;">
 <summary>
-<div class="tip-icon" style="color: #1d4ed8;"><i class="fas fa-bus-simple"></i></div>
-<h4>Преимущества автобусов</h4>
-<p class="tip-card-text-short">Обзор преимуществ современных междугородних автобусов.</p>
+<div class="tip-icon" style="color: #1d4ed8;"><i class="fas fa-plane-departure"></i></div>
+<h4>Преимущества нового транспорта</h4>
+<p class="tip-card-text-short">Обзор преимуществ современных способов передвижения.</p>
 </summary>
 <div class="tip-content">
-**Лайфхак:** Современные автобусы оборудованы Wi-Fi, розетками и кондиционерами.
-На длительных рейсах всегда есть остановки для отдыха и возможность приобрести напитки.
-В отличие от других видов транспорта, автобус часто доставляет ближе к центру города.
+Современный транспорт (поезда, автобусы, самолеты) оборудован Wi-Fi, розетками и кондиционерами.
+Сравнивайте все опции на Airflow, чтобы выбрать оптимальный баланс комфорта и цены.
 </div>
 </details>
 
@@ -1005,59 +872,23 @@ class="product-icon-link">
 <summary>
 <div class="tip-icon" style="color: #e9573f;"><i class="fas fa-calendar-alt"></i></div>
 <h4>Когда покупать билеты</h4>
-<p class="tip-card-text-short">Оптимальные сроки начала продаж и лучшие дни недели для бронирования.</p>
+<p class="tip-card-text-short">Оптимальные сроки бронирования для разных видов транспорта.</p>
 </summary>
 <div class="tip-content">
-**Лайфхак:** Билеты на автобусы часто дешевле, если покупать их за 1-2 недели до отправления.
-Если дата фиксирована, бронируйте заранее, чтобы гарантировать место. Для гибкости и экономии избегайте поездок в пятницу вечером и воскресенье.
+Авиабилеты обычно дешевле за 40-60 дней до вылета.
+Поезда и автобусы часто предлагают лучшие цены за 1-2 недели.
+Избегайте бронирования в последние дни перед праздниками и выходными.
 </div>
 </details>
 
 <details class="tip-card" style="border-top-color: #f59e0b;">
 <summary>
-<div class="tip-icon" style="color: #f59e0b;"><i class="fas fa-gift"></i></div>
-<h4>Возврат билетов на автобус</h4>
-<p class="tip-card-text-short">Подробная информация об условиях и сроках возврата билетов.</p>
-</summary>
-<div class="tip-content">
-**Лайфхак:** Условия возврата зависят от перевозчика и времени до отправления.
-Обычно, чем раньше вы сдаете билет (например, за 2 часа до рейса), тем больший процент от стоимости возвращается.
-Оформление возврата всегда происходит через личный кабинет на сайте партнера.
-</div>
-</details>
-
-<details class="tip-card" style="border-top-color: #10b981;">
-<summary>
-<div class="tip-icon" style="color: #10b981;"><i class="fas fa-wifi"></i></div>
-<h4>Удобства на борту</h4>
-<p class="tip-card-text-short">Wi-Fi, розетки и кондиционер: что ожидать в автобусе.</p>
-</summary>
-<div class="tip-content">
-**Лайфхак:** В большинстве современных междугородних автобусов есть бесплатный Wi-Fi, розетки USB для зарядки гаджетов и работающий кондиционер.
-Для длительных поездок возьмите с собой внешний аккумулятор и убедитесь, что ваш перевозчик предоставляет эти услуги.
-</div>
-</details>
-
-<details class="tip-card" style="border-top-color: #e9573f;">
-<summary>
-<div class="tip-icon" style="color: #e9573f;"><i class="fas fa-route"></i></div>
-<h4>Как найти свой автобус</h4>
-<p class="tip-card-text-short">Пошаговая инструкция, как ориентироваться на автовокзале.</p>
-</summary>
-<div class="tip-content">
-**Лайфхак:** Приезжайте на автовокзал минимум за 30 минут.
-Найдите табло, чтобы узнать номер платформы и время отправления. Если возникнут вопросы, сразу обращайтесь к сотруднику автовокзала или звоните в круглосуточную поддержку Unitiki.
-</div>
-</details>
-
-<details class="tip-card" style="border-top-color: #1d4ed8;">
-<summary>
-<div class="tip-icon" style="color: #1d4ed8;"><i class="fas fa-passport"></i></div>
+<div class="tip-icon" style="color: #f59e0b;"><i class="fas fa-passport"></i></div>
 <h4>Документы для международных рейсов</h4>
-<p class="tip-card-text-short">Что нужно иметь при себе для поездки за границу на автобусе.</p>
+<p class="tip-card-text-short">Что нужно иметь при себе для поездки за границу.</p>
 </summary>
 <div class="tip-content">
-**Лайфхак:** Для международных рейсов обязательно наличие действующего загранпаспорта, а также визы, если это требуется страной назначения.
+Для международных поездок всегда имейте при себе действующий загранпаспорт, а также распечатанную визу (если нужна).
 Всегда проверяйте актуальные правила пересечения границы заранее на официальных источниках.
 </div>
 </details>
@@ -1201,17 +1032,14 @@ class="product-icon-link">
 </div>
 
 <div class="footer-section">
-    <h3>Служба поддержки Unitiki</h3>
+    <h3>Служба поддержки Airflow</h3>
     <div class="footer-contacts" style="background: none;
 padding: 0; margin: 0;">
-        <a href="tel:+88004443451" style="color: white;">
-            <i class="fas fa-phone"></i> 8 (800) 444-34-51
-        </a>
-        <a href="mailto:help@unitiki.com" style="color: white;">
-            <i class="fas fa-envelope"></i> help@unitiki.com
+        <a href="mailto:support@airflowtravel.net" style="color: white;">
+            <i class="fas fa-envelope"></i> support@airflowtravel.net
         </a>
         <p style="margin-top: 5px;
-font-size: 0.9rem; color: #64748b;">Круглосуточно</p>
+font-size: 0.9rem; color: #64748b;">Мы ответим на ваши вопросы по всем продуктам</p>
     </div>
 </div>
 
@@ -1314,102 +1142,6 @@ font-size: 0.9rem; color: #64748b;">Круглосуточно</p>
                 }
             });
         });
-        
-        // УСИЛЕННОЕ РЕШЕНИЕ ПРОБЛЕМЫ С ВИДЖЕТАМИ В АККОРДЕОНАХ
-        const widgetDetails = document.querySelectorAll('details.widget-fix');
-        
-        // Функция для принудительного обновления размеров виджета
-        function forceWidgetResize(widgetContainer) {
-            if (!widgetContainer) return;
-            
-            // 1. Временно скрываем контейнер
-            widgetContainer.style.visibility = 'hidden';
-            widgetContainer.style.opacity = '0';
-            
-            // 2. Принудительно обновляем layout
-            widgetContainer.offsetHeight; // Trigger reflow
-            
-            // 3. Ищем все iframe и другие элементы внутри
-            const iframes = widgetContainer.querySelectorAll('iframe');
-            const divs = widgetContainer.querySelectorAll('div');
-            const scripts = widgetContainer.querySelectorAll('script');
-            
-            // 4. Принудительно устанавливаем размеры
-            [...iframes, ...divs].forEach(element => {
-                if (element) {
-                    element.style.width = '100%';
-                    element.style.maxWidth = '500px';
-                    element.style.minWidth = '300px';
-                    // Принудительный reflow
-                    element.offsetWidth;
-                }
-            });
-            
-            // 5. Показываем контейнер обратно с анимацией
-            setTimeout(() => {
-                widgetContainer.style.visibility = 'visible';
-                widgetContainer.style.opacity = '1';
-                widgetContainer.style.transition = 'opacity 0.3s ease';
-            }, 100);
-            
-            // 6. Дополнительное обновление через ResizeObserver если доступен
-            if (window.ResizeObserver) {
-                const resizeObserver = new ResizeObserver(entries => {
-                    entries.forEach(entry => {
-                        const target = entry.target;
-                        if (target.tagName === 'IFRAME') {
-                            target.style.width = '100%';
-                            target.style.maxWidth = '500px';
-                        }
-                    });
-                });
-                
-                iframes.forEach(iframe => {
-                    resizeObserver.observe(iframe);
-                });
-                
-                // Отключаем observer через 5 секунд
-                setTimeout(() => {
-                    resizeObserver.disconnect();
-                }, 5000);
-            }
-        }
-
-        // Обработчик для каждого аккордеона с виджетами
-        widgetDetails.forEach(details => {
-            details.addEventListener('toggle', () => {
-                if (details.open) {
-                    const widgetContainer = details.querySelector('.widget-container-max');
-                    
-                    // Немедленное обновление
-                    setTimeout(() => forceWidgetResize(widgetContainer), 50);
-                    
-                    // Повторное обновление через 200ms (для медленных скриптов)
-                    setTimeout(() => forceWidgetResize(widgetContainer), 200);
-                    
-                    // Финальное обновление через 500ms
-                    setTimeout(() => forceWidgetResize(widgetContainer), 500);
-                }
-            });
-        });
-        
-        // Дополнительная проверка при изменении размера окна
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                document.querySelectorAll('details[open] .widget-container-max').forEach(container => {
-                    forceWidgetResize(container);
-                });
-            }, 250);
-        });
-        
-        // Проверка уже открытых аккордеонов при загрузке страницы
-        setTimeout(() => {
-            document.querySelectorAll('details[open] .widget-container-max').forEach(container => {
-                forceWidgetResize(container);
-            });
-        }, 1000);
     });
 </script>
 </body>
