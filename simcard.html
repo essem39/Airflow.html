@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="ie=edge" http-equiv="X-X-Compatible"/>
+<meta content="Airflow Travel: Выгодные eSIM и SIM-карты для путешествий. Оставайтесь на связи в любой точке мира." name="description"/> 
+
+<link href="bus_icon-icons.com_76529.ico" rel="icon" type="image/x-icon"/>
+<meta content="Airflow Travel - SIM-карты и eSIM для путешествий" property="og:title"/>
+<meta content="Выгодные eSIM и SIM-карты для путешествий. Оставайтесь на связи в любой точке мира." property="og:description"/>
+<meta content="ru" property="og:locale"/>
+<meta content="website" property="og:type"/>
+
+<title>SIM-карты и eSIM для путешествий Drimsim</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet"/>
+<style>
+    /* БАЗОВЫЕ СТИЛИ (ОБЩИЕ) */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; width: 100%; max-width: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - ОПТИМИЗИРОВАНО */
+    .main-navigation { background: #1e293b; padding: 0; position: sticky; top: 0; z-index: 1020; box-shadow: 0 2px 20px rgba(0,0,0,0.1); height: 55px; }
+    .nav-container { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 100px; height: 100%; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; color: white; font-size: 18px; font-weight: 600; text-decoration: none; }
+    .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; gap: 25px; }
+    .nav-menu a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 18px 0; transition: color 0.3s ease; }
+    .nav-menu a:hover, .nav-menu a.active { color: white; text-decoration: none; }
+    
+    /* Мобильное меню */
+    .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
+    .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+    .mobile-menu-overlay.active { opacity: 1; }
+    .mobile-menu { display: none; position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: #1e293b; z-index: 1001; padding: 60px 15px 15px; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; overflow-y: auto; }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 5px; }
+    .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+    .mobile-menu-links a { color: #94a3b8; text-decoration: none; font-size: 16px; display: block; padding: 12px 15px; border-radius: 6px; transition: all 0.3s ease; }
+    .mobile-menu-links a:hover, .mobile-menu-links a.active { background: #334155; color: white; text-decoration: none; }
+    @media (max-width: 1175px) { .nav-container { padding: 0 16px; } .nav-menu { display: none; } .mobile-menu-button { display: block; } .mobile-menu-overlay, .mobile-menu { display: block; } }
+    @media (max-width: 480px) { .nav-container { padding: 0 12px; } }
+
+    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ */
+    .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; color: #1e293b; }
+    .hero-section { background: linear-gradient(135deg, #1d4ed8 0%, #f59e0b 100%); color: white; padding: 80px 20px 40px; text-align: center; position: relative; overflow: hidden; }
+    .hero-section::before { content: "\f1eb"; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 30%; right: 50px; transform: translateY(-50%) rotate(10deg); font-size: 350px; color: rgba(255, 255, 255, 0.15); z-index: 1; pointer-events: none; }
+    .hero-section::after { content: "\f3cd"; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: 20px; left: 50px; transform: rotate(-10deg); font-size: 250px; color: rgba(255, 255, 255, 0.1); z-index: 1; pointer-events: none; }
+    @media (max-width: 768px) {
+        .hero-section::before { font-size: 200px; right: 0; top: 20%; }
+        .hero-section::after { font-size: 150px; left: 0; bottom: 0; }
+    }
+
+    .hero-content { position: relative; z-index: 5; }
+    .hero-content h1 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 20px; font-weight: 700; text-align: center; color: white; }
+    
+    /* СТИЛИ ДЛЯ ВЫНЕСЕННОГО ТЕКСТА (ПРОЗРАЧНЫЙ ФОН) */
+    .hero-text-moved {
+        margin: 30px auto 0 auto; /* Отступ от светлого блока */
+        max-width: 600px;
+        position: relative; 
+        z-index: 5; 
+    }
+    .hero-text-moved p {
+        font-size: 1.1rem; 
+        font-weight: 500; 
+        color: white; 
+        margin-bottom: 10px;
+    }
+
+    /* КОНТЕЙНЕР ВИДЖЕТА - ПРОЗРАЧНЫЙ */
+    #simcard-widget-container {
+        max-width: 800px; margin: 0 auto; padding: 30px; background: transparent; 
+        border-radius: 12px; box-shadow: none; z-index: 10; position: relative;
+    }
+
+    /* БЛОК ПОИСКА С СВЕТЛЫМ ФОНОМ */
+    #custom-sim-search {
+        display: flex; flex-direction: column; gap: 15px; align-items: center; padding: 30px; 
+        background: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .search-input-group {
+        display: flex; align-items: center; width: 100%; max-width: 400px; background: #f1f5f9;
+        border-radius: 8px; border: 1px solid #cbd5e1; padding: 5px 15px; transition: border-color 0.3s;
+    }
+    .search-input-group:focus-within { border-color: #1d4ed8; }
+    .search-icon { color: #64748b; font-size: 1.2rem; margin-right: 10px; }
+    .country-select {
+        flex-grow: 1; padding: 10px 0; border: none; background: transparent; font-size: 1rem;
+        color: #334155; outline: none; cursor: pointer; -ms-expand: none; -moz-appearance: none; -webkit-appearance: none; appearance: none;
+    }
+    /* КНОПКА CTA - СКОРРЕКТИРОВАНО ДЛЯ ЦЕНТРИРОВАНИЯ */
+    .search-cta-button {
+        display: block; width: 100%; max-width: 400px; 
+        margin-left: auto; /* ЦЕНТРИРОВАНИЕ */
+        margin-right: auto; /* ЦЕНТРИРОВАНИЕ */
+        background-color: #f59e0b; color: white;
+        font-size: 1.1rem; font-weight: 700; padding: 15px 30px; border: none; border-radius: 8px;
+        text-decoration: none; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); text-align: center;
+    }
+    .search-cta-button:hover { background-color: #ea580c; transform: translateY(-2px); }
+
+    /* СТИЛИ КАРТОЧЕК И СЕКЦИЙ */
+    .tariffs-section { background: #f8fafc; padding: 60px 20px; }
+    .tariff-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .tariff-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 15px; }
+    .tariff-info h4 { font-size: 1.3rem; color: #1d4ed8; margin: 0; }
+    .tariff-price { font-size: 1.5rem; font-weight: 700; color: #f59e0b; }
+    .tariff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+
+    .features-section { padding: 80px 20px; background: white; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+    @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); max-width: 1100px; } }
+    .feature-card { padding: 30px 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); background: #f8fafc; border-top: 5px solid #1d4ed8; transition: transform 0.3s, box-shadow 0.3s; height: 100%; text-align: center; cursor: pointer; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+    .feature-icon { font-size: 3rem; color: #1d4ed8; margin-bottom: 15px; }
+    .feature-card h4 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { color: #64748b; font-size: 0.95rem; }
+
+    /* СТИЛИ ОТЗЫВОВ */
+    .testimonials-section { background: #f8fafc; padding: 80px 0; overflow: hidden; }
+    .testimonials-container { max-width: 1200px; margin: 0 auto; position: relative; padding: 0 20px; }
+    /* Swiper styles */
+
+    /* СТИЛИ ФУТЕРА - ОПТИМИЗИРОВАНО */
+    .footer { background-color: #1e293b; color: #94a3b8; padding: 60px 0 20px; font-size: 14px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px; gap: 30px; }
+    .footer-section { width: calc(33.333% - 20px); min-width: 250px; margin-bottom: 20px; }
+    .footer-section h3 { margin-bottom: 20px; color: white; font-size: 1.1rem; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+    .footer-section ul { list-style: none; padding-left: 0; }
+    .footer-section li { margin-bottom: 10px; }
+    .footer-section a { color: #94a3b8; transition: 0.3s; font-size: 0.95rem; text-decoration: none; }
+    .footer-section a:hover { color: white; text-decoration: underline; }
+    
+    /* СТИЛИ КОНТАКТОВ В ФУТЕРЕ */
+    .footer-contacts-list { list-style: none; padding-left: 0; margin: 0; }
+    .footer-contacts-list li { margin-bottom: 10px; color: #94a3b8; font-size: 0.95rem; line-height: 1.4; }
+    .footer-contacts-list li a { color: white; text-decoration: none; font-size: 0.95rem; }
+    .footer-contacts-list li i { color: #10b981; margin-right: 8px; }
+
+    .footer-bottom { border-top: 1px solid #334155; padding-top: 20px; text-align: center; color: #94a3b8; }
+    @media (max-width: 768px) { .footer-content { flex-direction: column; gap: 0; } .footer-section { width: 100%; } .footer-section h3 { padding-top: 10px; } }
+</style>
+</head>
+<body>
+<nav class="main-navigation">
+<div class="nav-container">
+<a class="nav-logo" href="index.html">
+              🏛️ Airflow
+            </a>
+<ul class="nav-menu">
+<li><a href="index.html">Главная</a></li> 
+<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
+<li><a href="hotels.html">🏨 Отели</a></li>
+<li><a href="simcard.html" class="active">📱 SIM-карты/eSIM</a></li>
+</ul>
+<button aria-label="Меню" class="mobile-menu-button" id="mobile-menu-button">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</nav>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu">
+<button aria-label="Закрыть" class="mobile-menu-close" id="mobile-menu-close">×</button>
+<ul class="mobile-menu-links">
+<li><a href="index.html">Главная</a></li>
+<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
+<li><a href="hotels.html">🏨 Отели</a></li>
+<li><a href="simcard.html" class="active">📱 SIM-карты/eSIM</a></li>
+<li><a href="about.html">ℹ️ О нас</a></li>
+<li><a href="help.html">❓ Помощь</a></li>
+</ul>
+</nav>
+<main>
+
+<section class="hero-section">
+<div class="container">
+<div class="hero-content">
+<h1>Сим-карта для путешествий за границу Drimsim</h1> 
+
+<div id="simcard-widget-container">
+    
+    <div id="custom-sim-search">
+        <div class="search-input-group">
+            <i class="fas fa-globe search-icon"></i>
+            <select class="country-select">
+                <option value="" disabled selected>Куда вы направляетесь?</option>
+                <option value="europe">Европа (Единый тариф)</option>
+                <option value="usa">США</option>
+                <option value="asia">Юго-Восточная Азия</option>
+                <option value="thailand">Таиланд</option>
+                <option value="turkey">Турция</option>
+                <option value="other">Другие страны...</option>
+            </select>
+        </div>
+        <a href="https://drimsim.tpo.li/3sXdtS89" target="_blank" class="search-cta-button">
+            ЗАКАЗАТЬ СИМ-КАРТУ (Скрольте вниз)
+        </a>
+        <p style="font-size: 0.9rem; color: #475569; margin-top: 5px; margin-bottom: 0;">Знакомьтесь, Drimsim! 👋</p>
+    </div>
+</div>
+
+<div class="hero-text-moved">
+    <p>
+        **Выгодный интернет в 190 странах. Без абонентской платы и скрытых платежей.**
+    </p>
+    <p>
+        Drimsim помогает экономить на мобильном интернете, а не на впечатлениях от поездки.
+    </p>
+</div>
+
+
+</div>
+</div>
+</section>
+
+<section class="tariffs-section">
+    <div class="container">
+        <h2 class="section-title" style="color: #f59e0b;">Сколько стоит связь?</h2>
+        <h3 style="text-align: center; font-size: 1.5rem; color: #1e293b; margin-bottom: 30px;">Тарифы на связь Drimsim: Дешевле только дома!</h3>
+        <div class="tariff-grid">
+            
+            <div class="tariff-card">
+                <div class="tariff-info">
+                    <h4>Интернет (SIM-карта)</h4>
+                    <span class="tariff-price">0,01 €/Мб</span>
+                </div>
+                <p style="color: #64748b; margin-bottom: 10px;">
+                    **По факту использования.** Вы платите только за израсходованный трафик. Нет абонентской платы.
+                </p>
+                <p style="font-size: 0.85rem; color: #94a3b8;">Потраченный трафик измеряется в килобайтах.</p>
+            </div>
+
+            <div class="tariff-card">
+                <div class="tariff-info">
+                    <h4>Интернет (eSIM)</h4>
+                    <span class="tariff-price">0,01 €/Мб</span>
+                </div>
+                <p style="color: #64748b; margin-bottom: 10px;">
+                    **По факту использования.** Виртуальная SIM-карта с мгновенной активацией через QR-код.
+                </p>
+                <p style="font-size: 0.85rem; color: #94a3b8;">Подходит для последних моделей iPhone и Android.</p>
+            </div>
+
+            <div class="tariff-card" style="border-top-color: #10b981;">
+                <h4 style="color: #10b981; margin-bottom: 10px;">Программа лояльности</h4>
+                <p style="color: #475569; font-size: 1rem; margin-bottom: 15px;">
+                    Рассказывайте о Drimsim друзьям и делитесь ссылкой в соцсетях.
+                </p>
+                <p style="font-weight: 700; font-size: 1.1rem; color: #1e293b;">
+                    Получайте **7 € на баланс** за каждого нового абонента.
+                </p>
+                <a href="https://drimsim.tpo.li/3sXdtS89" target="_blank" style="display: block; margin-top: 15px; color: #1d4ed8; text-decoration: none; font-weight: 500;">Подробнее о реферальной программе <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title" style="color: #1d4ed8;">Drimsim не просто сим-карта. Это забота!</h2>
+        <div class="features-grid">
+            
+            <div class="feature-card" style="border-top-color: #f59e0b;">
+                <div class="feature-icon" style="color: #f59e0b;"><i class="fas fa-route"></i></div>
+                <h4>Привычный комфорт в поездках</h4>
+                <p>Проложить маршрут прогулки, почитать отзывы о ресторане, арендовать машину — с интернетом от Drimsim это просто.</p>
+            </div>
+            
+            <div class="feature-card" style="border-top-color: #10b981;">
+                <div class="feature-icon" style="color: #10b981;"><i class="fas fa-undo-alt"></i></div>
+                <h4>Гарантированный возврат денег</h4>
+                <p>Если у вас не работала связь, или вы просто решили не использовать Drimsim — мы вернем стоимость сим-карты и остаток баланса.</p>
+            </div>
+            
+            <div class="feature-card" style="border-top-color: #e9573f;">
+                <div class="feature-icon" style="color: #e9573f;"><i class="fas fa-mobile-alt"></i></div>
+                <h4>Полный контроль через приложение</h4>
+                <p>Удобное мобильное приложение с подробной статистикой расходов, поддержкой, пополнением баланса и планированием поездки.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="product-icons-section" style="padding-top: 40px; padding-bottom: 40px;">
+    <div class="container">
+        <h2 class="section-title" style="margin-bottom: 30px; color: #1e293b;">Выбери свой Drimsim</h2>
+        <div class="tariff-grid" style="max-width: 800px; gap: 40px;">
+            
+            <div class="tariff-card" style="border-top-color: #1d4ed8; padding: 30px; text-align: center;">
+                <div class="product-icon" style="font-size: 3.5rem; color: #1d4ed8;"><i class="fas fa-sim-card"></i></div>
+                <h4 style="font-size: 1.5rem; margin-bottom: 5px;">Drimsim Classic</h4>
+                <p style="color: #64748b; margin-bottom: 20px;">Привычная физическая сим-карта трех форматов: нано, микро и мини.</p>
+                <p style="font-weight: 700; color: #1e293b;">Стоимость: 10 евро.</p>
+                <p style="font-size: 0.9rem; color: #10b981;">Бесплатная доставка за 1 минуту!</p>
+            </div>
+            
+            <div class="tariff-card" style="border-top-color: #f59e0b; padding: 30px; text-align: center;">
+                <div class="product-icon" style="font-size: 3.5rem; color: #f59e0b;"><i class="fas fa-qrcode"></i></div>
+                <h4 style="font-size: 1.5rem; margin-bottom: 5px;">Drimsim eSIM</h4>
+                <p style="color: #64748b; margin-bottom: 20px;">Виртуальная сим-карта. Появится в телефоне после сканирования QR-кода из письма.</p>
+                <p style="font-weight: 700; color: #1e293b;">Стоимость: 10 евро.</p>
+                <p style="font-size: 0.9rem; color: #e9573f;">Подходит только для последних моделей смартфонов.</p>
+            </div>
+
+        </div>
+        
+        <a href="https://drimsim.tpo.li/3sXdtS89" target="_blank" class="search-cta-button" style="margin-top: 40px; max-width: 350px;">
+            ЗАКАЗАТЬ DRIMSIN
+        </a>
+    </div>
+</section>
+
+<section class="testimonials-section">
+<div class="container">
+<h2 class="section-title">Что думают о Drimsim путешественники</h2>
+<div class="testimonials-container">
+<div class="swiper testimonials-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="testimonial-text">
+«Купил eSIM для поездки в Таиланд. Активировал прямо в аэропорту. Скорость отличная, цена — смешная. Это спасение!»
+</p>
+<div class="testimonial-author">
+<div class="author-avatar">ДМ</div>
+<div class="author-info">
+<h4>Дмитрий М.</h4>
+<p>Путешественник (Таиланд)</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+</div>
+<p class="testimonial-text">
+«Раньше всегда покупала местные SIM, но это долго. С eSIM просто выбрала нужный пакет и мгновенно получила интернет в Европе.»
+</p>
+<div class="testimonial-author">
+<div class="author-avatar">СА</div>
+<div class="author-info">
+<h4>Светлана А.</h4>
+<p>Турист (Европа)</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="testimonial-text">
+«Простота использования — главное. Не надо ковыряться со скрепкой. Airflow помог найти самый лучший тариф по объему данных.»
+</p>
+<div class="testimonial-author">
+<div class="author-avatar">ИК</div>
+<div class="author-info">
+<h4>Игорь К.</h4>
+<p>Постоянный клиент</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">
+<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+</div>
+<p class="testimonial-text">
+«Очень доволен выбором. Впервые попробовал eSIM — это действительно удобно. Никогда больше не вернусь к роумингу!»
+</p>
+<div class="testimonial-author">
+<div class="author-avatar">ОВ</div>
+<div class="author-info">
+<h4>Олег В.</h4>
+<p>Постоянный клиент</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="swiper-pagination"></div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>Наши Продукты</h3>
+<ul>
+<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
+<li><a href="hotels.html">🏨 Отели</a></li>
+<li><a href="cars.html">🚗 Аренда авто</a></li>
+<li><a href="transfers.html">🚕 Трансферы</a></li>
+<li><a href="trains-buses.html">🚌 Автобусы</a></li>
+<li><a href="attractions.html">🏛️ Музеи/Экскурсии</a></li> 
+<li><a href="simcard.html">📱 SIM-карты/eSIM</a></li> 
+</ul>
+</div>
+
+<div class="footer-section">
+<h3>Информация</h3>
+<ul>
+<li><a href="https://airflowtravel.net/about.html">О нас</a></li>
+<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></li>
+<li><a href="https://airflowtravel.net/privacy.html">Политика конфиденциальности</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+    <h3>Служба поддержки</h3>
+    <ul class="footer-contacts-list">
+        <li>
+            <i class="fas fa-handshake"></i> 
+            По коммерческим вопросам: свяжитесь со своим менеджером по работе с клиентами.
+        </li>
+        <li>
+            <i class="fas fa-users"></i> 
+            **Вопросы для клиентов (Drimsim):** <a href="mailto:help@drimsim.com">help@drimsim.com</a>
+        </li>
+        <li>
+            <i class="fas fa-money-bill-wave"></i> 
+            Финансы/Счета (Drimsim): <a href="mailto:help@drimsim.com">help@drimsim.com</a>
+        </li>
+        <li>
+            <i class="fas fa-tools"></i> 
+            Техническое обслуживание/Отчеты (Drimsim): <a href="mailto:help@drimsim.com">help@drimsim.com</a>
+        </li>
+    </ul>
+</div>
+
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 Airflow Travel. Все права защищены.</p>
+</div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Код для навигации
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuButton = document.getElementById('mobile-menu-button');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    const menuClose = document.getElementById('mobile-menu-close');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+        } else {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = ''; 
+            setTimeout(() => {
+                if (!isMenuOpen) {
+                    menuOverlay.style.display = 'none';
+                }
+            }, 300);
+        }
+    }
+
+    function closeMenu() {
+        isMenuOpen = false;
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = ''; 
+        setTimeout(() => {
+            menuOverlay.style.display = 'none';
+        }, 300);
+    }
+
+    if (menuButton) menuButton.addEventListener('click', toggleMenu);
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // Код для Swiper-слайдера отзывов
+    document.addEventListener('DOMContentLoaded', function() {
+        var swiper = new Swiper('.testimonials-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            observer: true, 
+            observeParents: true, 
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            },
+            autoHeight: true, 
+            on: {
+                init: function () {
+                    document.body.style.overflowX = 'hidden';
+                    this.update(); 
+                },
+                resize: function () {
+                    this.update();
+                }
+            }
+        });
+
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
