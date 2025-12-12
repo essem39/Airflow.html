@@ -42,6 +42,18 @@ property="og:description"/>
         margin: 0 auto;
         padding: 0 20px;
     }
+    
+    /* КЛЮЧЕВАЯ CSS-АНИМАЦИЯ: Имитация медленного "плавания" */
+    @keyframes float-slow {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(5px, 3px); }
+        100% { transform: translate(0, 0); }
+    }
+    @keyframes float-slow-reverse {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(-3px, -5px); }
+        100% { transform: translate(0, 0); }
+    }
 
     /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) */
     .main-navigation {
@@ -174,23 +186,23 @@ property="og:description"/>
     }
     
     .hero-section {
-        /* Обновленный градиент: от темно-синего до насыщенного морского зеленого (Аквариум) */
+        /* Обновленный градиент: от темно-синего до насыщенного морского зеленого (АКВАРИУМ) */
         background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%); 
         color: white;
         padding: 80px 20px 40px; 
         text-align: center;
     }
 
-    /* СТИЛИЗАЦИЯ НОВОГО ЦЕНТРАЛЬНОГО ЛОГОТИПА */
+    /* СТИЛИЗАЦИЯ ЦЕНТРАЛЬНОГО ЛОГОТИПА */
     .hero-logo {
         color: white;
-        margin-bottom: 25px; /* Отступ до заголовка H1 */
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Эффект "плавания" */
+        margin-bottom: 25px; 
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
         line-height: 1.1;
     }
 
     .hero-logo i {
-        color: #f59e0b; /* Золотистый акцент для иконки автобуса */
+        color: #f59e0b; 
         display: block;
         margin-bottom: 5px;
     }
@@ -204,16 +216,113 @@ property="og:description"/>
         color: white;
     }
     
-    /* СТИЛИ ДЛЯ ОБЪЕДИНЕННОЙ КАРТОЧКИ ВИДЖЕТА И КОНТАКТОВ */
-    #tpwl-search {
-        padding: 20px 30px;
-        background: rgba(255, 255, 255, 1); /* Белый фон */
-        border-radius: 12px;
+    /* НОВЫЙ СТИЛЬ: Уникальная Панель Управления (Dashboard - наш Аквариум) */
+    .hero-dashboard {
+        /* УЛУЧШЕНИЕ 1: Прозрачность Панели Dashboard */
+        background: none; /* УДАЛЯЕМ БЕЛЫЙ ФОН */
+        border-radius: 16px;
         width: 100%;
         max-width: 1000px; 
         margin: 0 auto 50px auto;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        text-align: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Сохраняем тень для глубины */
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.5); /* Белая полупрозрачная рамка */
+        position: relative; /* Для контекста анимации */
+    }
+
+    .dashboard-indicators {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: left;
+    }
+    
+    /* УЛУЧШЕНИЕ 2: Полупрозрачность Плавающих Индикаторов (текст) */
+    .indicator-item {
+        color: white; /* Меняем текст на белый, чтобы он был виден на фоне */
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый фон */
+        backdrop-filter: blur(4px); /* Добавляем эффект "замутненного стекла" для глубины */
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.4); /* Тонкий белый контур */
+        /* ПЛАВАНИЕ: Имитация медленного движения */
+        animation: float-slow 10s ease-in-out infinite alternate;
+    }
+    
+    /* Дополнительные стили для разных индикаторов для разнообразия движения */
+    .dashboard-indicators:nth-child(3) .indicator-item:nth-child(2) {
+        animation: float-slow-reverse 12s ease-in-out infinite alternate;
+    }
+    .dashboard-indicators:nth-child(1) .indicator-item:nth-child(3) {
+        animation: float-slow 9s ease-in-out infinite alternate;
+    }
+
+    .indicator-item i {
+        color: #f59e0b; /* Меняем цвет иконки на яркий оранжевый/желтый */
+        font-size: 1rem;
+    }
+
+    /* УЛУЧШЕНИЕ 4: Центр навигации абсолютно прозрачный, чтобы видеть только иконки */
+    .dashboard-nav-grid {
+        background: none; 
+        border-radius: 10px;
+        padding: 15px;
+        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+    .dashboard-nav-grid .nav-item {
+        /* УЛУЧШЕНИЕ 3: Элемент почти полностью прозрачный */
+        background-color: rgba(255, 255, 255, 0.1); 
+        color: white;
+        text-decoration: none;
+        padding: 15px 10px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        transition: background-color 0.3s, transform 0.2s;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Видимый нижний белый контур */
+        /* НОВАЯ АНИМАЦИЯ ДЛЯ ВСЕХ ИКОНОК */
+        animation: float-slow-reverse 10s ease-in-out infinite alternate;
+    }
+
+    /* Смещение анимации для разнообразия */
+    .dashboard-nav-grid .nav-item:nth-child(2),
+    .dashboard-nav-grid .nav-item:nth-child(5) {
+        animation: float-slow 12s ease-in-out infinite alternate;
+    }
+
+    .dashboard-nav-grid .nav-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    .dashboard-nav-grid .nav-item i {
+        font-size: 1.6rem;
+        margin-bottom: 5px;
+        color: #f59e0b;
+    }
+    
+    @media (max-width: 768px) {
+        .hero-dashboard {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+        .dashboard-indicators {
+            display: none; /* Скрываем индикаторы на мобильных */
+        }
     }
     
     /* ИСПРАВЛЕНИЕ: Отступ для счетчика статистики */
@@ -227,66 +336,6 @@ property="og:description"/>
         font-weight: 700;
         color: #1e293b;
         margin-bottom: 20px;
-    }
-    
-    /* Стили для Виджета */
-    #train-bus-widget-container {
-        padding: 0;
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0 auto 20px auto;
-    }
-
-    /* СТИЛИЗАЦИЯ ВИДЖЕТА */
-    #train-bus-widget-container .tpwgt-button {
-        background-color: #10b981 !important;
-        border-color: #10b981 !important;
-        transition: background-color 0.3s;
-    }
-
-    #train-bus-widget-container .tpwgt-button:hover {
-        background-color: #0c8a5a !important;
-    }
-
-    #train-bus-widget-container .tpwgt-tab.active {
-        color: #1d4ed8 !important;
-        border-bottom-color: #1d4ed8 !important;
-    }
-    
-    /* Стили для Контактов в Hero (теперь внутри карточки) */
-    .hero-contacts {
-        background: #f1f5f9;
-        border-radius: 8px;
-        padding: 15px 20px;
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .hero-contacts a {
-        color: #1e293b;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: opacity 0.3s;
-    }
-
-    .hero-contacts a:hover {
-        opacity: 0.8;
-    }
-
-    .hero-contacts i {
-        color: #10b981;
-        font-size: 1.2rem;
     }
     
     .card-description {
@@ -429,7 +478,7 @@ property="og:description"/>
         text-align: center;
     }
     
-    /* Стили SEO-советов (Остаются как есть, но упрощены) */
+    /* Стили SEO-советов */
     
     .tip-card summary {
         list-style: none;
@@ -723,29 +772,49 @@ property="og:description"/>
     </div>
 
     <h1 style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);">
-        Airflow Travel: Сравнивайте и бронируйте путешествия
+        Airflow Travel: Ваша Панель Управления Путешествиями
     </h1>
 
-    <div id="tpwl-search"></div>
+    <div class="hero-dashboard">
+        
+        <div class="dashboard-indicators">
+            <div class="indicator-item"><i class="fas fa-star"></i> 4.9/5.0 Рейтинг доверия</div>
+            <div class="indicator-item"><i class="fas fa-headset"></i> Поддержка 24/7</div>
+            <div class="indicator-item"><i class="fas fa-map-marker-alt"></i> 1000+ направлений</div>
+            <div class="indicator-item"><i class="fas fa-check-circle"></i> Гарантия лучшей цены</div>
+        </div>
 
-    <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-        (function () {
-            var script = document.createElement("script");
-            script.async = 1;
-            script.type = "module";
-            script.src = "https://tpwgt.com/wl_web/main.js?wl_id=1368"; 
-            document.head.appendChild(script);
+        <div class="dashboard-nav-grid">
+            <a href="https://search.airflowtravel.net" class="nav-item">
+                <i class="fas fa-plane"></i> Авиа
+            </a>
+            <a href="hotels.html" class="nav-item">
+                <i class="fas fa-hotel"></i> Отели
+            </a>
+            <a href="cars.html" class="nav-item">
+                <i class="fas fa-car-alt"></i> Авто
+            </a>
+            <a href="transfers.html" class="nav-item">
+                <i class="fas fa-taxi"></i> Трансфер
+            </a>
+            <a href="https://tutu.tpo.li/1A2oIVqc?erid=2Vtzqv4DbNZ" class="nav-item">
+                <i class="fas fa-train"></i> Ж/д
+            </a>
+            <a href="/tickets.html" class="nav-item">
+                <i class="fas fa-ticket-alt"></i> Билеты
+            </a>
+        </div>
+        
+        <div class="dashboard-indicators">
+            <div class="indicator-item"><i class="fas fa-tag"></i> Скидки до 40%</div>
+            <div class="indicator-item"><i class="fas fa-undo-alt"></i> Простой возврат</div>
+            <div class="indicator-item"><i class="fas fa-lock"></i> Безопасное бронирование</div>
+            <div class="indicator-item"><i class="fas fa-mobile-alt"></i> Мобильная карта</div>
+        </div>
 
-            window.TPWL_CONFIGURATION = {
-                ...window.TPWL_CONFIGURATION,
-                resultsURL: "https://search.airflowtravel.net" 
-            };
-        })();
-    </script>
-    
+    </div>
     <div id="travel-count"></div>
-
-</div>
+    </div>
 </div>
 </section>
 
