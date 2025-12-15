@@ -42,132 +42,49 @@
     @media (max-width: 1175px) { .nav-container { padding: 0 16px; } .nav-menu { display: none; } .mobile-menu-button { display: block; } .mobile-menu-overlay, .mobile-menu { display: block; } }
     @media (max-width: 480px) { .nav-container { padding: 0 12px; } }
 
-    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) */
-    .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; color: #1e293b; }
+    /* ============================================== */
+    /* СТИЛИ HERO СЕКЦИИ С ФОНОВЫМ ИЗОБРАЖЕНИЕМ */
+    /* ============================================== */
     .hero-section { 
-        background: linear-gradient(135deg, #1d4ed8 0%, #10b981 100%); 
         color: white; 
-        padding: 80px 20px 40px; 
+        padding: 0; 
         text-align: center; 
-        /* --- ДЕКОРАЦИИ: БАЗА --- */
         position: relative; 
         overflow: hidden; 
+        height: 400px; /* Заданная высота баннера */
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        background-color: #000; /* Черный фон на случай, если картинка не загрузится */
     }
-    /* ДЕКОРАЦИЯ 1: МУЗЕЙ/ХРАМ */
-    .hero-section::before {
-        content: "\f0fd"; /* Landmark: Храм/Музей */
-        font-family: 'Font Awesome 6 Free'; 
-        font-weight: 900;
-        position: absolute;
-        top: 30%; 
-        right: 50px;
-        transform: translateY(-50%) rotate(10deg);
-        font-size: 350px; 
-        color: rgba(255, 255, 255, 0.15); 
-        z-index: 1; /* Под контентом */
-        pointer-events: none; 
-    }
-    /* ДЕКОРАЦИЯ 2: КАМЕРА/ТУРИЗМ */
-    .hero-section::after {
-        content: "\f275"; /* Camera: Туризм/Фото */
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        position: absolute;
-        bottom: 20px;
-        left: 50px;
-        transform: rotate(-10deg); 
-        font-size: 250px; 
-        color: rgba(255, 255, 255, 0.1); 
-        z-index: 1; /* Под контентом */
-        pointer-events: none;
-    }
-    @media (max-width: 768px) {
-        .hero-section::before {
-            font-size: 200px;
-            right: 0;
-            top: 20%;
-        }
-        .hero-section::after {
-            font-size: 150px;
-            left: 0;
-            bottom: 0;
-        }
+    .hero-image { /* Стиль для img, которое Вы прислали */
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        opacity: 0.5; /* Снижаем яркость для читаемости текста */
+        z-index: 1;
     }
     .hero-content {
-        position: relative; /* Добавлено, чтобы контент был над декорациями */
-        z-index: 5; /* Добавлено, чтобы контент был над декорациями */
-    }
-    .hero-content h1 { font-size: clamp(1.2rem, 2.5vw, 2rem); margin-bottom: 20px; font-weight: 600; text-align: center; color: white; }
-    
-    /* СТИЛИ ДЛЯ ОБЪЕДИНЕННОЙ КАРТОЧКИ/КОНТЕЙНЕРА */
-    #bus-card-container {
-        padding: 0; 
-        background: none; 
-        border-radius: 0; 
+        position: relative; /* Контент всегда поверх картинки */
+        z-index: 5; 
         width: 100%;
-        max-width: 1000px; 
-        margin: 0 auto 20px auto; 
-        box-shadow: none; 
-        text-align: center;
+        padding: 20px;
+        background: none; /* Убираем фон, если он был */
     }
-
-    /* H2 - ЗАГОЛОВОК КАРТОЧКИ (ТЕПЕРЬ ЗАГОЛОВОК БАННЕРА) */
-    .card-title-search {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white; 
-        text-shadow: 0 0 5px rgba(0,0,0,0.4);
-        margin-bottom: 20px;
-    }
+    .hero-content h1 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 600; text-align: center; color: white; }
     
-    /* УДАЛЕННЫЕ СТИЛИ ДЛЯ ВИДЖЕТА */
-    /* Стили для Контактов в Hero - УБРАНЫ ДЛЯ ЭКСКУРСИЙ */
-    .hero-contacts {
-        display: none; 
-    }
-    
-    .card-description {
-        font-size: 1rem;
-        margin-bottom: 0;
-        opacity: 0.9; 
-        color: white; 
-        max-width: 90%;
-        margin: 20px auto 20px auto; /* Добавлен отступ */
-    }
+    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) */
+    .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; color: #1e293b; }
+    #bus-card-container { padding: 0; background: none; border-radius: 0; width: 100%; max-width: 1000px; margin: 0 auto 20px auto; box-shadow: none; text-align: center; }
+    .card-title-search { font-size: 1.5rem; font-weight: 700; color: white; text-shadow: 0 0 5px rgba(0,0,0,0.4); margin-bottom: 20px; }
+    .card-description { font-size: 1rem; margin-bottom: 0; opacity: 0.9; color: white; max-width: 90%; margin: 20px auto 20px auto; }
     
     /* ============================================== */
-    /* НОВЫЕ СТИЛИ ДЛЯ АНИМЕ-БАННЕРА */
+    /* СТИЛИ ДЛЯ CTA-КНОПКИ В HERO СЕКЦИИ */
     /* ============================================== */
-    #hero-anime-banner {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-        line-height: 0; /* Удаляем лишний отступ под img */
-    }
-    .anime-banner-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        min-height: 150px; /* Для визуального контроля, пока картинки нет */
-        background-color: #334155; /* Фоновый цвет, если картинка не загрузилась */
-    }
-    .banner-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 20px 30px;
-    }
     .banner-cta-button {
         background-color: #f59e0b; /* Янтарный цвет для контраста */
         color: white;
@@ -180,14 +97,22 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        margin-top: 10px; /* Отступ от нижнего края */
+        margin-top: 10px;
     }
     .banner-cta-button:hover {
         background-color: #d97706; /* Более темный янтарный при наведении */
     }
-    /* ============================================== */
-
-    /* Остальные секции */
+    /* Добавление стиля для заголовков виджетов */
+    .travel-guides-section h3 {
+        font-size: 1.5rem; 
+        font-weight: 600; 
+        color: #1e293b;
+        margin-top: 60px;
+        margin-bottom: 15px;
+    }
+    .widget-placeholder { min-height: 250px; margin-bottom: 40px; }
+    
+    /* Остальные секции (без изменений) */
     .product-icons-section { padding: 60px 20px; background: white; text-align: center; }
     .product-icons-grid { display: flex; justify-content: center; gap: 50px; max-width: 900px; margin: 0 auto; flex-wrap: wrap; }
     .product-icon-link { text-decoration: none; color: #1e293b; transition: color 0.3s ease, transform 0.3s ease; display: block; padding: 15px; border-radius: 8px; }
@@ -195,14 +120,8 @@
     .product-icon-link:hover { color: #1d4ed8; transform: translateY(-5px); }
     .product-icon-link:hover .product-icon { color: #1d4ed8; }
 
-    /* СТИЛИ КАРТОЧЕК */
+    .widgets-card-section { padding: 80px 20px; background: #f8fafc; }
     .seo-tips-section { padding: 80px 20px; background: #f8fafc; }
-    
-    /* Стили для новой секции виджетов */
-    .widgets-card-section {
-        padding: 80px 20px;
-        background: #f8fafc; 
-    }
     
     .features-grid, .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
     @media (min-width: 1024px) { .features-grid, .tips-grid { grid-template-columns: repeat(3, 1fr); max-width: 1100px; } }
@@ -212,7 +131,6 @@
     .feature-card h4, .tip-card h4 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-bottom: 10px; text-align: center; }
     .feature-card p, .tip-card p { color: #64748b; font-size: 0.95rem; text-align: center; }
     
-    /* Стили для АККОРДЕОНА */
     .tip-card summary { list-style: none; display: flex; flex-direction: column; padding-right: 25px; position: relative; outline: none; }
     .tip-card summary::-webkit-details-marker { display: none; }
     .tip-card summary:after { content: "\25B6"; position: absolute; right: 0; top: 5px; font-size: 14px; color: #10b981; transition: transform 0.3s; }
@@ -220,7 +138,6 @@
     .tip-card .tip-card-text-short { color: #64748b; font-size: 0.95rem; margin-bottom: 15px; text-align: center; }
     .tip-content { border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 15px; font-size: 0.95rem; color: #475569; text-align: left; font-style: italic; background-color: #f0fff4; padding: 15px; border-radius: 6px; line-height: 1.5; }
     
-    /* СТИЛИ ОТЗЫВОВ */
     .testimonials-section { background: white; padding: 80px 0; overflow: hidden; }
     .testimonials-container { max-width: 1200px; margin: 0 auto; position: relative; padding: 0 20px; }
     .testimonial-card { background: #f8fafc; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0; height: 100%; display: flex; flex-direction: column; }
@@ -236,7 +153,6 @@
     .swiper-button-prev:after, .swiper-button-next:after { color: #1e293b !important; font-size: 24px !important; }
     .swiper-pagination-bullet-active { background: #10b981 !important; }
 
-    /* СТИЛИ ФУТЕРА (ТРИ КОЛОНКИ) */
     .footer { background-color: #1e293b; color: #94a3b8; padding: 60px 0 20px; font-size: 14px; }
     .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px; gap: 30px; }
@@ -288,33 +204,29 @@
 </nav>
 <main>
 <section class="hero-section">
-<div class="container">
-<div class="hero-content">
-<h1>Билеты в музеи, на выставки и экскурсии</h1>
-
-<div id="bus-card-container">
+    <img src="https://i.postimg.cc/5NpRWS7Z/1f01d4b193faad45a716541204a94086.png" 
+         alt="Баннер Экскурсий и Достопримечательностей Airflow" 
+         class="hero-image">
     
-    <h2 class="card-title-search">Откройте для себя мир Аниме и Реальности!</h2>
+    <div class="container" style="position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div class="hero-content">
+            <h1>Билеты в музеи, на выставки и экскурсии</h1>
 
-    <div id="hero-anime-banner">
-        <img src="muzeyum.gif" alt="Аниме Баннер Экскурсий и Достопримечательностей" class="anime-banner-image">
-        <div class="banner-overlay">
-            <a href="https://tpwgt.com/content?currency=USD&trs=478043&shmarker=144185&language=ru&locale=260932&layout=responsive&cards=4&powered_by=true&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947" target="_blank" class="banner-cta-button">
-                Найти Билеты и Экскурсии Сейчас
-            </a>
+            <div id="bus-card-container">
+                
+                <h2 class="card-title-search">Пропуск без очереди в мировые достопримечательности</h2>
+
+                <p class="card-description" style="max-width: 600px; margin: 20px auto 40px auto; font-size: 1.1rem; opacity: 1;">
+                    Забронируйте билеты в музеи, на выставки и экскурсии по всему миру.
+                </p>
+                
+                <a href="https://tiqets.tpo.li/k3I6Cswe?erid=2Vtzqv5haeu" target="_blank" class="banner-cta-button" style="background-color: #f59e0b; padding: 15px 40px; border-radius: 6px;">
+                    Найти Билеты Сейчас
+                </a>
+
+            </div>
         </div>
     </div>
-    <p class="card-description">
-        Забронируйте билеты, чтобы увидеть то, что вдохновило великие произведения искусства и аниме.
-    </p>
-
-    <div class="hero-contacts">
-        </div>
-
-</div>
-
-</div>
-</div>
 </section>
 
 <section class="product-icons-section">
@@ -351,14 +263,37 @@
 
 <section class="widgets-card-section">
     <div class="container">
-        <h2 class="section-title" style="color: #1e293b;">Популярные туры и билеты (55 карточек)</h2>
         
-        <div style="max-width: 100%; margin: 0 auto; padding: 0;">
-            <script async src="https://tpwgt.com/content?currency=USD&trs=478043&shmarker=144185&language=ru&locale=260932&layout=responsive&cards=55&powered_by=true&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947" charset="utf-8"></script>
+        <h2 class="section-title" style="color: #1e293b;">🏆 ТОП-50 Экскурсий Мира</h2>
+
+        <h3 style="margin-top: 60px;">🇪🇸 Барселона: Архитектура Гауди и лучшие туры по городу</h3>
+        <div class="widget-placeholder">
+            <script async src="https://tpwgt.com/content?currency=EUR&trs=478043&shmarker=144185&language=ru&locale=270635&layout=responsive&cards=10&powered_by=false&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947&objects=918256,973672,973888" charset="utf-8"></script>
         </div>
-        
+
+        <h3 style="margin-top: 60px;">🌷 Амстердам: Каналы, Рейксмузеум и Тайные Места</h3>
+        <div class="widget-placeholder">
+            <script async src="https://tpwgt.com/content?currency=EUR&trs=478043&shmarker=144185&language=ru&locale=270634&layout=responsive&cards=10&powered_by=false&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947&objects=703796,703726" charset="utf-8"></script>
+        </div>
+
+        <h3 style="margin-top: 60px;">🏛️ Вечный Город: Колизей, Ватикан и Галереи Рима</h3>
+        <div class="widget-placeholder">
+            <script async src="https://tpwgt.com/content?currency=EUR&trs=478043&shmarker=144185&language=ru&locale=270643&layout=responsive&cards=10&powered_by=false&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947&objects=973760,973975,974333" charset="utf-8"></script>
+        </div>
+
+        <h3 style="margin-top: 60px;">🗼 Культовая Франция: Лувр, Эйфель и Билеты в Версаль</h3>
+        <div class="widget-placeholder">
+            <script async src="https://tpwgt.com/content?currency=EUR&trs=478043&shmarker=144185&language=ru&locale=270636&layout=responsive&cards=10&powered_by=false&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947&objects=973698,974146,973978" charset="utf-8"></script>
+        </div>
+
+        <h3 style="margin-top: 60px;">🗽 Нью-Йорк: Статуя Свободы, Эмпайр-стейт и ТОП-туры США</h3>
+        <div class="widget-placeholder">
+            <script async src="https://tpwgt.com/content?currency=USD&trs=478043&shmarker=144185&language=ru&locale=270644&layout=responsive&cards=10&powered_by=false&erid=2VtzqxUgJZF&campaign_id=89&promo_id=3947&objects=974085,974092" charset="utf-8"></script>
+        </div>
+
     </div>
 </section>
+
 <section class="seo-tips-section">
 <div class="container">
 <h2 class="section-title">Советы по бронированию Музеев и Экскурсий</h2>
