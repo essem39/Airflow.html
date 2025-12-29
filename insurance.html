@@ -1332,6 +1332,41 @@
         function forceWidgetUltraCompactResize() {
             const widgetContainer = document.getElementById('train-bus-widget-container');
             if (widgetContainer && window.innerWidth <= 768) {
+                // КРИТИЧЕСКИ ВАЖНО: находим IFRAME внутри контейнера
+                const iframe = widgetContainer.querySelector('iframe');
+                
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                
+                // Рассчитываем высоту в зависимости от экрана
+                let targetHeight = '650px';
+                
+                // Для высоких узких экранов (Galaxy S20, iPhone 11/12)
+                if (screenWidth <= 390 && screenHeight >= 780) {
+                    targetHeight = '750px';
+                }
+                // Для коротких узких экранов (iPhone SE 2, 8, 7, 6)
+                else if (screenWidth <= 390 && screenHeight < 700) {
+                    targetHeight = '650px';
+                }
+                // Для iPhone SE, 5 (320px)
+                else if (screenWidth <= 320) {
+                    targetHeight = '700px';
+                }
+                // Для средних экранов (iPhone 8+)
+                else if (screenWidth <= 414) {
+                    targetHeight = '700px';
+                }
+                
+                // ПРИМЕНЯЕМ ВЫСОТУ К IFRAME
+                if (iframe) {
+                    iframe.style.height = targetHeight;
+                    iframe.style.minHeight = targetHeight;
+                }
+                
+                // Применяем высоту к контейнеру
+                widgetContainer.style.minHeight = targetHeight;
+                
                 // Принудительно устанавливаем стили для всех дочерних элементов
                 const allElements = widgetContainer.querySelectorAll('*');
                 allElements.forEach(element => {
@@ -1391,42 +1426,41 @@
                     label.style.wordBreak = 'break-word';
                 });
                 
-                // Принудительно обновляем layout с увеличенной высотой
-                // ИСПРАВЛЕНО: учитываем ШИРИНУ и ВЫСОТУ экрана
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-                
-                // Для высоких узких экранов (Galaxy S20, iPhone 11/12)
-                if (screenWidth <= 390 && screenHeight >= 780) {
-                    widgetContainer.style.minHeight = '680px';
-                }
-                // Для коротких узких экранов (iPhone SE 2, 8, 7, 6)
-                else if (screenWidth <= 390 && screenHeight < 700) {
-                    widgetContainer.style.minHeight = '620px';
-                }
-                // Для средних экранов (iPhone 8+)
-                else if (screenWidth <= 414) {
-                    widgetContainer.style.minHeight = '650px';
-                }
-                // Остальные мобильные
-                else if (screenWidth <= 480) {
-                    widgetContainer.style.minHeight = '700px';
-                }
-                // Планшеты и больше
-                else {
-                    widgetContainer.style.minHeight = '600px';
-                }
                 widgetContainer.offsetHeight; // Trigger reflow
             }
         }
 
         // Запускаем принудительную адаптацию через интервалы
+        // УВЕЛИЧЕНО количество попыток для загрузки iframe
         setTimeout(forceWidgetUltraCompactResize, 500);
         setTimeout(forceWidgetUltraCompactResize, 1000);
         setTimeout(forceWidgetUltraCompactResize, 2000);
         setTimeout(forceWidgetUltraCompactResize, 3000);
         setTimeout(forceWidgetUltraCompactResize, 5000);
+        setTimeout(forceWidgetUltraCompactResize, 7000);
         setTimeout(forceWidgetUltraCompactResize, 10000);
+        setTimeout(forceWidgetUltraCompactResize, 15000);
+        
+        // MutationObserver для отслеживания появления iframe
+        const widgetContainer = document.getElementById('train-bus-widget-container');
+        if (widgetContainer) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.addedNodes.length) {
+                        // Проверяем, появился ли iframe
+                        const iframe = widgetContainer.querySelector('iframe');
+                        if (iframe) {
+                            forceWidgetUltraCompactResize();
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(widgetContainer, {
+                childList: true,
+                subtree: true
+            });
+        }
         
         // Следим за изменениями размера окна
         window.addEventListener('resize', forceWidgetUltraCompactResize);
