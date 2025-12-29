@@ -1392,15 +1392,29 @@
                 });
                 
                 // Принудительно обновляем layout с увеличенной высотой
-                // ИСПРАВЛЕНО: увеличена высота для узких экранов (iPhone 11+, 12+, Galaxy S20)
-                if (window.innerWidth <= 375) {
-                    widgetContainer.style.minHeight = '950px';
-                } else if (window.innerWidth <= 414) {
-                    widgetContainer.style.minHeight = '900px';
-                } else if (window.innerWidth <= 480) {
-                    widgetContainer.style.minHeight = '850px';
-                } else {
-                    widgetContainer.style.minHeight = '800px';
+                // ИСПРАВЛЕНО: учитываем ШИРИНУ и ВЫСОТУ экрана
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                
+                // Для высоких узких экранов (Galaxy S20, iPhone 11/12)
+                if (screenWidth <= 390 && screenHeight >= 780) {
+                    widgetContainer.style.minHeight = '680px';
+                }
+                // Для коротких узких экранов (iPhone SE 2, 8, 7, 6)
+                else if (screenWidth <= 390 && screenHeight < 700) {
+                    widgetContainer.style.minHeight = '620px';
+                }
+                // Для средних экранов (iPhone 8+)
+                else if (screenWidth <= 414) {
+                    widgetContainer.style.minHeight = '650px';
+                }
+                // Остальные мобильные
+                else if (screenWidth <= 480) {
+                    widgetContainer.style.minHeight = '700px';
+                }
+                // Планшеты и больше
+                else {
+                    widgetContainer.style.minHeight = '600px';
                 }
                 widgetContainer.offsetHeight; // Trigger reflow
             }
