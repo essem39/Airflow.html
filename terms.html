@@ -1,442 +1,538 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="ie=edge" http-equiv="X-X-Compatible"/>
-<meta content="Условия использования (публичная оферта) сервиса Airflow Travel. Правила пользования, ограничения ответственности и взаимодействие с партнерами."
-name="description"/>
-
-<link href="bus_icon-icons.com_76529.ico" rel="icon" type="image/x-icon"/>
-
-<title>Условия использования | Airflow Travel</title>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet"/>
-<style>
-    /* БАЗОВЫЕ СТИЛИ (ОБЩИЕ) - ОТ НАШЕГО ШАБЛОНА */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO META TAGS -->
+  <title>Условия использования | Airflow Поиск Авиабилетов</title>
+  <meta name="description" content="Условия использования сервиса поиска авиабилетов Airflow. Правила работы с агрегатором, ограничения ответственности, взаимодействие с Aviasales.">
+  <meta name="keywords" content="условия использования, aviasales, агрегатор билетов, правила сервиса, airflow travel">
+  <meta name="robots" content="index, follow">
+  
+  <link rel="icon" href="bus_icon-icons.com_76529.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100%;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f8fafc; 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
     }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    /* ЦВЕТОВАЯ СХЕМА (Нейтральный синий) */
-    :root {
-        --color-primary: #1e40af; /* Яркий синий */
-        --color-accent: #2563eb;  /* Акцент */
-        --color-text: #1e293b;
-        --color-light: #f8fafc;
-    }
-
-    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - СТАНДАРТ */
+    /* НАВИГАЦИЯ */
     .main-navigation {
-        background: #1e293b;
-        padding: 0;
-        position: sticky;
-        top: 0;
-        z-index: 1020;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        height: 55px;
+      background: #1e293b;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      height: 55px;
     }
 
     .nav-container {
-        max-width: 1240px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 100px;
-        height: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 100px;
+      height: 100%;
     }
 
     .nav-logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding: 5px 0;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
     }
-    .nav-logo img {
-        height: 45px; width: auto; display: block;
+
+    .nav-logo-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%);
+      border-radius: 8px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon::before {
+      content: "✈";
+      color: white;
+      font-size: 16px;
     }
 
     .nav-menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 25px;
+      display: flex;
+      list-style: none;
+      gap: 25px;
     }
 
     .nav-menu a {
-        color: #94a3b8;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
-        padding: 18px 0;
-        transition: color 0.3s ease;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 18px 0;
+      transition: color 0.3s ease;
     }
 
-    .nav-menu a:hover, .nav-menu a.active {
-        color: white;
-        text-decoration: none;
+    .nav-menu a:hover {
+      color: white;
     }
 
-    /* Мобильное меню - СТАНДАРТ */
-    .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
-    .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
-    .mobile-menu-overlay.active { opacity: 1; }
-    .mobile-menu { display: none; position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: #1e293b; z-index: 1001; padding: 60px 15px 15px; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; overflow-y: auto; }
-    .mobile-menu.active { right: 0; }
-    .mobile-menu-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 5px; }
-    .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
-    .mobile-menu-links a { color: #94a3b8; text-decoration: none; font-size: 16px; display: block; padding: 12px 15px; border-radius: 6px; transition: all 0.3s ease; }
-    .mobile-menu-links a:hover, .mobile-menu-links a.active { background: #334155; color: white; text-decoration: none; }
-
-    @media (max-width: 1175px) {
-        .nav-container { padding: 0 16px; }
-        .nav-menu { display: none; }
-        .mobile-menu-button { display: block; }
-        .mobile-menu-overlay, .mobile-menu { display: block; }
-    }
-    @media (max-width: 480px) {
-        .nav-container { padding: 0 12px; }
+    /* HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    /* --- СЕКЦИЯ КОНТЕНТА "УСЛОВИЯ" (Как на about.html) --- */
-    .terms-section {
-        padding: 60px 20px;
-        background: var(--color-light); 
+    .page-header h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
 
-    .terms-card {
-        background: white;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    .terms-card h1 {
-        color: var(--color-primary);
-        font-size: 2.2rem;
-        margin-bottom: 25px;
-        border-bottom: 2px solid #e5e7eb;
-        padding-bottom: 15px;
-        font-weight: 700;
-    }
-    .terms-card h2 {
-        color: var(--color-text);
-        font-size: 1.5rem;
-        margin-top: 30px;
-        margin-bottom: 15px;
-        font-weight: 600;
-        border-left: 4px solid var(--color-accent);
-        padding-left: 15px;
-    }
-    .terms-card p, .terms-card ul {
-        font-size: 1rem;
-        color: #4b5563;
-        margin-bottom: 20px;
-        padding-left: 20px;
-        list-style-type: disc;
+    .page-header p {
+      font-size: 18px;
+      opacity: 0.95;
     }
 
-    .terms-card ul li {
-        margin-bottom: 10px;
-    }
-    
-    .terms-card strong {
-        color: var(--color-primary);
-    }
-    
-    /* СТИЛИ ФУТЕРА (СТАНДАРТ - ИСПОЛЬЗУЕМ 3 КОЛОНКИ Unitiki) */
-    .footer {
-        background-color: #1e293b;
-        color: #94a3b8;
-        padding: 60px 0 20px;
-        font-size: 14px;
+    /* CONTENT */
+    .content-section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+    .content-card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .update-date {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    h2 {
+      color: #163e9c;
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-left: 15px;
+      border-left: 4px solid #0c9c71;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    ul {
+      margin: 20px 0 20px 30px;
+      color: #475569;
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    strong {
+      color: #163e9c;
+      font-weight: 600;
+    }
+
+    .warning-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      border-left: 4px solid #f59e0b;
+    }
+
+    .warning-box strong {
+      color: #92400e;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      border-left: 4px solid #163e9c;
+    }
+
+    .contact-box {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 8px;
+      margin: 30px 0;
+      text-align: center;
+      border: 2px solid #e2e8f0;
+    }
+
+    .contact-box a {
+      color: #163e9c;
+      font-weight: 600;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e293b;
+      color: #94a3b8;
+      padding: 50px 20px 20px;
+      margin-top: 60px;
     }
 
     .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-        gap: 30px; 
-    }
-    
-    .footer-section {
-        width: calc(33.333% - 20px); 
-        min-width: 250px; 
-        margin-bottom: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 30px;
     }
 
     .footer-section h3 {
-        margin-bottom: 20px;
-        color: white;
-        font-size: 1.1rem;
-        border-bottom: 2px solid #334155;
-        padding-bottom: 10px;
+      color: white;
+      margin-bottom: 15px;
+      font-size: 18px;
     }
 
     .footer-section ul {
-        list-style: none;
-        padding-left: 0;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .footer-section li {
-        margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .footer-section a {
-        color: #94a3b8;
-        transition: 0.3s;
-        font-size: 0.95rem;
-        text-decoration: none;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
     }
 
     .footer-section a:hover {
-        color: white;
-        text-decoration: underline;
-    }
-    
-    .footer-section .footer-contacts a {
-        display: block;
-        margin-top: 5px;
-        color: white;
-        font-size: 0.95rem;
-    }
-    
-    .footer-section .footer-contacts i {
-        /* ЗЕЛЕНЫЙ основной цвет для иконок в футере */
-        color: #10b981;
-        margin-right: 8px;
+      color: white;
     }
 
     .footer-bottom {
-        border-top: 1px solid #334155;
-        padding-top: 20px;
-        text-align: center;
-        color: #94a3b8;
-    }
-    
-    .footer-bottom p i {
-        color: #06b6d4;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #334155;
+      font-size: 14px;
     }
 
-    /* АДАПТАЦИЯ */
+    /* MOBILE */
     @media (max-width: 768px) {
-        .footer-content { flex-direction: column; gap: 0; }
-        .footer-section { width: 100%; }
-        .footer-section h3 { padding-top: 10px; }
-        .terms-card { padding: 25px 15px; } 
+      .nav-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .page-header h1 {
+        font-size: 32px;
+      }
+
+      .content-card {
+        padding: 25px 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
     }
-</style>
+  </style>
 </head>
 <body>
 
-<nav class="main-navigation">
-<div class="nav-container">
+  <!-- НАВИГАЦИЯ -->
+  <nav class="main-navigation">
+    <div class="nav-container">
+      <a href="https://search.airflowtravel.net" class="nav-logo">
+        <div class="nav-logo-icon"></div>
+        Airflow
+      </a>
+      <ul class="nav-menu">
+        <li><a href="https://airflowtravel.net">Главная</a></li>
+        <li><a href="https://search.airflowtravel.net">Авиабилеты</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <a class="nav-logo" href="index.html">
-        <img src="AirflowTravel.png" alt="Airflow Travel Logo">
-    </a>
+  <!-- HEADER -->
+  <header class="page-header">
+    <h1>Условия использования</h1>
+    <p>Правила работы с сервисом поиска авиабилетов</p>
+  </header>
 
-<ul class="nav-menu">
-<li><a href="index.html">Главная</a></li> 
-<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-<li><a href="hotels.html">🏨 Отели</a></li>
-<li><a href="cars.html">🚗 Аренда авто</a></li>
-<li><a href="vip-lounge.html">👑 VIP-Залы</a></li> 
-<li><a href="transfers.html">🚕 Трансферы</a></li>
-<li><a href="trains-buses.html">🚌 Автобусы</a></li>
-</ul>
-<button aria-label="Меню" class="mobile-menu-button" id="mobile-menu-button">
-<i class="fas fa-bars"></i>
-</button>
-</div>
-</nav>
-<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-<nav class="mobile-menu" id="mobile-menu">
-<button aria-label="Закрыть" class="mobile-menu-close" id="mobile-menu-close">×</button>
-<ul class="mobile-menu-links">
-<li><a href="index.html">Главная</a></li>
-<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-<li><a href="hotels.html">🏨 Отели</a></li>
-<li><a href="cars.html">🚗 Аренда авто</a></li>
-<li><a href="vip-lounge.html">👑 VIP-Залы</a></li> 
-<li><a href="transfers.html">🚕 Трансферы</a></li>
-<li><a href="trains-buses.html">🚌 Автобусы</a></li>
-<li><a href="about.html">ℹ️ О нас</a></li>
-<li><a href="help.html">❓ Помощь</a></li>
-<li><a href="privacy.html">🔒 Конфиденциальность</a></li>
-<li><a class="active" href="terms.html">⚖️ Условия</a></li>
-</ul>
-</nav>
+  <!-- CONTENT -->
+  <section class="content-section">
+    <div class="content-card">
+      
+      <div class="update-date">
+        <i class="fas fa-gavel"></i> Дата вступления в силу: 31 декабря 2025 г.
+      </div>
 
-<main>
-    
-<section class="terms-section">
-<div class="container">
-<div class="terms-card">
-    
-    <h1>Условия использования сервиса Airflow Travel</h1>
-    <p>Дата вступления в силу: 12 декабря 2025 г.</p>
-    
-    <p>Настоящие Условия использования (далее — «Условия») регулируют использование Вами веб-сайта Airflow Travel (далее — «Сервис»). Используя Сервис, Вы соглашаетесь с данными Условиями.</p>
+      <p>Настоящие Условия использования (далее — «Условия») регулируют ваше взаимодействие с сервисом поиска авиабилетов <strong>Airflow</strong> (search.airflowtravel.net).</p>
 
-    <h2>1. Общие положения и роль Сервиса</h2>
-    <p>Airflow Travel выступает в качестве информационно-поискового агрегатора. Наша основная функция — предоставление Вам возможности сравнить предложения авиабилетов, отелей, аренды авто и других туристических услуг от наших партнеров (третьих лиц).</p>
-    <ul>
-        <li>Airflow Travel не является продавцом туристических услуг.</li>
-        <li>Мы не несем ответственности за процесс бронирования, оплату, отмену, качество услуг или возврат средств.</li>
-        <li>Все финансовые и юридические обязательства возникают между Вами и **Партнером** (авиакомпанией, отелем, агентством и т.д.), на сайт которого Вы переходите для совершения покупки.</li>
-    </ul>
-    
-    <h2>2. Ограничение ответственности</h2>
-    <p>Информация, представленная на Сайте (включая цены, наличие, расписания), предоставляется «как есть». Мы прилагаем все усилия для обеспечения точности, однако не гарантируем ее абсолютную безошибочность, поскольку данные поступают от третьих сторон в реальном времени.</p>
-    <p>Airflow Travel не несет ответственности за любой ущерб, причиненный в результате использования или невозможности использования нашего Сервиса или в результате Вашего взаимодействия с сайтами наших Партнеров.</p>
+      <p><strong>Используя наш сайт, вы полностью соглашаетесь с настоящими Условиями.</strong></p>
 
-    <h2>3. Права интеллектуальной собственности</h2>
-    <p>Все содержимое Сервиса, включая тексты, графику, логотипы, дизайн и программный код (за исключением контента, предоставленного Партнерами), является собственностью Airflow Travel и защищено законом.</p>
-    
-    <h2>4. Изменения Условий</h2>
-    <p>Мы оставляем за собой право вносить изменения в настоящие Условия в любое время. Продолжая пользоваться Сервисом после публикации изменений, Вы принимаете обновленные Условия.</p>
+      <h2>1. Что такое Airflow и как мы работаем</h2>
 
-    <h2>5. Контакты</h2>
-    <p>По вопросам, связанным с настоящими Условиями, пожалуйста, обращайтесь по электронной почте:</p>
-    
-    <p style="font-weight: 700;">
-        <i class="fas fa-envelope" style="color: var(--color-accent); margin-right: 8px;"></i> info@airflowtravel.net
-    </p>
+      <p><strong>Airflow</strong> — это <strong>агрегатор поиска авиабилетов</strong>, а не продавец билетов.</p>
 
-    <p style="margin-top: 40px; text-align: right; font-style: italic;">Данный документ является публичной офертой и подлежит обязательному прочтению.</p>
-</div>
-</div>
-</section>
-
-</main>
-
-<footer class="footer">
-<div class="footer-container">
-<div class="footer-content">
-    
-    <div class="footer-section">
-        <h3>Наши Продукты</h3>
-        <ul>
-            <li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-            <li><a href="hotels.html">🏨 Отели</a></li>
-            <li><a href="cars.html">🚗 Аренда авто</a></li>
-            <li><a href="vip-lounge.html">👑 VIP-Залы</a></li> 
-            <li><a href="transfers.html">🚕 Трансферы</a></li>
-            <li><a href="trains-buses.html">🚌 Автобусы</a></li>
+      <div class="highlight-box">
+        <strong>Наша роль:</strong>
+        <ul style="margin: 10px 0 0 20px;">
+          <li>Мы помогаем <strong>найти</strong> лучшие предложения</li>
+          <li>Мы <strong>сравниваем</strong> цены среди 728 авиакомпаний</li>
+          <li>Мы <strong>перенаправляем</strong> вас на сайт продавца (Aviasales, авиакомпания, агентство)</li>
         </ul>
-    </div>
+        <p style="margin-top: 15px;"><strong>Мы НЕ:</strong> не продаём билеты, не обрабатываем платежи, не выписываем маршрутные квитанции.</p>
+      </div>
 
-    <div class="footer-section">
-        <h3>Информация</h3>
+      <p>Фактическая покупка билета происходит на сайте:</p>
+      <ul>
+        <li><strong>Aviasales</strong> (наш основной партнёр)</li>
+        <li><strong>Авиакомпании</strong> (напрямую)</li>
+        <li><strong>Туристические агентства</strong> (партнёры Aviasales)</li>
+      </ul>
+
+      <h2>2. Как работает поиск</h2>
+
+      <p><strong>Механизм работы:</strong></p>
+      <ol style="margin: 15px 0 15px 30px;">
+        <li>Вы вводите <strong>поисковый запрос</strong> (маршрут, даты)</li>
+        <li>Мы отправляем запрос в систему <strong>Aviasales/Travelpayouts</strong></li>
+        <li>Aviasales сравнивает цены у <strong>728 авиакомпаний</strong></li>
+        <li>Мы показываем вам <strong>результаты в реальном времени</strong></li>
+        <li>При клике на результат вы переходите на <strong>сайт продавца</strong></li>
+        <li>Там вы завершаете <strong>бронирование и оплату</strong></li>
+      </ol>
+
+      <h2>3. Цены и актуальность данных</h2>
+
+      <div class="warning-box">
+        <strong>⚠️ Важно понимать:</strong> Цены на авиабилеты постоянно меняются!
+      </div>
+
+      <p><strong>Почему цены могут отличаться:</strong></p>
+      <ul>
+        <li><strong>Время</strong> - между поиском и бронированием проходят минуты/часы</li>
+        <li><strong>Наличие мест</strong> - дешёвые билеты заканчиваются первыми</li>
+        <li><strong>Динамическое ценообразование</strong> - авиакомпании меняют цены по спросу</li>
+        <li><strong>Курсы валют</strong> - если билет в иностранной валюте</li>
+        <li><strong>Сезонность</strong> - праздники, каникулы</li>
+      </ul>
+
+      <p><strong>Мы показываем цены «как есть»</strong> на момент поиска и не гарантируем их сохранение при бронировании.</p>
+
+      <h2>4. Ограничение ответственности</h2>
+
+      <div class="warning-box">
+        <strong>⚠️ Важное уведомление:</strong> Airflow является только поисковым агрегатором и не несёт ответственности за действия третьих лиц.
+      </div>
+
+      <p><strong>Мы НЕ несём ответственность за:</strong></p>
+      <ul>
+        <li><strong>Точность цен</strong> - данные приходят от партнёров</li>
+        <li><strong>Наличие мест</strong> - информация в реальном времени</li>
+        <li><strong>Качество обслуживания</strong> - это зона ответственности авиакомпании</li>
+        <li><strong>Процесс бронирования</strong> - происходит на сайте партнёра</li>
+        <li><strong>Оплату и возвраты</strong> - регулируется партнёром</li>
+        <li><strong>Задержки и отмены рейсов</strong> - ответственность авиакомпании</li>
+        <li><strong>Проблемы с багажом</strong> - обращайтесь к перевозчику</li>
+        <li><strong>Визовые требования</strong> - проверяйте самостоятельно</li>
+      </ul>
+
+      <p><strong>Все споры решаются с продавцом билета</strong> (авиакомпанией, агентством), а не с Airflow.</p>
+
+      <h2>5. Партнёрские отношения и комиссии</h2>
+
+      <p>Airflow работает по партнёрской программе <strong>Travelpayouts/Aviasales</strong>.</p>
+
+      <p><strong>Как мы зарабатываем:</strong></p>
+      <ul>
+        <li>При покупке билета через нашу ссылку мы получаем <strong>небольшую комиссию</strong> от партнёра</li>
+        <li>Это <strong>не влияет на вашу цену</strong> - вы платите столько же, сколько на сайте авиакомпании</li>
+        <li>Комиссия выплачивается <strong>продавцом</strong>, не вами</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>Для вас поиск полностью бесплатный!</strong> Никаких скрытых платежей или дополнительных сборов с нашей стороны.
+      </div>
+
+      <h2>6. Использование сайта</h2>
+
+      <p><strong>Вы соглашаетесь:</strong></p>
+      <ul>
+        <li>Использовать сайт <strong>законно</strong> и в соответствии с Условиями</li>
+        <li>Не пытаться <strong>взломать</strong> или нарушить работу сайта</li>
+        <li>Не использовать <strong>автоматизированные системы</strong> (ботов) без разрешения</li>
+        <li>Не <strong>копировать контент</strong> сайта без разрешения</li>
+        <li>Предоставлять <strong>точную информацию</strong> при поиске</li>
+      </ul>
+
+      <h2>7. Дополнительные функции сайта</h2>
+
+      <p>Помимо поиска билетов, наш сайт показывает:</p>
+
+      <p><strong>7.1. Реальные курсы валют:</strong></p>
+      <ul>
+        <li>USD, EUR, TRY → RUB</li>
+        <li>Данные через бесплатное API (ExchangeRate-API)</li>
+        <li>Обновление каждые 5 минут</li>
+      </ul>
+
+      <p><strong>7.2. Погода в популярных городах:</strong></p>
+      <ul>
+        <li>Стамбул, Дубай, Париж, Барселона</li>
+        <li>Данные через бесплатное API (Open-Meteo)</li>
+        <li>Актуальная температура</li>
+      </ul>
+
+      <p><strong>7.3. Динамический счётчик поисков:</strong></p>
+      <ul>
+        <li>Показывает активность на сайте</li>
+        <li>Обновляется автоматически</li>
+        <li>Не является обязательством</li>
+      </ul>
+
+      <h2>8. Интеллектуальная собственность</h2>
+
+      <p>Все материалы сайта (дизайн, тексты, код, графика) защищены авторским правом.</p>
+
+      <p><strong>Запрещено:</strong></p>
+      <ul>
+        <li>Копировать контент сайта</li>
+        <li>Использовать логотип и бренд Airflow</li>
+        <li>Создавать похожие сервисы с нашим дизайном</li>
+      </ul>
+
+      <p><strong>Контент партнёров</strong> (результаты поиска, логотипы авиакомпаний) принадлежит соответствующим правообладателям.</p>
+
+      <h2>9. Ссылки на сторонние сайты</h2>
+
+      <p>Наш сайт содержит ссылки на:</p>
+      <ul>
+        <li><strong>Aviasales/Travelpayouts</strong></li>
+        <li><strong>Сайты авиакомпаний</strong></li>
+        <li><strong>Туристические агентства</strong></li>
+        <li><strong>Другие услуги Airflow</strong> (отели, трансферы)</li>
+      </ul>
+
+      <p><strong>Мы не контролируем</strong> содержимое и политики этих сайтов. Используйте их на свой риск.</p>
+
+      <h2>10. Изменения в Условиях</h2>
+
+      <p>Мы оставляем за собой право изменять настоящие Условия в любое время.</p>
+
+      <p><strong>При существенных изменениях:</strong></p>
+      <ul>
+        <li>Обновлённая дата будет указана вверху документа</li>
+        <li>Продолжая использовать сайт, вы принимаете новые Условия</li>
+      </ul>
+
+      <h2>11. Применимое право</h2>
+
+      <p>Настоящие Условия регулируются законодательством Российской Федерации.</p>
+
+      <p>Все споры решаются путём переговоров, а при невозможности — в судебном порядке по месту регистрации Airflow.</p>
+
+      <h2>12. Контакты</h2>
+
+      <p>По всем вопросам, связанным с Условиями использования:</p>
+      
+      <div class="contact-box">
+        <p style="margin-bottom: 5px; color: #475569; font-size: 14px;">Email для связи:</p>
+        <a href="mailto:info@airflowtravel.net">info@airflowtravel.net</a>
+        <p style="margin-top: 15px; color: #64748b; font-size: 14px;">
+          Мы ответим в течение 48 часов
+        </p>
+      </div>
+
+      <h2>13. Заключительные положения</h2>
+
+      <p>Используя search.airflowtravel.net, вы подтверждаете, что:</p>
+      <ul>
+        <li>Прочитали и поняли настоящие Условия</li>
+        <li>Соглашаетесь соблюдать их</li>
+        <li>Понимаете роль Airflow как агрегатора</li>
+        <li>Осознаёте, что покупка происходит у третьих лиц</li>
+      </ul>
+
+      <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #e2e8f0; text-align: center; color: #64748b; font-style: italic;">
+        Начиная использовать search.airflowtravel.net, вы автоматически принимаете настоящие Условия использования
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Airflow Travel</h3>
+        <p>Поиск авиабилетов по лучшим ценам среди 728 авиакомпаний</p>
+      </div>
+      <div class="footer-section">
+        <h3>Полезное</h3>
         <ul>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="help.html">Помощь (FAQ)</a></li>
-            <li style="font-weight: 700;"><a href="terms.html" style="color: white;">Условия использования</a></li>
-            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          <li><a href="https://search.airflowtravel.net">Поиск билетов</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
         </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Услуги Airflow</h3>
+        <ul>
+          <li><a href="https://airflowtravel.net/hotels.html">Отели</a></li>
+          <li><a href="https://airflowtravel.net/cars.html">Аренда авто</a></li>
+          <li><a href="https://airflowtravel.net/transfers.html">Трансферы</a></li>
+        </ul>
+      </div>
     </div>
-
-    <div class="footer-section">
-        <h3>Контакты</h3>
-        <div class="footer-contacts" style="background: none; padding: 0; margin: 0;">
-            <a href="mailto:info@airflowtravel.net" style="color: white;">
-                <i class="fas fa-envelope"></i> info@airflowtravel.net
-            </a>
-            <p style="margin-top: 5px; font-size: 0.9rem; color: #64748b;">(Общие вопросы)</p>
-            <a href="https://coffeespecialty.ru" style="color: #f59e0b; text-decoration: none; display: flex; align-items: center; gap: 10px; margin-top: 15px;">
-                <i class="fas fa-mug-hot" style="color: #f59e0b;"></i> 
-                <p style="margin: 0; color: #94a3b8;">Specialty Coffee</p>
-            </a>
-        </div>
+    <div class="footer-bottom">
+      © 2025 Airflow Travel. Все права защищены.
     </div>
+  </footer>
 
-</div>
-<div class="footer-bottom">
-<p>&copy; 2025 Airflow Travel. Все права защищены.</p>
-</div>
-</div>
-</footer>
-
-<script>
-    // Код для навигации (стандартный, рабочий скрипт)
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuButton = document.getElementById('mobile-menu-button');
-    const menuOverlay = document.getElementById('mobile-menu-overlay');
-    const menuClose = document.getElementById('mobile-menu-close');
-    let isMenuOpen = false;
-
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-        if (isMenuOpen) {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            menuOverlay.style.display = 'block';
-            document.body.style.overflow = 'hidden'; 
-        } else {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = ''; 
-            setTimeout(() => {
-                if (!isMenuOpen) {
-                    menuOverlay.style.display = 'none';
-                }
-            }, 300);
-        }
-    }
-
-    function closeMenu() {
-        isMenuOpen = false;
-        mobileMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = ''; 
-        setTimeout(() => {
-            menuOverlay.style.display = 'none';
-        }, 300);
-    }
-
-    if (menuButton) menuButton.addEventListener('click', toggleMenu);
-    if (menuClose) menuClose.addEventListener('click', closeMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-    
-    // Закрытие мобильного меню при клике на ссылку
-    document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-    });
-</script>
 </body>
 </html>
