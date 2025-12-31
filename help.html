@@ -238,22 +238,23 @@
     }
 
     .faq-answer.active {
-      padding: 20px 25px;
+      padding: 20px 25px 25px;
     }
 
     .faq-answer p {
       margin-bottom: 12px;
       color: #475569;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .faq-answer ul {
-      margin: 15px 0 15px 20px;
+      margin: 15px 0 18px 20px;
       color: #475569;
     }
 
     .faq-answer li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      line-height: 1.7;
     }
 
     .faq-answer a {
@@ -740,7 +741,7 @@
         } else {
           question.classList.add('active');
           answer.classList.add('active');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
+          answer.style.maxHeight = (answer.scrollHeight + 10) + 'px';
         }
       });
     });
