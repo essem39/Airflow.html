@@ -1,277 +1,750 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="ie=edge" http-equiv="X-X-Compatible"/>
-<meta content="Помощь и часто задаваемые вопросы (FAQ) по бронированию авиабилетов, отелей, трансферов и других услуг на Airflow Travel."
-name="description"/>
-
-<link href="bus_icon-icons.com_76529.ico" rel="icon" type="image/x-icon"/>
-
-<title>Помощь и FAQ | Airflow Travel</title>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet"/>
-<style>
-    /* БАЗОВЫЕ СТИЛИ (ОБЩИЕ) - ОТ НАШЕГО ШАБЛОНА */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO META TAGS -->
+  <title>FAQ - Часто задаваемые вопросы | Airflow Поиск Авиабилетов</title>
+  <meta name="description" content="Ответы на частые вопросы о поиске и бронировании авиабилетов через Airflow. Как работает Aviasales, безопасность платежей, возврат билетов.">
+  <meta name="keywords" content="поиск авиабилетов, aviasales, дешевые билеты, бронирование билетов, как купить билет, FAQ авиабилеты, airflow travel">
+  <meta name="robots" content="index, follow">
+  
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="FAQ - Поиск Авиабилетов | Airflow">
+  <meta property="og:description" content="Ответы на частые вопросы о поиске авиабилетов">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://search.airflowtravel.net/faq.html">
+  
+  <link rel="icon" href="bus_icon-icons.com_76529.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- SCHEMA.ORG STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Как работает поиск авиабилетов на Airflow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Airflow использует систему Aviasales для поиска авиабилетов среди 728 авиакомпаний. Мы сравниваем цены в реальном времени и находим лучшие предложения для вас."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Безопасно ли бронировать билеты через Airflow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, абсолютно безопасно. Мы используем Aviasales - проверенную систему бронирования. Все платежи защищены, данные шифруются. Билеты приходят напрямую от авиакомпании."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <style>
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100%;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f8fafc; 
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
     }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    /* ЦВЕТОВАЯ СХЕМА (Нейтральный синий - Основная тема) */
-    :root {
-        --color-primary: #1e40af; 
-        --color-accent: #2563eb;  
-        --color-text: #1e293b;
-        --color-light: #f8fafc;
-        --color-dark-bg: #1e293b; 
-    }
-
-    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - СТАНДАРТ */
+    /* НАВИГАЦИЯ */
     .main-navigation {
-        background: var(--color-dark-bg);
-        padding: 0;
-        position: sticky;
-        top: 0;
-        z-index: 1020;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        height: 55px;
+      background: #1e293b;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      height: 55px;
     }
 
     .nav-container {
-        max-width: 1240px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 100px;
-        height: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 100px;
+      height: 100%;
     }
 
     .nav-logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding: 5px 0;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
     }
-    .nav-logo img {
-        height: 45px; width: auto; display: block;
+
+    .nav-logo-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%);
+      border-radius: 8px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon::before {
+      content: "✈";
+      color: white;
+      font-size: 16px;
     }
 
     .nav-menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 25px;
+      display: flex;
+      list-style: none;
+      gap: 25px;
     }
 
     .nav-menu a {
-        color: #94a3b8;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
-        padding: 18px 0;
-        transition: color 0.3s ease;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 18px 0;
+      transition: color 0.3s ease;
     }
 
-    .nav-menu a:hover, .nav-menu a.active {
-        color: white;
-        text-decoration: none;
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: white;
     }
 
-    /* Мобильное меню - СТАНДАРТ */
-    .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
-    .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
-    .mobile-menu-overlay.active { opacity: 1; }
-    .mobile-menu { display: none; position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: var(--color-dark-bg); z-index: 1001; padding: 60px 15px 15px; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; overflow-y: auto; }
-    .mobile-menu.active { right: 0; }
-    .mobile-menu-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 5px; }
-    .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
-    .mobile-menu-links a { color: #94a3b8; text-decoration: none; font-size: 16px; display: block; padding: 12px 15px; border-radius: 6px; transition: all 0.3s ease; }
-    .mobile-menu-links a:hover, .mobile-menu-links a.active { background: #334155; color: white; text-decoration: none; }
-
-    @media (max-width: 1175px) {
-        .nav-container { padding: 0 16px; }
-        .nav-menu { display: none; }
-        .mobile-menu-button { display: block; }
-        .mobile-menu-overlay, .mobile-menu { display: block; }
-    }
-    @media (max-width: 480px) {
-        .nav-container { padding: 0 12px; }
+    /* HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ HELP */
-    main { flex-grow: 1; padding: 40px 0; }
-    h1 { text-align: center; color: var(--color-primary); margin-bottom: 40px; font-size: 2.2rem; }
-    
-    .faq-container { max-width: 900px; margin: 0 auto; }
-    .faq-item { background: white; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-    .faq-question { padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--color-text); font-size: 1.05rem; transition: background-color 0.3s; }
-    .faq-question:hover { background-color: #f1f5f9; }
-    .faq-question.active { background-color: #dbeafe; color: var(--color-primary); border-radius: 8px 8px 0 0; }
-    .faq-icon { transition: transform 0.3s ease; }
-    .faq-question.active .faq-icon { transform: rotate(180deg); }
-    .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.3s ease; background: #f8fafc; border-top: 1px solid #e2e8f0; font-size: 0.95rem; color: #4b5563; }
-    .faq-answer.active { padding: 15px 25px 20px; } /* max-height управляется скриптом */
-    
-    /* СТИЛИ ФУТЕРА (4 КОЛОНКИ - Полный SEO-футер) */
-    .footer {
-        background-color: var(--color-dark-bg);
-        color: #94a3b8;
-        padding: 60px 0 20px;
-        font-size: 14px;
+    .page-header h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
 
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+    .page-header p {
+      font-size: 18px;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* BREADCRUMBS */
+    .breadcrumbs {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .breadcrumbs a {
+      color: #163e9c;
+      text-decoration: none;
+    }
+
+    .breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    /* FAQ CONTAINER */
+    .faq-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .faq-section {
+      margin-bottom: 50px;
+    }
+
+    .faq-section-title {
+      font-size: 28px;
+      color: #163e9c;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #e2e8f0;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .faq-question {
+      padding: 20px 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 17px;
+      color: #1e293b;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #f8fafc;
+    }
+
+    .faq-question.active {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      color: #163e9c;
+    }
+
+    .faq-icon {
+      font-size: 20px;
+      color: #163e9c;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .faq-answer.active {
+      padding: 20px 25px;
+    }
+
+    .faq-answer p {
+      margin-bottom: 12px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .faq-answer ul {
+      margin: 15px 0 15px 20px;
+      color: #475569;
+    }
+
+    .faq-answer li {
+      margin-bottom: 8px;
+    }
+
+    .faq-answer a {
+      color: #163e9c;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+    .faq-highlight {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid #163e9c;
+    }
+
+    /* CTA БЛОК */
+    .cta-block {
+      background: linear-gradient(135deg, #163e9c 0%, #0c9c71 100%);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      margin: 60px 0 0;
+    }
+
+    .cta-block h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .cta-block p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #163e9c;
+      padding: 15px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e293b;
+      color: #94a3b8;
+      padding: 50px 20px 20px;
     }
 
     .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-        gap: 20px; 
-    }
-    
-    .footer-section {
-        width: calc(25% - 15px); 
-        min-width: 200px; 
-        margin-bottom: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 30px;
     }
 
     .footer-section h3 {
-        margin-bottom: 20px;
-        color: white;
-        font-size: 1.1rem;
-        border-bottom: 2px solid #334155;
-        padding-bottom: 10px;
+      color: white;
+      margin-bottom: 15px;
+      font-size: 18px;
     }
 
     .footer-section ul {
-        list-style: none;
-        padding-left: 0;
+      list-style: none;
     }
 
     .footer-section li {
-        margin-bottom: 8px;
+      margin-bottom: 8px;
     }
 
     .footer-section a {
-        color: #94a3b8;
-        transition: 0.3s;
-        font-size: 0.9rem;
-        text-decoration: none;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
     }
 
     .footer-section a:hover {
-        color: white;
-        text-decoration: underline;
+      color: white;
     }
-    
-    .footer-contacts a {
-        color: white !important;
-        font-size: 1rem !important;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #334155;
+      font-size: 14px;
     }
-    
-    .footer-section i {
-        color: #10b981; /* Зеленый для контактов */
-        margin-right: 8px;
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .page-header h1 {
+        font-size: 32px;
+      }
+
+      .page-header p {
+        font-size: 16px;
+      }
+
+      .faq-section-title {
+        font-size: 24px;
+      }
+
+      .faq-question {
+        font-size: 15px;
+        padding: 15px 20px;
+      }
+
+      .faq-answer.active {
+        padding: 15px 20px;
+      }
+
+      .cta-block h2 {
+        font-size: 26px;
+      }
+
+      .cta-block p {
+        font-size: 16px;
+      }
     }
-    .footer-section .partner-icon {
-        color: #f59e0b; /* Оранжевый для Specialty Coffee */
-    }
-    
-    /* АДАПТАЦИЯ ФУТЕРА */
-    @media (max-width: 992px) {
-        .footer-content { justify-content: flex-start; }
-        .footer-section {
-            width: calc(50% - 10px); 
-            min-width: unset;
-        }
-    }
-    @media (max-width: 576px) {
-        .footer-content { flex-direction: column; gap: 0; }
-        .footer-section { width: 100%; }
-        .footer-section h3 { padding-top: 10px; }
-    }
-</style>
+  </style>
 </head>
 <body>
 
-<nav class="main-navigation">
-<div class="nav-container">
+  <!-- НАВИГАЦИЯ -->
+  <nav class="main-navigation">
+    <div class="nav-container">
+      <a href="https://search.airflowtravel.net" class="nav-logo">
+        <div class="nav-logo-icon"></div>
+        Airflow
+      </a>
+      <ul class="nav-menu">
+        <li><a href="https://airflowtravel.net">Главная</a></li>
+        <li><a href="https://search.airflowtravel.net" class="active">Авиабилеты</a></li>
+        <li><a href="https://airflowtravel.net/hotels.html">Отели</a></li>
+        <li><a href="https://airflowtravel.net/cars.html">Аренда авто</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <a class="nav-logo" href="index.html">
-        <img src="AirflowTravel.png" alt="Airflow Travel Logo">
-    </a>
+  <!-- HEADER -->
+  <header class="page-header">
+    <h1>Часто задаваемые вопросы</h1>
+    <p>Ответы на популярные вопросы о поиске и бронировании авиабилетов</p>
+  </header>
 
-<ul class="nav-menu">
-<li><a href="index.html">Главная</a></li> 
-<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-<li><a href="hotels.html">🏨 Отели</a></li>
-<li><a href="cars.html">🚗 Аренда авто</a></li>
-<li><a href="vip-lounge.html">👑 VIP-Залы</a></li> 
-<li><a href="transfers.html">🚕 Трансферы</a></li>
-<li><a href="trains-buses.html">🚌 Автобусы</a></li>
-</ul>
-<button aria-label="Меню" class="mobile-menu-button" id="mobile-menu-button">
-<i class="fas fa-bars"></i>
-</button>
-</div>
-</nav>
-<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-<nav class="mobile-menu" id="mobile-menu">
-<button aria-label="Закрыть" class="mobile-menu-close" id="mobile-menu-close">×</button>
-<ul class="mobile-menu-links">
-<li><a href="index.html">Главная</a></li>
-<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-<li><a href="hotels.html">🏨 Отели</a></li>
-<li><a href="cars.html">🚗 Аренда авто</a></li>
-<li><a href="vip-lounge.html">👑 VIP-Залы</a></li> 
-<li><a href="transfers.html">🚕 Трансферы</a></li>
-<li><a href="trains-buses.html">🚌 Автобусы</a></li>
-<li><a href="about.html">ℹ️ О нас</a></li>
-<li><a class="active" href="help.html">❓ Помощь</a></li>
-<li><a href="privacy.html">🔒 Конфиденциальность</a></li>
-<li><a href="terms.html">⚖️ Условия</a></li>
-</ul>
-</nav>
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumbs">
+    <a href="https://search.airflowtravel.net">Главная</a> / <span>FAQ</span>
+  </div>
 
-<main>
-<div class="container">
-    <h1>Часто задаваемые вопросы (FAQ)</h1>
-    
-    <div class="faq-container">
-        
-        <div class="faq-item">
-            <div class="faq-question" data-target="faq-1">
-                Как найти самые дешевые авиабилеты?
+  <!-- FAQ CONTENT -->
+  <div class="faq-container">
+
+    <!-- СЕКЦИЯ 1: О ПОИСКЕ -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">О поиске авиабилетов</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Как работает поиск авиабилетов на Airflow?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Airflow использует мощную систему <strong>Aviasales</strong> для поиска авиабилетов. Вот как это работает:</p>
+          <ul>
+            <li>🔍 Мы сравниваем цены среди <strong>728 авиакомпаний</strong></li>
+            <li>⚡ Поиск в реальном времени - актуальные цены всегда</li>
+            <li>💰 Находим самые выгодные предложения автоматически</li>
+            <li>🎯 Показываем все варианты - прямые рейсы и с пересадками</li>
+          </ul>
+          <div class="faq-highlight">
+            <strong>Важно:</strong> Мы не продаём билеты напрямую. Мы помогаем найти лучшие цены, а покупка происходит на сайте авиакомпании или агентства.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Почему цены меняются при переходе на сайт?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Цены на авиабилеты обновляются в реальном времени. Вот основные причины изменений:</p>
+          <ul>
+            <li>⏱️ <strong>Время</strong> - между поиском и бронированием могут пройти минуты</li>
+            <li>🎫 <strong>Количество мест</strong> - билеты по низкой цене могут закончиться</li>
+            <li>💱 <strong>Курс валют</strong> - если билет в другой валюте</li>
+            <li>📊 <strong>Динамическое ценообразование</strong> - авиакомпании меняют цены по спросу</li>
+          </ul>
+          <p><strong>Совет:</strong> Если нашли хорошую цену - бронируйте сразу! Откладывание на потом может привести к росту стоимости.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Какая комиссия берёт Airflow?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Поиск полностью бесплатный!</strong></p>
+          <p>Мы зарабатываем на партнёрских комиссиях от авиакомпаний и агентств, но это не влияет на цену для вас:</p>
+          <ul>
+            <li>✅ Вы платите ту же цену, что и на сайте авиакомпании</li>
+            <li>✅ Никаких скрытых платежей</li>
+            <li>✅ Прозрачные условия</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- СЕКЦИЯ 2: БЕЗОПАСНОСТЬ -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Безопасность и надёжность</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Безопасно ли бронировать билеты через Airflow?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Да, абсолютно безопасно!</strong> Вот почему:</p>
+          <ul>
+            <li>🔒 <strong>Aviasales</strong> - проверенная система с многолетней репутацией</li>
+            <li>🛡️ <strong>Защищённые платежи</strong> - SSL-шифрование всех данных</li>
+            <li>✈️ <strong>Прямая покупка</strong> - билеты от авиакомпании, не перекупщики</li>
+            <li>📧 <strong>Подтверждение</strong> - билет приходит на email сразу после оплаты</li>
+            <li>⭐ <strong>Отзывы</strong> - тысячи довольных клиентов</li>
+          </ul>
+          <div class="faq-highlight">
+            Все наши партнёры (авиакомпании и агентства) имеют официальные лицензии и аккредитацию IATA.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Почему меня перенаправляет на другой сайт при бронировании?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Это нормально и безопасно! Вот как работает процесс:</p>
+          <ol>
+            <li>На Airflow вы <strong>ищете</strong> билеты</li>
+            <li>Мы находим лучшие предложения от разных источников</li>
+            <li>Для покупки вы переходите на сайт <strong>авиакомпании или агентства</strong></li>
+            <li>Там вы завершаете бронирование и оплату</li>
+          </ol>
+          <p><strong>Почему так лучше?</strong></p>
+          <ul>
+            <li>✅ Вы покупаете напрямую у официального продавца</li>
+            <li>✅ Быстрее решаются вопросы с билетом</li>
+            <li>✅ Никаких посредников</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- СЕКЦИЯ 3: БРОНИРОВАНИЕ -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Бронирование и оплата</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Как забронировать билет?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Процесс простой и занимает 5-10 минут:</p>
+          <ol>
+            <li>🔍 <strong>Найдите билет</strong> - введите маршрут и даты на <a href="https://search.airflowtravel.net">главной странице</a></li>
+            <li>✅ <strong>Выберите подходящий</strong> - сравните цены и условия</li>
+            <li>👤 <strong>Заполните данные</strong> - имя, фамилия как в паспорте</li>
+            <li>💳 <strong>Оплатите</strong> - банковской картой или другим способом</li>
+            <li>📧 <strong>Получите билет</strong> - на email придёт маршрутная квитанция</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Какие способы оплаты доступны?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Способы оплаты зависят от авиакомпании или агентства, но обычно доступны:</p>
+          <ul>
+            <li>💳 Банковские карты (Visa, Mastercard, МИР)</li>
+            <li>🌐 Электронные кошельки</li>
+            <li>🏦 Банковский перевод</li>
+            <li>📱 Системы быстрых платежей (СБП)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Можно ли вернуть или обменять билет?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Возможность возврата/обмена зависит от <strong>тарифа</strong>, который вы выбрали:</p>
+          <ul>
+            <li>✅ <strong>Возвратные тарифы</strong> - можно вернуть с минимальным штрафом</li>
+            <li>⚠️ <strong>Невозвратные тарифы</strong> - вернуть нельзя, но можно обменять за доплату</li>
+            <li>🎫 <strong>Премиум тарифы</strong> - бесплатный возврат/обмен</li>
+          </ul>
+          <div class="faq-highlight">
+            <strong>Важно:</strong> Всегда проверяйте условия тарифа перед покупкой! Они указаны на странице бронирования.
+          </div>
+          <p>Для возврата обращайтесь напрямую в авиакомпанию или агентство, где купили билет.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- СЕКЦИЯ 4: СОВЕТЫ -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Полезные советы</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Как найти самые дешёвые билеты?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Секреты поиска выгодных авиабилетов:</p>
+          <ul>
+            <li>📅 <strong>Бронируйте заранее</strong> - за 2-3 месяца дешевле</li>
+            <li>🗓️ <strong>Гибкие даты</strong> - вылет в будни обычно дешевле выходных</li>
+            <li>🔄 <strong>Используйте фильтры</strong> - пересадки могут быть значительно дешевле</li>
+            <li>🌍 <strong>Проверяйте соседние аэропорты</strong> - например, Москва имеет 3 аэропорта</li>
+            <li>🔔 <strong>Подписки</strong> - следите за нашими <a href="https://airflowtravel.net">специальными предложениями</a></li>
+            <li>🕐 <strong>Ночные рейсы</strong> - часто дешевле дневных</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Нужна ли виза для перелёта?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Визовые требования зависят от:</p>
+          <ul>
+            <li>🌍 Страны назначения</li>
+            <li>🛂 Вашего гражданства</li>
+            <li>⏱️ Наличия пересадок</li>
+          </ul>
+          <p><strong>Всегда проверяйте визовые требования</strong> на сайте консульства страны назначения или на специализированных порталах.</p>
+          <p>Для пересадок в некоторых странах может потребоваться транзитная виза!</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- СЕКЦИЯ 5: ДРУГИЕ УСЛУГИ -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Другие услуги Airflow</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Какие ещё услуги предлагает Airflow?
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Помимо поиска авиабилетов, мы предлагаем полный спектр услуг для путешественников:</p>
+          <ul>
+            <li>🏨 <a href="https://airflowtravel.net/hotels.html"><strong>Отели</strong></a> - бронирование отелей по всему миру</li>
+            <li>🚗 <a href="https://airflowtravel.net/cars.html"><strong>Аренда авто</strong></a> - прокат автомобилей в любой стране</li>
+            <li>🚕 <a href="https://airflowtravel.net/transfers.html"><strong>Трансферы</strong></a> - комфортный трансфер из аэропорта</li>
+            <li>🚌 <a href="https://airflowtravel.net/trains-buses.html"><strong>Ж/Д и автобусы</strong></a> - билеты на поезда и автобусы</li>
+            <li>🛋️ <a href="https://airflowtravel.net/vip-lounge.html"><strong>VIP-залы</strong></a> - доступ в бизнес-залы аэропортов</li>
+            <li>🛡️ <a href="https://airflowtravel.net/insurance.html"><strong>Страховка</strong></a> - туристические страховки</li>
+            <li>📱 <a href="https://airflowtravel.net/simcard.html"><strong>SIM-карты</strong></a> - мобильная связь за границей</li>
+            <li>🅿️ <a href="https://airflowtravel.net/parking.html"><strong>Паркинг</strong></a> - бронирование парковки в аэропорту</li>
+            <li>🎫 <a href="https://airflowtravel.net/attractions.html"><strong>Билеты в музеи</strong></a> - экскурсии и развлечения</li>
+            <li>💰 <a href="https://airflowtravel.net/flight-compensation.html"><strong>Компенсация</strong></a> - помощь в получении компенсаций за задержки</li>
+          </ul>
+          <p>Всё для вашего комфортного путешествия в одном месте!</p>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- CTA БЛОК -->
+  <section class="cta-block">
+    <h2>Готовы найти свой идеальный рейс?</h2>
+    <p>Сравните цены среди 728 авиакомпаний и найдите лучшее предложение!</p>
+    <a href="https://search.airflowtravel.net" class="cta-button">Искать авиабилеты</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Airflow Travel</h3>
+        <p>Ваш надёжный помощник в поиске авиабилетов и организации путешествий.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Популярные услуги</h3>
+        <ul>
+          <li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
+          <li><a href="https://airflowtravel.net/hotels.html">🏨 Отели</a></li>
+          <li><a href="https://airflowtravel.net/cars.html">🚗 Аренда авто</a></li>
+          <li><a href="https://airflowtravel.net/transfers.html">🚕 Трансферы</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Дополнительно</h3>
+        <ul>
+          <li><a href="https://airflowtravel.net/vip-lounge.html">🛋️ VIP-залы</a></li>
+          <li><a href="https://airflowtravel.net/insurance.html">🛡️ Страховка</a></li>
+          <li><a href="https://airflowtravel.net/simcard.html">📱 SIM-карты</a></li>
+          <li><a href="https://airflowtravel.net/parking.html">🅿️ Паркинг</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Информация</h3>
+        <ul>
+          <li><a href="https://airflowtravel.net/help.html">❓ Помощь</a></li>
+          <li><a href="https://airflowtravel.net/about.html">ℹ️ О нас</a></li>
+          <li><a href="https://airflowtravel.net/privacy.html">🔒 Конфиденциальность</a></li>
+          <li><a href="https://airflowtravel.net/terms.html">⚖️ Условия использования</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Airflow Travel. Все права защищены.
+    </div>
+  </footer>
+
+  <script>
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+
+        // Закрываем все остальные
+        document.querySelectorAll('.faq-question').forEach(q => {
+          if (q !== question) {
+            q.classList.remove('active');
+            q.nextElementSibling.classList.remove('active');
+            q.nextElementSibling.style.maxHeight = null;
+          }
+        });
+
+        // Переключаем текущий
+        if (isActive) {
+          question.classList.remove('active');
+          answer.classList.remove('active');
+          answer.style.maxHeight = null;
+        } else {
+          question.classList.add('active');
+          answer.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
