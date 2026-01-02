@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="ie=edge" http-equiv="X-X-Compatible"/>
-<meta content="Airflow Travel: Бронируйте охраняемый паркинг Park & Fly рядом с аэропортом (Шереметьево, Домодедово, Внуково) с бесплатным трансфером и упаковкой багажа. Актуальные тарифы, правила оплаты и карта расположения." name="description"/>
+<meta content="Airflowpilot: Бронируйте охраняемый паркинг Park & Fly рядом с аэропортом (Шереметьево, Домодедово, Внуково) с бесплатным трансфером и упаковкой багажа. Актуальные тарифы, правила оплаты и карта расположения." name="description"/>
 
 <link href="bus_icon-icons.com_76529.ico" rel="icon" type="image/x-icon"/>
 
-<meta content="Airflow Travel - Охраняемый Паркинг в Аэропортах и Вокзалах" property="og:title"/>
+<meta content="Airflowpilot - Охраняемый Паркинг в Аэропортах и Вокзалах" property="og:title"/>
 <meta content="Сравнивайте тарифы, бронируйте место на охраняемой парковке Park & Fly онлайн." property="og:description"/>
 <meta content="ru" property="og:locale"/>
 <meta content="website" property="og:type"/>
 
-<title>Паркинг в Аэропортах и Вокзалах — Airflow Travel</title>
+<title>Паркинг в Аэропортах и Вокзалах — Airflowpilot</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
@@ -41,7 +41,7 @@
         padding: 0 20px;
     }
     
-    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) - КОПИЯ ШАБЛОНА */
+    /* СТИЛИ ВЕРХНЕГО МЕНЮ (НАВИГАЦИИ) */
     .main-navigation {
         background: #1e293b;
         padding: 0;
@@ -65,11 +65,8 @@
     .nav-logo {
         display: flex;
         align-items: center;
-        gap: 12px;
-        color: white;
-        font-size: 18px;
-        font-weight: 600;
         text-decoration: none;
+        padding: 5px 0;
     }
     
     .nav-menu {
@@ -94,11 +91,11 @@
         text-decoration: none;
     }
 
-    /* Мобильное меню (КОПИЯ ШАБЛОНА) */
+    /* Мобильное меню */
     .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
     .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
     .mobile-menu-overlay.active { opacity: 1; }
-    .mobile-menu { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: #1e293b; z-index: 1001; padding: 60px 15px 15px; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; overflow-y: auto; }
+    .mobile-menu { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: #1e293b; z-index: 1001; padding: 60px 15px 15px; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3); transition: right 0.3s ease; overflow-y: auto; display: none; }
     .mobile-menu.active { right: 0; }
     .mobile-menu-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 5px; }
     .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
@@ -109,94 +106,13 @@
         .nav-container { padding: 0 16px; }
         .nav-menu { display: none; }
         .mobile-menu-button { display: block; }
+        .mobile-menu-overlay, .mobile-menu { display: block; }
     }
     @media (max-width: 480px) {
         .nav-container { padding: 0 12px; }
     }
 
-    /* СТИЛИ ФУТЕРА (КОПИЯ ШАБЛОНА) */
-    .footer {
-        background: #1e293b;
-        color: white;
-        padding: 40px 0 20px;
-        font-size: 0.95rem;
-        margin-top: 50px;
-    }
-
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding-bottom: 30px;
-    }
-
-    .footer-section {
-        flex: 1;
-        min-width: 200px;
-        margin-right: 20px;
-        margin-bottom: 20px;
-    }
-
-    .footer-section h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: #94a3b8;
-        border-bottom: 1px solid #334155;
-        padding-bottom: 5px;
-    }
-
-    .footer-section ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-section a {
-        color: #94a3b8;
-        text-decoration: none;
-        display: block;
-        padding: 4px 0;
-        transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-        color: white;
-    }
-    
-    .footer-contacts a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 5px;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid #334155;
-        padding-top: 20px;
-        text-align: center;
-        font-size: 0.85rem;
-        color: #64748b;
-    }
-    
-    @media (max-width: 768px) {
-        .footer-content {
-            flex-direction: column;
-            gap: 10px;
-        }
-        .footer-section {
-            margin-right: 0;
-        }
-    }
-    /* КОНЕЦ СТИЛЕЙ ФУТЕРА */
-
-
-    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) - КОПИЯ ШАБЛОНА */
+    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) */
     .section-title {
         text-align: center;
         font-size: 2.5rem;
@@ -206,7 +122,7 @@
     }
     
     .hero-section {
-        background: linear-gradient(135deg, #1d4ed8 0%, #f59e0b 100%);
+        background: linear-gradient(135deg, #1e4ed8 0%, #0891b2 100%);
         color: white;
         padding: 80px 20px 40px; 
         text-align: center;
@@ -298,7 +214,7 @@
         margin: 0 auto;
     }
     
-    /* feature-card - КАРТОЧКА ПРЕИМУЩЕСТВА (КОПИЯ ШАБЛОНА) */
+    /* feature-card - КАРТОЧКА ПРЕИМУЩЕСТВА */
     .feature-card {
         padding: 30px 20px;
         border-radius: 10px;
@@ -337,7 +253,7 @@
         text-align: center;
     }
     
-    /* tip-card - СТИЛИ ДЛЯ СПОЙЛЕРА (АККОРДЕОНА) (КОПИЯ ШАБЛОНА) */
+    /* tip-card - СТИЛИ ДЛЯ СПОЙЛЕРА (АККОРДЕОНА) */
     .tip-card {
         padding: 30px 20px;
         border-radius: 10px;
@@ -376,6 +292,12 @@
     .tip-card[open] summary:after {
         content: "\25BC";
         top: 8px;
+    }
+    
+    .tip-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        text-align: center;
     }
     
     .tip-card h4 {
@@ -443,9 +365,9 @@
 
 <nav class="main-navigation">
 <div class="nav-container">
-<a class="nav-logo" href="index.html">
-              🅿️ Airflow
-            </a>
+<a class="nav-logo" href="index.html" style="padding: 5px 0;">
+  <img src="https://airflowtravel.net/airflowpilot-logo.png" alt="Airflowpilot Logo" style="height: 70px; width: auto; display: block;">
+</a>
 <ul class="nav-menu">
 <li><a href="index.html">Главная</a></li> 
 <li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
@@ -475,7 +397,7 @@
 </nav>
 
 <main>
-    <section class="hero-section" style="background: linear-gradient(135deg, #1d4ed8 0%, #f59e0b 100%);">
+    <section class="hero-section">
         <div class="container">
             <div class="hero-content">
                 <h1>Охраняемый Паркинг в Аэропортах и Вокзалах</h1>
@@ -517,11 +439,11 @@
                 </summary>
                 <div class="tip-content">
                     <ul>
-                        <li>**Базовый тариф:** 500 рублей/сутки.</li>
-                        <li>**Клубная скидка:** Скидка 10% по Клубной карте.</li>
-                        <li>**Льготные условия:** Скидка 20% при парковке от 30 суток и для льготных категорий граждан.</li>
-                        <li>**Порядок оплаты:** Предоплата картой в день заезда или онлайн в личном кабинете.</li>
-                        <li>**Расчетный час:** Отсчет суток с момента въезда. В день выезда 4 часа бесплатно.</li>
+                        <li><strong>Базовый тариф:</strong> 500 рублей/сутки.</li>
+                        <li><strong>Клубная скидка:</strong> Скидка 10% по Клубной карте.</li>
+                        <li><strong>Льготные условия:</strong> Скидка 20% при парковке от 30 суток и для льготных категорий граждан.</li>
+                        <li><strong>Порядок оплаты:</strong> Предоплата картой в день заезда или онлайн в личном кабинете.</li>
+                        <li><strong>Расчетный час:</strong> Отсчет суток с момента въезда. В день выезда 4 часа бесплатно.</li>
                     </ul>
                 </div>
             </details>
@@ -535,11 +457,11 @@
                 </summary>
                 <div class="tip-content">
                     <ul>
-                        <li>**Бронирование:** Забронируйте парковочное место через форму онлайн-бронирования.</li>
-                        <li>**Прибытие:** Скачайте схему проезда и прибудьте на территорию парковки.</li>
-                        <li>**Оплата:** Оплатите бронирование удобным способом — картой или по QR-коду.</li>
-                        <li>**Вылет:** Ваш багаж будет бесплатно упакован, и Вас доставят до дверей терминала.</li>
-                        <li>**Возвращение:** По прилету Вас встретят в аэропорту и с комфортом привезут обратно на парковку.</li>
+                        <li><strong>Бронирование:</strong> Забронируйте парковочное место через форму онлайн-бронирования.</li>
+                        <li><strong>Прибытие:</strong> Скачайте схему проезда и прибудьте на территорию парковки.</li>
+                        <li><strong>Оплата:</strong> Оплатите бронирование удобным способом — картой или по QR-коду.</li>
+                        <li><strong>Вылет:</strong> Ваш багаж будет бесплатно упакован, и Вас доставят до дверей терминала.</li>
+                        <li><strong>Возвращение:</strong> По прилету Вас встретят в аэропорту и с комфортом привезут обратно на парковку.</li>
                     </ul>
                 </div>
             </details>
@@ -608,81 +530,68 @@
                 </div>
             </div>
             
-            <h2 class="section-title" style="margin-top: 50px;">Юридическая информация</h2>
-            <div class="info-box" style="margin-top: 20px;">
-                <p style="text-align: center; font-style: italic; color: #6e5229;">Контакты и реквизиты компании Park&Fly:</p>
-                <div style="text-align: left; max-width: 450px; margin: 15px auto 0 auto; line-height: 1.8; font-size: 0.95rem;">
-                    <strong>ООО «Парк Флай»</strong><br>
-                    ОГРН: 1177746243938<br>
-                    ИНН: 9715295768 / КПП: 771501001<br>
-                    Юридический адрес: 127106, Москва, Нововладыкинский проезд, дом 8, стр 4<br>
-                    
-                    <span style="display: block; margin-top: 15px;">
-                        <i class="fas fa-phone" style="color: #6e5229;"></i> 
-                        <a href="tel:88003333474" style="color: #6e5229; text-decoration: none;">8-800-3333-474</a> (бесплатный по России, круглосуточно)<br>
-                        
-                        <i class="fas fa-phone" style="color: #6e5229;"></i> 
-                        <a href="tel:+74952121113" style="color: #6e5229; text-decoration: none;">+7 (495) 212-11-13</a> (дополнительный)<br>
-                        
-                        <i class="fas fa-envelope" style="color: #6e5229;"></i> 
-                        <a href="mailto:info@parkandfly.ru" style="color: #6e5229; text-decoration: none;">info@parkandfly.ru</a>
-                    </span>
-                </div>
-            </div>
-            
         </div>
     </section>
 
 </main>
 
-
-<footer class="footer">
-<div class="footer-container">
-<div class="footer-content">
-<div class="footer-section">
-<h3>Наши Продукты</h3>
-<ul>
-<li><a href="https://search.airflowtravel.net">✈️ Авиабилеты</a></li>
-<li><a href="hotels.html">🏨 Отели</a></li>
-<li><a href="cars.html">🚗 Аренда авто</a></li>
-<li><a href="transfers.html">🚕 Трансферы</a></li>
-<li><a href="https://tutu.tpo.li/1A2oIVqc?erid=2Vtzqv4DbNZ">🚂 Ж/д билеты</a></li>
-</ul>
-</div>
-
-<div class="footer-section">
-<h3>Информация</h3>
-<ul>
-<li><a href="https://airflowtravel.net/about.html">О нас</a></li>
-<li><a href="https://airflowtravel.net/terms.html">Условия использования</a></li>
-<li><a href="https://airflowtravel.net/privacy.html">Политика конфиденциальности</a></li>
-</ul>
-</div>
-
-<div class="footer-section">
-    <h3>Служба поддержки Park & Fly</h3>
-    <div class="footer-contacts" style="background: none; padding: 0; margin: 0;">
-        <a href="tel:88003333474" style="color: white;">
-            <i class="fas fa-phone"></i> 8-800-3333-474
-        </a>
-        <a href="tel:+74952121113" style="color: white;">
-            <i class="fas fa-phone"></i> +7 (495) 212-11-13
-        </a>
-        <a href="mailto:info@parkandfly.ru" style="color: white;">
-            <i class="fas fa-envelope"></i> info@parkandfly.ru
-        </a>
-        <p style="margin-top: 5px; font-size: 0.9rem; color: #64748b;">Круглосуточно, бесплатный по России</p>
+<footer style="background: #1e293b; color: white; padding: 50px 20px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;" class="footer-grid container">
+    
+    <div>
+      <h3 style="margin-bottom: 20px; color: white; font-size: 1.1rem; border-bottom: 2px solid #334155; padding-bottom: 10px;">
+        Airflowpilot</h3>
+      <p style="font-size: 0.95rem;">Ваш надежный помощник в организации комфортных путешествий по всему миру.</p>
+      <div style="margin-top: 20px; display: flex; gap: 20px;" class="social-icons">
+        <a href="#" aria-label="Facebook" style="font-size: 22px; color: white; transition: 0.3s;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram" style="font-size: 22px; color: white; transition: 0.3s;"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Telegram" style="font-size: 22px; color: white; transition: 0.3s;"><i class="fab fa-telegram-plane"></i></a>
+      </div>
     </div>
-</div>
-
-</div>
-<div class="footer-bottom">
-<p>&copy; 2025 Airflow Travel. Все права защищены. Разработано совместно с нашим третьим ИИ.</p>
-</div>
-</div>
+    
+    <div>
+      <h3 style="margin-bottom: 20px; color: white; font-size: 1.1rem; border-bottom: 2px solid #334155; padding-bottom: 10px;">
+        Наши услуги</h3>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 10px;"><a href="https://search.airflowtravel.net" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">✈️ Авиабилеты</a></li>
+        <li style="margin-bottom: 10px;"><a href="hotels.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🏨 Отели</a></li>
+        <li style="margin-bottom: 10px;"><a href="cars.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🚗 Аренда авто</a></li>
+        <li style="margin-bottom: 10px;"><a href="transfers.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🚕 Трансферы</a></li>
+        <li style="margin-bottom: 10px;"><a href="trains-buses.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🚌 Ж/Д и автобусы</a></li>
+        <li style="margin-bottom: 10px;"><a href="vip-lounge.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🛋️ VIP-залы</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h3 style="margin-bottom: 20px; color: white; font-size: 1.1rem; border-bottom: 2px solid #334155; padding-bottom: 10px;">
+        Дополнительно</h3>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 10px;"><a href="insurance.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🛡️ Страховка</a></li>
+        <li style="margin-bottom: 10px;"><a href="simcard.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">📱 SIM-карты</a></li>
+        <li style="margin-bottom: 10px;"><a href="parking.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🅿️ Паркинг</a></li>
+        <li style="margin-bottom: 10px;"><a href="attractions.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">🎫 Билеты в музеи</a></li>
+        <li style="margin-bottom: 10px;"><a href="flight-compensation.html" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;">💰 Компенсация за рейсы</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h3 style="margin-bottom: 20px; color: white; font-size: 1.1rem; border-bottom: 2px solid #334155; padding-bottom: 10px;">
+        Служба поддержки Park & Fly</h3>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 10px;"><a href="tel:88003333474" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;"><i class="fas fa-phone" style="color: #10b981;"></i> 8-800-3333-474</a></li>
+        <li style="margin-bottom: 10px;"><a href="tel:+74952121113" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;"><i class="fas fa-phone" style="color: #10b981;"></i> +7 (495) 212-11-13</a></li>
+        <li style="margin-bottom: 10px;"><a href="mailto:info@parkandfly.ru" style="color: #94a3b8; transition: 0.3s; font-size: 0.95rem;"><i class="fas fa-envelope" style="color: #10b981;"></i> info@parkandfly.ru</a></li>
+        <li style="margin-top: 10px;"><p style="font-size: 0.85rem; color: #64748b; margin: 0;">Круглосуточно, бесплатный по России</p></li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <div style="text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; font-size: 0.85rem;">
+    &copy; 2025 Airflowpilot. Все права защищены.
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     // Код для навигации
     const mobileMenu = document.getElementById('mobile-menu');
