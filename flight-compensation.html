@@ -281,6 +281,41 @@
         min-height: 775px;
     }
     
+    /* МОБИЛЬНАЯ ВЕРСИЯ - ПОЛНЫЙ ЭКРАН */
+    @media (max-width: 768px) {
+        .modal-overlay {
+            padding: 0;
+        }
+        
+        .modal-content {
+            max-width: 100%;
+            width: 100%;
+            height: 100vh;
+            max-height: 100vh;
+            border-radius: 0;
+            margin: 0;
+        }
+        
+        .modal-widget {
+            padding: 50px 15px 20px;
+            min-height: calc(100vh - 70px);
+            height: 100%;
+        }
+        
+        .modal-widget h2 {
+            font-size: 1.2rem !important;
+            margin-bottom: 15px !important;
+        }
+        
+        .modal-close {
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+        }
+    }
+    
     .hero-contacts {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
