@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
@@ -161,55 +162,151 @@
         color: #1e293b;
     }
     
-    /* HERO МИНИМАЛИЗМ */
+    /* HERO С ГРАДИЕНТОМ */
     .hero-section {
-        background: #f5f5f5;
-        color: #1e293b;
-        padding: 60px 20px;
+        background: linear-gradient(135deg, #1d4ed8 0%, #10b981 100%);
+        color: white;
+        padding: 80px 20px 40px;
         text-align: center;
     }
 
     .hero-content h1 {
-        font-size: clamp(1.8rem, 3vw, 2.5rem); 
-        margin-bottom: 15px;
-        font-weight: 700; 
+        font-size: clamp(1.2rem, 2.5vw, 2rem); 
+        margin-bottom: 20px;
+        font-weight: 600; 
         text-align: center;
-        color: #1e293b;
+        color: white;
     }
     
-    .hero-content h2 {
-        font-size: clamp(1rem, 2vw, 1.3rem);
-        margin-bottom: 40px;
-        font-weight: 400;
-        color: #64748b;
-    }
     
-    #train-bus-widget-container {
-        max-width: 900px;
+    /* ПРОЗРАЧНАЯ КАРТОЧКА */
+    .compensation-card {
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        width: 100%;
+        max-width: 600px; 
         margin: 0 auto 30px auto;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 15px;
     }
     
-    .hero-benefits {
+    .card-description {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .check-button {
+        background: #10b981;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .check-button:hover {
+        background: #0c8a5a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    /* МОДАЛЬНОЕ ОКНО */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 12px;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+        background: #c0392b;
+        transform: rotate(90deg);
+    }
+
+    .modal-widget {
+        padding: 60px 30px 30px;
+    }
+    
+    .hero-contacts {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-top: 25px;
         display: flex;
         justify-content: center;
         gap: 30px;
         flex-wrap: wrap;
         max-width: 800px;
-        margin: 30px auto 0;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    .hero-benefits div {
-        color: #1e293b;
+    .hero-contacts div {
+        color: white;
         font-weight: 500;
-        font-size: 0.95rem;
+        font-size: 1rem;
         display: flex;
         align-items: center;
         gap: 8px;
     }
 
-    .hero-benefits i {
+    .hero-contacts i {
         color: #10b981;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     
     .product-icons-section {
@@ -597,14 +694,19 @@
 <section class="hero-section">
 <div class="container">
 <div class="hero-content">
-<h1>Компенсация за задержку рейса</h1>
-<h2>Узнайте сумму выплаты за 2 минуты</h2>
+<h1>Компенсация за задержку или отмену рейса</h1>
 
-<div id="train-bus-widget-container">
-<script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&locale=ru&width=100&powered_by=false&campaign_id=86&promo_id=2110" charset="utf-8" async></script>
+<div class="compensation-card">
+    <h2 class="card-title">Проверьте свой рейс на компенсацию</h2>
+    <p class="card-description">
+        Проверьте возможность получения компенсации до 600€ по европейскому закону EC 261. Без предоплаты.
+    </p>
+    <button class="check-button" onclick="openModal()">
+        <i class="fas fa-search"></i> Проверить компенсацию
+    </button>
 </div>
 
-<div class="hero-benefits">
+<div class="hero-contacts">
     <div>
         <i class="fas fa-check-circle"></i> Задержки рейса
     </div>
@@ -622,6 +724,17 @@
 </div>
 </div>
 </section>
+
+<!-- МОДАЛЬНОЕ ОКНО С ВИДЖЕТОМ -->
+<div class="modal-overlay" id="compensationModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-widget">
+            <h2 style="text-align: center; color: #1e293b; margin-bottom: 20px; font-size: 1.8rem;">Расчёт компенсации</h2>
+            <script async src="https://tpwgt.com/content?trs=478043&shmarker=144185&locale=ru&width=100&powered_by=true&campaign_id=86&promo_id=2110" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
 
 <section class="product-icons-section">
 <div class="container">
@@ -1016,6 +1129,35 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+    // МОДАЛЬНОЕ ОКНО
+    function openModal() {
+        const modal = document.getElementById('compensationModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('compensationModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Закрытие по клику вне модалки
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('compensationModal');
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // МОБИЛЬНОЕ МЕНЮ
     const mobileMenu = document.getElementById('mobile-menu');
     const menuButton = document.getElementById('mobile-menu-button');
     const menuOverlay = document.getElementById('mobile-menu-overlay');
