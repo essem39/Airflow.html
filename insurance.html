@@ -256,40 +256,46 @@
         }
     }
 
-    #train-bus-widget-container {
-        padding: 0; 
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0 0 20px 0;
-        max-width: none;
-        position: relative;
-        min-height: 450px; 
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
+   #train-bus-widget-container {
+    padding: 0; 
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 20px 0;
+    max-width: none;
+    position: relative;
+    min-height: auto !important; /* АВТОМАТИЧЕСКАЯ ВЫСОТА */
+    height: auto !important; /* АВТОМАТИЧЕСКАЯ ВЫСОТА */
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible !important; /* РАЗРЕШАЕМ ВЕРТИКАЛЬНЫЙ СКРОЛЛ */
+}
 
-    @media (max-width: 768px) {
-        #train-bus-widget-container {
-            min-height: 650px !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow: visible !important;
-        }
-        
-        #train-bus-widget-container *,
-        #train-bus-widget-container iframe,
-        #train-bus-widget-container > div,
-        #train-bus-widget-container script + div {
-            max-width: 100% !important;
-            width: 100% !important;
-            min-width: 280px !important;
-            box-sizing: border-box !important;
-            overflow: visible !important;
-            word-wrap: break-word !important;
-            white-space: normal !important;
-        }
+
+  @media (max-width: 768px) {
+    #train-bus-widget-container {
+        min-height: auto !important; /* БЫЛО 650px */
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #train-bus-widget-container {
+        min-height: auto !important; /* БЫЛО 700px */
+        height: auto !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #train-bus-widget-container {
+        min-height: auto !important; /* БЫЛО 750px */
+        height: auto !important;
+    }
+}
+
         
         #train-bus-widget-container input,
         #train-bus-widget-container select,
