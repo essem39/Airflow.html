@@ -27,7 +27,6 @@
     }
 
     html, body {
-        /* ГАРАНТИЯ ОТ ОТКРЫТИЯ ГОРИЗОНТАЛЬНОГО СКРОЛЛА НА ВСЕЙ СТРАНИЦЕ */
         overflow-x: hidden; 
         width: 100%;
         max-width: 100%;
@@ -102,7 +101,7 @@
         text-decoration: none;
     }
 
-    /* Мобильное меню (стили для полноты) */
+    /* Мобильное меню */
     .mobile-menu-button { display: none; background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 8px; }
     .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
     .mobile-menu-overlay.active { opacity: 1; }
@@ -116,7 +115,7 @@
     @media (max-width: 1175px) { .nav-container { padding: 0 16px; } .nav-menu { display: none; } .mobile-menu-button { display: block; } .mobile-menu-overlay, .mobile-menu { display: block; } }
     @media (max-width: 480px) { .nav-container { padding: 0 12px; } }
 
-    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ (ОБЩИЕ) */
+    /* СТИЛИ КОНТЕНТА СТРАНИЦЫ */
     .section-title {
         text-align: center;
         font-size: 2.5rem;
@@ -125,16 +124,14 @@
         color: #1e293b;
     }
     
+    /* ОБНОВЛЕННЫЙ ФОН HERO-СЕКЦИИ - КАК У ВИДЖЕТА */
     .hero-section {
-        /* СИНИЙ ГРАДИЕНТ, КАК ФОН ДЛЯ СЛИЯНИЯ */
-        background: linear-gradient(135deg, #3c5496 0%, #636AFF 100%);
+        background: linear-gradient(135deg, #7b68d4 0%, #8c56d2 50%, #9b6dd6 100%);
         color: white;
-        /* УВЕЛИЧЕННЫЙ ПАДДИНГ */
         padding: 80px 20px 60px; 
         text-align: center;
     }
 
-    /* НОВЫЙ СТИЛЬ H1 */
     .hero-content h1 {
         font-size: clamp(1.8rem, 3vw, 2.5rem); 
         margin-bottom: 20px;
@@ -153,27 +150,26 @@
     }
     
     /* ********************************************* */
-    /* *** КОНТЕЙНЕР ДЛЯ ВИДЖЕТА - МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ *** */
+    /* *** УБИРАЕМ КОНТЕЙНЕР - ВИДЖЕТ НА ЧИСТОМ ФОНЕ *** */
     /* ********************************************* */
     #insurance-main-card {
         max-width: 900px; 
         margin: 0 auto 30px auto; 
-        padding: 20px; 
-        background: rgba(255, 255, 255, 0.15); /* Полупрозрачный белый */
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        padding: 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
         width: 100%;
     }
 
     /* КРИТИЧЕСКИЕ МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
     @media (max-width: 768px) {
         .hero-section {
-            /* УВЕЛИЧИВАЕМ ПАДДИНГ НА МОБИЛЬНЫХ */
-            padding: 60px 5px 50px; /* УМЕНЬШИЛИ боковые отступы с 10px до 5px */
+            padding: 60px 10px 50px;
         }
         #insurance-main-card {
-            padding: 5px; /* УМЕНЬШИЛИ с 10px до 5px */
+            padding: 0;
             margin: 0 auto 20px auto;
             max-width: 100%;
         }
@@ -184,18 +180,17 @@
         
         .hero-content p {
             font-size: 1rem;
-            padding: 0 2px; /* УМЕНЬШИЛИ с 5px до 2px */
+            padding: 0 10px;
         }
     }
 
     @media (max-width: 480px) {
         .hero-section {
-            padding: 50px 2px 40px; /* УМЕНЬШИЛИ с 5px до 2px */
+            padding: 50px 5px 40px;
         }
         
         #insurance-main-card {
-            padding: 3px; /* УМЕНЬШИЛИ с 8px до 3px */
-            border-radius: 8px;
+            padding: 0;
         }
         
         .hero-content h1 {
@@ -205,22 +200,17 @@
         
         .hero-content p {
             font-size: 0.9rem;
-            padding: 0 1px; /* МИНИМАЛЬНЫЙ отступ */
+            padding: 0 5px;
         }
     }
 
-    /* СПЕЦИАЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ */
     @media (max-width: 390px) {
         .hero-section {
-            padding: 50px 1px 40px; /* МИНИМАЛЬНЫЕ отступы */
-        }
-        
-        #insurance-main-card {
-            padding: 2px; /* МИНИМАЛЬНЫЙ внутренний отступ */
+            padding: 50px 2px 40px;
         }
         
         .hero-content p {
-            padding: 0; /* УБИРАЕМ все отступы */
+            padding: 0 2px;
         }
     }
 
@@ -229,215 +219,192 @@
         font-weight: 700;
         color: white; 
         margin-top: 0; 
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         text-align: center;
     }
     
-    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ЗАГОЛОВКА */
     @media (max-width: 768px) {
         .card-title-search {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
         }
     }
     
     @media (max-width: 480px) {
         .card-title-search {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
         }
     }
     
-    /* НОВЫЙ FLEX-КОНТЕЙНЕР для центрирования и локального скролла */
     #widget-flex-wrapper {
-        display: flex; /* Активируем Flexbox */
-        justify-content: center; /* ЦЕНТРИРУЕМ ШИРОКИЙ КОНТЕНТ */
-        overflow-x: auto; /* Разрешаем локальный ГОРИЗОНТАЛЬНЫЙ скролл */
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
         overflow-y: hidden;
-        padding: 0 2px; /* УМЕНЬШИЛИ с 5px до 2px */
-        /* КРИТИЧЕСКИ ВАЖНО ДЛЯ МОБИЛЬНЫХ */
+        padding: 0;
         width: 100%;
         max-width: 100%;
+        background: none;
     }
 
-    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ FLEX-WRAPPER */
     @media (max-width: 768px) {
         #widget-flex-wrapper {
-            padding: 0 1px; /* УМЕНЬШИЛИ с 2px до 1px */
-            /* Убираем центрирование на мобильных, позволяем виджету занимать всю ширину */
+            padding: 0;
             justify-content: flex-start;
         }
     }
 
-    @media (max-width: 390px) {
-        #widget-flex-wrapper {
-            padding: 0; /* УБИРАЕМ все отступы на узких экранах */
-        }
-    }
-
-    /* Стили для Виджета - МАКСИМАЛЬНО КОМПАКТНЫЕ МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
     #train-bus-widget-container {
         padding: 0; 
         background: none;
         border-radius: 0;
         box-shadow: none;
-        margin: 0; 
-        max-width: none; /* Разрешаем быть шире 100% */
+        margin: 0 0 20px 0;
+        max-width: none;
         position: relative;
-        /* ГАРАНТИРУЕМ МИНИМАЛЬНУЮ ВЫСОТУ */
         min-height: 450px; 
-        margin-bottom: 10px; /* Отступ от контактов */
-        /* КРИТИЧЕСКИ ВАЖНО ДЛЯ МОБИЛЬНЫХ */
         width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
     }
 
-    /* МАКСИМАЛЬНО КОМПАКТНЫЕ МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
     @media (max-width: 768px) {
         #train-bus-widget-container {
-            min-height: 650px !important; /* УВЕЛИЧИЛИ высоту для размещения контента */
+            min-height: 650px !important;
             width: 100% !important;
             max-width: 100% !important;
-            overflow: visible !important; /* Разрешаем переполнение */
-            /* УБИРАЕМ МАСШТАБИРОВАНИЕ - оставляем нормальный размер */
+            overflow: visible !important;
         }
         
-        /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ ВИДЖЕТА НА МОБИЛЬНЫХ */
         #train-bus-widget-container *,
         #train-bus-widget-container iframe,
         #train-bus-widget-container > div,
         #train-bus-widget-container script + div {
             max-width: 100% !important;
             width: 100% !important;
-            min-width: 280px !important; /* УМЕНЬШИЛИ с 300px до 280px */
+            min-width: 280px !important;
             box-sizing: border-box !important;
             overflow: visible !important;
             word-wrap: break-word !important;
-            white-space: normal !important; /* РАЗРЕШАЕМ перенос текста */
+            white-space: normal !important;
         }
         
-        /* УЛУЧШЕННЫЕ СТИЛИ ДЛЯ ПОЛЕЙ ВВОДА И ТЕКСТА - КОМПАКТНЫЙ РАЗМЕР */
         #train-bus-widget-container input,
         #train-bus-widget-container select,
         #train-bus-widget-container button,
         #train-bus-widget-container label,
         #train-bus-widget-container span,
         #train-bus-widget-container div {
-            font-size: 15px !important; /* УМЕНЬШИЛИ с 16px до 15px */
-            line-height: 1.3 !important; /* УМЕНЬШИЛИ с 1.4 до 1.3 */
-            padding: 10px 6px !important; /* УМЕНЬШИЛИ отступы с 12px 10px до 10px 6px */
-            white-space: normal !important; /* РАЗРЕШАЕМ перенос */
+            font-size: 15px !important;
+            line-height: 1.3 !important;
+            padding: 10px 6px !important;
+            white-space: normal !important;
             overflow: visible !important;
             word-break: break-word !important;
             hyphens: auto !important;
-            min-height: 40px !important; /* УМЕНЬШИЛИ с 44px до 40px */
+            min-height: 40px !important;
         }
         
-        /* СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ РАДИОКНОПОК И ЧЕКБОКСОВ */
         #train-bus-widget-container input[type="radio"],
         #train-bus-widget-container input[type="checkbox"] {
-            width: 18px !important; /* УМЕНЬШИЛИ с 20px до 18px */
+            width: 18px !important;
             height: 18px !important;
-            margin-right: 8px !important; /* УМЕНЬШИЛИ с 10px до 8px */
+            margin-right: 8px !important;
         }
         
         #train-bus-widget-container input[type="radio"] + label,
         #train-bus-widget-container input[type="checkbox"] + label {
             white-space: normal !important;
             word-wrap: break-word !important;
-            max-width: calc(100% - 30px) !important; /* ОСТАВЛЯЕМ место для радиокнопки */
+            max-width: calc(100% - 30px) !important;
             display: inline-block !important;
             vertical-align: top !important;
-            font-size: 14px !important; /* УМЕНЬШИЛИ с 16px до 14px */
+            font-size: 14px !important;
             line-height: 1.3 !important;
-            padding: 6px 0 !important; /* УМЕНЬШИЛИ с 8px до 6px */
+            padding: 6px 0 !important;
             margin: 0 !important;
             overflow-wrap: break-word !important;
             word-break: break-word !important;
         }
         
-        /* СТИЛИ ДЛЯ КНОПОК */
         #train-bus-widget-container button {
-            min-height: 45px !important; /* УМЕНЬШИЛИ с 50px до 45px */
-            font-size: 16px !important; /* УМЕНЬШИЛИ с 18px до 16px */
+            min-height: 45px !important;
+            font-size: 16px !important;
             font-weight: bold !important;
-            padding: 12px 15px !important; /* УМЕНЬШИЛИ отступы */
+            padding: 12px 15px !important;
         }
     }
 
     @media (max-width: 480px) {
         #train-bus-widget-container {
-            min-height: 700px !important; /* УВЕЛИЧИЛИ высоту для маленьких экранов */
+            min-height: 700px !important;
         }
         
-        /* ЕЩЕ БОЛЕЕ КОМПАКТНЫЕ РАЗМЕРЫ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
         #train-bus-widget-container input,
         #train-bus-widget-container select,
         #train-bus-widget-container label,
         #train-bus-widget-container span,
         #train-bus-widget-container div {
-            font-size: 14px !important; /* УМЕНЬШИЛИ с 15px до 14px */
-            padding: 8px 4px !important; /* УМЕНЬШИЛИ отступы */
-            min-height: 38px !important; /* УМЕНЬШИЛИ высоту */
+            font-size: 14px !important;
+            padding: 8px 4px !important;
+            min-height: 38px !important;
         }
         
         #train-bus-widget-container input[type="radio"] + label,
         #train-bus-widget-container input[type="checkbox"] + label {
-            font-size: 13px !important; /* УМЕНЬШИЛИ до 13px */
-            max-width: calc(100% - 25px) !important; /* БОЛЬШЕ места для текста */
+            font-size: 13px !important;
+            max-width: calc(100% - 25px) !important;
             padding: 4px 0 !important;
         }
         
         #train-bus-widget-container button {
-            font-size: 15px !important; /* УМЕНЬШИЛИ размер кнопки */
+            font-size: 15px !important;
             padding: 10px 12px !important;
             min-height: 42px !important;
         }
     }
 
-    /* СПЕЦИАЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ (Galaxy S20: 360px) */
     @media (max-width: 390px) {
         #train-bus-widget-container {
-            min-height: 750px !important; /* ЕЩЕ БОЛЬШЕ высоты */
+            min-height: 750px !important;
         }
         
         #train-bus-widget-container *,
         #train-bus-widget-container iframe,
         #train-bus-widget-container > div,
         #train-bus-widget-container script + div {
-            min-width: 250px !important; /* УМЕНЬШИЛИ минимальную ширину */
+            min-width: 250px !important;
         }
         
         #train-bus-widget-container input[type="radio"] + label,
         #train-bus-widget-container input[type="checkbox"] + label {
-            max-width: calc(100% - 20px) !important; /* МАКСИМУМ места для текста */
-            font-size: 12px !important; /* МИНИМАЛЬНЫЙ читаемый размер */
+            max-width: calc(100% - 20px) !important;
+            font-size: 12px !important;
             line-height: 1.2 !important;
             padding: 3px 0 !important;
         }
     }
 
-    /* Стили для Контактов в Hero */
+    /* ОБНОВЛЕННЫЕ СТИЛИ КОНТАКТОВ */
     .hero-contacts {
         background: none; 
         border: none; 
-        padding: 0; 
-        margin-top: 15px; 
+        padding: 15px 0;
+        margin-top: 20px; 
         display: flex;
         justify-content: center;
         gap: 30px;
         flex-wrap: wrap;
-        max-width: 700px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
     }
     
-    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ КОНТАКТОВ */
     @media (max-width: 768px) {
         .hero-contacts {
             gap: 20px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
     }
     
@@ -450,17 +417,18 @@
     }
     
     .hero-contacts a {
-        color: white; 
+        color: white;
         text-decoration: none;
         font-weight: 500;
         font-size: 1rem;
         display: flex;
         align-items: center;
         gap: 8px;
-        transition: opacity 0.3s;
+        transition: opacity 0.3s, transform 0.3s;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
 
-    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ССЫЛОК КОНТАКТОВ */
     @media (max-width: 768px) {
         .hero-contacts a {
             font-size: 0.9rem;
@@ -475,62 +443,66 @@
     }
 
     .hero-contacts a:hover {
-        opacity: 0.8;
+        opacity: 0.9;
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.1);
     }
 
     .hero-contacts i {
-        color: #fff; 
+        color: #ffd700;
         font-size: 1.2rem;
     }
     
     .card-description {
-        font-size: 0.9rem;
-        margin-top: 15px;
-        margin-bottom: 0;
-        opacity: 0.8;
-        color: rgba(255, 255, 255, 0.8); 
-        max-width: 90%;
-        margin: 15px auto 15px auto; 
+        font-size: 0.95rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        opacity: 1;
+        color: white;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
         text-align: center;
+        line-height: 1.6;
     }
     
-    /* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ОПИСАНИЯ */
     @media (max-width: 768px) {
         .card-description {
-            font-size: 0.8rem;
-            margin: 10px auto;
+            font-size: 0.9rem;
+            padding: 0 10px;
         }
     }
     
     @media (max-width: 480px) {
         .card-description {
-            font-size: 0.75rem;
-            margin: 8px auto;
+            font-size: 0.85rem;
+            padding: 0 5px;
         }
     }
     
-    /* СТИЛИ ДЛЯ ПЕРЕМЕЩЕННОГО SEO-ТЕКСТА (РАЗДЕЛ "Сравните предложения...") */
+    /* СТИЛИ ДЛЯ ПЕРЕМЕЩЕННОГО SEO-ТЕКСТА */
     .seo-description-moved {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-top: 25px;
+        color: rgba(255, 255, 255, 0.95);
+        margin-top: 30px;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        line-height: 1.6;
     }
     .seo-description-moved p {
-        margin: 0; /* Убираем стандартный нижний margin у p */
+        margin: 0;
     }
     @media (max-width: 768px) {
         .seo-description-moved {
             font-size: 1rem;
-            padding: 0 5px;
-            margin-top: 15px;
+            padding: 0 10px;
+            margin-top: 20px;
         }
     }
     
-    /* Остальные секции (без изменений) */
+    /* СЕКЦИЯ С ИКОНКАМИ ПРОДУКТОВ */
     .product-icons-section {
         padding: 60px 20px;
         background: white;
@@ -607,7 +579,7 @@
         text-align: left;
     }
     
-    .tip-card { /* Только аккордеоны имеют курсор, чтобы избежать путаницы */
+    .tip-card {
         cursor: pointer;
     }
 
@@ -842,7 +814,6 @@
         margin-right: 8px;
     }
 
-
     .footer-bottom {
         border-top: 1px solid #334155;
         padding-top: 20px;
@@ -905,8 +876,10 @@
 <section class="hero-section">
 <div class="container">
 <div class="hero-content">
-<h1>Премиальное страхование путешествий</h1>
-<div id="insurance-main-card">
+    
+    <div id="insurance-main-card">
+        <h2 class="card-title-search">Премиальное страхование путешествий</h2>
+        
         <div id="widget-flex-wrapper"> 
             
             <div id="train-bus-widget-container">
@@ -1181,11 +1154,11 @@
 </div>
 </div>
 
-
 </div>
 <div class="swiper-pagination"></div>
 <div class="swiper-button-prev"></div>
 <div class="swiper-button-next"></div>
+</div>
 </div>
 </div>
 </section>
@@ -1220,7 +1193,6 @@
     <h3>Служба поддержки</h3>
     <div class="footer-contacts" style="background: none; padding: 0; margin: 0;">
         <a href="tel:+74952151198" style="color: white;">
-         <a href="tel:+74952151198" style="color: white;">
             <i class="fas fa-phone"></i> 8 (495) 215-11-98
         </a>
         <a href="tel:+88005552198" style="color: white;">
@@ -1275,8 +1247,7 @@
         document.body.style.overflow = ''; 
         setTimeout(() => {
             menuOverlay.style.display = 'none';
-        }
-        , 300);
+        }, 300);
     }
 
     if (menuButton) menuButton.addEventListener('click', toggleMenu);
@@ -1334,45 +1305,39 @@
             });
         });
 
-        // МАКСИМАЛЬНО КОМПАКТНЫЙ JAVASCRIPT ДЛЯ "БЕДНЫХ" ТЕЛЕФОНОВ
+        // МАКСИМАЛЬНО КОМПАКТНЫЙ JAVASCRIPT ДЛЯ МОБИЛЬНЫХ
         function forceWidgetUltraCompactResize() {
             const widgetContainer = document.getElementById('train-bus-widget-container');
             if (widgetContainer && window.innerWidth <= 768) {
-                // Принудительно устанавливаем стили для всех дочерних элементов
                 const allElements = widgetContainer.querySelectorAll('*');
                 allElements.forEach(element => {
-                    // Применяем стили ко всем элементам
                     element.style.maxWidth = '100%';
                     element.style.width = '100%';
                     element.style.boxSizing = 'border-box';
                     element.style.overflow = 'visible';
                     element.style.wordWrap = 'break-word';
-                    element.style.whiteSpace = 'normal'; // РАЗРЕШАЕМ перенос текста
+                    element.style.whiteSpace = 'normal';
                     
-                    // КОМПАКТНЫЕ размеры для узких экранов
                     if (element.tagName === 'IFRAME' || element.tagName === 'DIV') {
                         element.style.minWidth = window.innerWidth <= 390 ? '250px' : '280px';
                     }
                     
-                    // КОМПАКТНЫЕ стили для текстовых элементов
                     if (['INPUT', 'SELECT', 'BUTTON', 'LABEL', 'SPAN'].includes(element.tagName)) {
                         element.style.fontSize = window.innerWidth <= 390 ? '12px' : (window.innerWidth <= 480 ? '14px' : '15px');
                         element.style.lineHeight = '1.3';
                         element.style.padding = window.innerWidth <= 390 ? '6px 3px' : (window.innerWidth <= 480 ? '8px 4px' : '10px 6px');
-                        element.style.whiteSpace = 'normal'; // РАЗРЕШАЕМ перенос
+                        element.style.whiteSpace = 'normal';
                         element.style.wordBreak = 'break-word';
                         element.style.hyphens = 'auto';
                         element.style.minHeight = window.innerWidth <= 390 ? '36px' : (window.innerWidth <= 480 ? '38px' : '40px');
                     }
                     
-                    // СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ РАДИОКНОПОК И ЧЕКБОКСОВ
                     if (element.type === 'radio' || element.type === 'checkbox') {
                         element.style.width = '18px';
                         element.style.height = '18px';
                         element.style.marginRight = window.innerWidth <= 390 ? '6px' : '8px';
                     }
                     
-                    // СТИЛИ ДЛЯ КНОПОК
                     if (element.tagName === 'BUTTON') {
                         element.style.minHeight = window.innerWidth <= 390 ? '40px' : (window.innerWidth <= 480 ? '42px' : '45px');
                         element.style.fontSize = window.innerWidth <= 390 ? '14px' : (window.innerWidth <= 480 ? '15px' : '16px');
@@ -1381,7 +1346,6 @@
                     }
                 });
                 
-                // СПЕЦИАЛЬНАЯ ОБРАБОТКА ЛЕЙБЛОВ РАДИОКНОПОК
                 const radioLabels = widgetContainer.querySelectorAll('input[type="radio"] + label, input[type="checkbox"] + label');
                 radioLabels.forEach(label => {
                     label.style.whiteSpace = 'normal';
@@ -1397,9 +1361,8 @@
                     label.style.wordBreak = 'break-word';
                 });
                 
-                // Принудительно обновляем layout с увеличенной высотой
                 widgetContainer.style.minHeight = window.innerWidth <= 390 ? '750px' : (window.innerWidth <= 480 ? '700px' : '650px');
-                widgetContainer.offsetHeight; // Trigger reflow
+                widgetContainer.offsetHeight;
             }
         }
 
