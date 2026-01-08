@@ -247,12 +247,13 @@ display: flex;
 .modal-content {
 background: white;
 border-radius: 12px;
-max-width: 900px;
-width: 100%;
+width: 900px;
+max-width: 95%;
 max-height: 90vh;
-overflow-y: auto;
+overflow: hidden;
 position: relative;
 box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+transition: all 0.3s ease;
 }
 
 .modal-close {
@@ -789,18 +790,23 @@ margin-bottom: 15px;
 </div>
 </section>
 
-<!-- МОДАЛЬНОЕ ОКНО С ВИДЖЕТОМ -->
+<!-- МОДАЛЬНОЕ ОКНО С ВИДЖЕТОМ COMPENSAIR -->
 <div class="modal-overlay" id="compensationModal">
 <div class="modal-content">
 <button class="modal-close" onclick="closeModal()">×</button>
 <div class="modal-widget">
 <h2 style="text-align: center; color: #1d4ed8; margin-bottom: 20px; font-size: 1.6rem; font-weight: 600;">
-<i class="fas fa-plane"></i> Airflow поможет рассчитать вашу компенсацию
+<i class="fas fa-plane"></i> Проверьте возможность компенсации
 </h2>
+<iframe 
+  id="compensairWidget"
+  src="https://www.compensair.com/ru/check-flight.html" 
+  style="border: none; width: 100%; height: 850px; display: block;"
+  name="margaryan_gagik">
+</iframe>
 </div>
 </div>
 </div>
-
 <section class="product-icons-section">
 <div class="container">
 <h2 class="section-title" style="margin-bottom: 30px; color: #1d4ed8;">Наши продукты и сервисы</h2>
@@ -1042,7 +1048,6 @@ margin-bottom: 15px;
 </div>
 </div>
 </section>
-
 <section class="testimonials-section">
 <div class="container">
 <h2 class="section-title">Что говорят наши клиенты</h2>
@@ -1195,23 +1200,10 @@ margin-bottom: 15px;
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 // МОДАЛЬНОЕ ОКНО
-let widgetLoaded = false;
-
 function openModal() {
 const modal = document.getElementById('compensationModal');
 modal.classList.add('active');
 document.body.style.overflow = 'hidden';
-
-// Загружаем виджет только при первом открытии
-if (!widgetLoaded) {
-const widgetContainer = document.querySelector('.modal-widget');
-const script = document.createElement('script');
-script.src = 'https://tpwgt.com/content?trs=478043&shmarker=144185&locale=ru&width=100&powered_by=false&campaign_id=86&promo_id=2110';
-script.charset = 'utf-8';
-script.async = true;
-widgetContainer.appendChild(script);
-widgetLoaded = true;
-}
 }
 
 function closeModal() {
@@ -1234,6 +1226,51 @@ if (e.key === 'Escape') {
 closeModal();
 }
 });
+
+// АВТОПОДСТРОЙКА ВЫСОТЫ ВИДЖЕТА COMPENSAIR
+(function() {
+  const iframe = document.getElementById('compensairWidget');
+  if (!iframe) return;
+
+  // Слушаем сообщения от виджета о высоте
+  window.addEventListener('message', function(e) {
+    if (e.origin === 'https://www.compensair.com') {
+      if (e.data && typeof e.data === 'object') {
+        if (e.data.height) {
+          iframe.style.height = (parseInt(e.data.height) + 20) + 'px';
+          console.log('📏 Высота виджета обновлена:', e.data.height);
+        }
+        if (e.data.frameHeight) {
+          iframe.style.height = (parseInt(e.data.frameHeight) + 20) + 'px';
+          console.log('📏 Высота виджета обновлена:', e.data.frameHeight);
+        }
+      }
+    }
+  });
+
+  // При загрузке iframe
+  iframe.addEventListener('load', function() {
+    console.log('✅ Виджет Compensair загружен');
+    
+    // Отправляем запрос на получение высоты
+    try {
+      iframe.contentWindow.postMessage({ type: 'getHeight' }, 'https://www.compensair.com');
+    } catch(e) {
+      console.log('ℹ️ Используем фиксированную высоту 850px');
+    }
+  });
+
+  // Адаптация под мобильные
+  window.addEventListener('resize', function() {
+    if (window.innerWidth < 768) {
+      iframe.style.height = 'calc(100vh - 120px)';
+    } else {
+      if (iframe.style.height.indexOf('calc') !== -1) {
+        iframe.style.height = '850px';
+      }
+    }
+  });
+})();
 
 // МОБИЛЬНОЕ МЕНЮ
 const mobileMenu = document.getElementById('mobile-menu');
@@ -1276,6 +1313,7 @@ if (menuClose) menuClose.addEventListener('click', closeMenu);
 if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
 document.addEventListener('DOMContentLoaded', function() {
+// SWIPER SLIDER
 var swiper = new Swiper('.testimonials-slider', {
 slidesPerView: 1,
 spaceBetween: 30,
@@ -1316,6 +1354,7 @@ this.update();
 }
 });
 
+// Закрытие мобильного меню при клике на ссылку
 document.querySelectorAll('.mobile-menu-links a').forEach(link => {
 link.addEventListener('click', () => {
 if (mobileMenu.classList.contains('active')) {
